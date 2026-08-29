@@ -189,16 +189,22 @@
       ],
 
       // GABUNGKAN SEMUA US_SMA menjadi satu key:
-      US_SMA: [
+US_SMA_KIMIA: [
         { id: 'us_sma_kimia_1', name: 'Paket Kimia 1', desc: '', icon: '🧪' },
         { id: 'us_sma_kimia_2', name: 'Paket Kimia 2', desc: '', icon: '🧠' },
-        { id: 'us_sma_kimia_3', name: 'Paket Kimia 3', desc: '', icon: '✏️' },
+        { id: 'us_sma_kimia_3', name: 'Paket Kimia 3', desc: '', icon: '✏️' }
+      ],
+      US_SMA_EKONOMI: [
         { id: 'us_sma_eko_1', name: 'Paket Ekonomi 1', desc: '', icon: '📈' },
         { id: 'us_sma_eko_2', name: 'Paket Ekonomi 2', desc: '', icon: '🖋️' },
-        { id: 'us_sma_eko_3', name: 'Paket Ekonomi 3', desc: '', icon: '🖊️' },
+        { id: 'us_sma_eko_3', name: 'Paket Ekonomi 3', desc: '', icon: '🖊️' }
+      ],
+      US_SMA_MATWAJIB: [
         { id: 'us_sma_mtw_1', name: 'Paket Matematika Wajib 1', desc: '', icon: '📐' },
         { id: 'us_sma_mtw_2', name: 'Paket Matematika Wajib 2', desc: '', icon: '🔬' },
-        { id: 'us_sma_mtw_3', name: 'Paket Matematika Wajib 3', desc: '', icon: '💻' },
+        { id: 'us_sma_mtw_3', name: 'Paket Matematika Wajib 3', desc: '', icon: '💻' }
+      ],
+      US_SMA_MATTL: [
         { id: 'us_sma_mtl_1', name: 'Paket Matematika TL 1', desc: '', icon: '🧮' },
         { id: 'us_sma_mtl_2', name: 'Paket Matematika TL 2', desc: '', icon: '🌐' },
         { id: 'us_sma_mtl_3', name: 'Paket Matematika TL 3', desc: '', icon: '📝' }
@@ -210,9 +216,21 @@
         { id: 'tka_sma_bing', name: 'Paket TKA B. Inggris', desc: '', icon: '🌐' },
         { id: 'tka_sma_kimia', name: 'Paket TKA Kimia', desc: '', icon: '🧠' },
         { id: 'tka_sma_eko', name: 'Paket TKA Ekonomi', desc: '', icon: '📈' },
-        { id: 'tka_sma_ppkn', name: 'Paket TKA PPKN', desc: '', icon: '🖊️' }
+        { id: 'tka_sma_ppkn', name: 'Paket TKA PPKN', desc: '', icon: '🖊️' },
+        { id: 'tka_sma_bio', name: 'Paket TKA Biologi', desc: '', icon: '🧬' }
       ]
-    };    
+    };
+
+const PACKAGE_GROUPS = {
+    SNBT_SKD_SNBT: ['snbt_1', 'snbt_2', 'snbt_3'],
+    SNBT_SKD_SKD: ['skd_1', 'skd_2', 'skd_3'],
+
+    US_SMA_KIMIA: ['us_sma_kimia_1', 'us_sma_kimia_2', 'us_sma_kimia_3'],
+    US_SMA_EKONOMI: ['us_sma_eko_1', 'us_sma_eko_2', 'us_sma_eko_3'],
+    US_SMA_MATWAJIB: ['us_sma_mtw_1', 'us_sma_mtw_2', 'us_sma_mtw_3'],
+    US_SMA_MATTL: ['us_sma_mtl_1', 'us_sma_mtl_2', 'us_sma_mtl_3']
+};
+
     // === ACCESS CODES (TIERED ACCESS) ===
     const ACCESS_CODES = {
       // SNBT Tiers
@@ -226,14 +244,13 @@
       '7*kU3#oT9&vP1x': ['snbt_1', 'snbt_2', 'snbt_3', 'skd_1', 'skd_2', 'skd_3'],
 
       // [BARU] Kode Akses TKA SMP
-      'Z4&qW7%nB3*vJ9': ['tka_smp_1', 'tka_smp_2', 'tka_smp_3'],
+      'Z4&qW7%nB3*vJ9': ['tka_smp_1', 'tka_smp_2'],
 
       // [BARU] Kode Akses Ujian Sekolah SMA
       'X9&mD5@hN3^kF7': ['us_sma_kimia_1', 'us_sma_kimia_2', 'us_sma_kimia_3', 'us_sma_eko_1', 'us_sma_eko_2', 'us_sma_eko_3', 'us_sma_mtw_1', 'us_sma_mtw_2', 'us_sma_mtw_3', 'us_sma_mtl_1', 'us_sma_mtl_2', 'us_sma_mtl_3'],
     // [BARU] Kode Akses TKA SMA
-      'Y2#pL8!vQ4^sJ6': ['tka_sma_mtkw', 'tka_sma_bind', 'tka_sma_bing', 'tka_sma_kimia', 'tka_sma_eko', 'tka_sma_ppkn'],
+      'Y2#pL8!vQ4^sJ6': ['tka_sma_mtkw', 'tka_sma_bind', 'tka_sma_bing', 'tka_sma_kimia', 'tka_sma_eko', 'tka_sma_ppkn','tka_sma_bio' ],
     };
-
 
     // ===== BANK SOAL SNBT =====
     const SNBT_QUESTIONS = [
@@ -6590,86 +6607,625 @@
         ],
       },
        { id: 'bio_1', packageId: 'tka_sma_bio', category: 'TKA', 
-        question: "", 
-        image: "",
+        question: "Jika terjadi letusan gunung berapi maka akan memusnahkan semua kehidupan disekitar gunung berapi tersebut. Bertahun-tahun kemudian akan tumbuh kembali kehidupan di daerah sekitar gunung", 
         options: [
-          { id: 'A', text: '', score: 0 },
-          { id: 'B', text: '', score: 0 },
-          { id: 'C', text: '', score: 0 },
-          { id: 'D', text: '', score: 0 },
-          { id: 'E', text: '', score: 0 }
+          { id: 'A', text: 'lumut', score: 0 },
+          { id: 'B', text: 'lumut kerak', score: 3.33 },
+          { id: 'C', text: 'paku', score: 0 },
+          { id: 'D', text: 'pinus', score: 0 },
+          { id: 'E', text: 'rumput-rumputan', score: 0 }
         ],
       },
        { id: 'bio_2', packageId: 'tka_sma_bio', category: 'TKA', 
-        question: "", 
-        image: "",
+        question: "Dalam ekosistem perairan, ikan salah satu yang penting memerankan komponen biotik dalam perairan tersebut. Ikan termasuk kelompok biotik yang disebut ....", 
         options: [
-          { id: 'A', text: '', score: 0 },
-          { id: 'B', text: '', score: 0 },
-          { id: 'C', text: '', score: 0 },
-          { id: 'D', text: '', score: 0 },
-          { id: 'E', text: '', score: 0 }
+          { id: 'A', text: 'bentos', score: 0 },
+          { id: 'B', text: 'neuston', score: 0 },
+          { id: 'C', text: 'nekton', score: 3.33 },
+          { id: 'D', text: 'perifiton', score: 0 },
+          { id: 'E', text: 'epifit', score: 0 }
         ],
       },
        { id: 'bio_3', packageId: 'tka_sma_bio', category: 'TKA', 
-        question: "", 
-        image: "",
+        question: "Urutan taxon dari tingkat tertinggi ke tingkat terendah yang benar adalah.....", 
         options: [
-          { id: 'A', text: '', score: 0 },
-          { id: 'B', text: '', score: 0 },
-          { id: 'C', text: '', score: 0 },
-          { id: 'D', text: '', score: 0 },
-          { id: 'E', text: '', score: 0 }
+          { id: 'A', text: 'kingdom - divisi - kelas - ordo - famili - ge nus - spesies', score: 3.33 },
+          { id: 'B', text: 'spesies - genus - famili - ordo - kelas - divisio- kingdom', score: 0 },
+          { id: 'C', text: 'kingdom - filum- kelas - famili - ordo - ge nus - spesies', score: 0 },
+          { id: 'D', text: 'kingdom - kelas - diivisio - ordo - famili genus - spesies', score: 0 },
+          { id: 'E', text: 'divisio - kingdom - kelas - ordo - famili genus – spesies', score: 0 }
         ],
       },
        { id: 'bio_4', packageId: 'tka_sma_bio', category: 'TKA', 
-        question: "", 
-        image: "",
+        question: "Sistem klasifikasi yang berdasarkan kepada hubungan kekerabatan disebut....", 
         options: [
-          { id: 'A', text: '', score: 0 },
-          { id: 'B', text: '', score: 0 },
-          { id: 'C', text: '', score: 0 },
-          { id: 'D', text: '', score: 0 },
-          { id: 'E', text: '', score: 0 }
+          { id: 'A', text: 'artificial', score: 0 },
+          { id: 'B', text: 'alami', score: 0 },
+          { id: 'C', text: 'filogenik', score: 3.33 },
+          { id: 'D', text: 'buatan', score: 0 },
+          { id: 'E', text: 'morfologi', score: 0 }
         ],
       },
        { id: 'bio_5', packageId: 'tka_sma_bio', category: 'TKA', 
-        question: "", 
-        image: "",
+        question: "Perhatikan kunci determinasi berikut ini! <br>1. a. Tubuh terdiri dari kepala, dada, dan perut <br>   b. Tubuh tidak terdiri atas kepala, dada, perut <br>2. a. Tubuh terdiri dari sefalothoraks (kepala dan dada bersatu) dan perut. <br>   b.Tubuh terdiri dari kepala dan perut yang beruas-ruas dan memanjang <br>3. a. Memiliki dua pasang antena <br>   b.Tidak memiliki antena <br>4. a. Memilik satu pasang kaki persegmen <br>   b.Memiliki kaki dua pasang persegmen <br><br>Jika seorang ingin melakukan identifikasi terhadap hewan udang dengan menggunakan kunci determinasi diatas, maka pilihan yang benar untuk udang adalah.....", 
         options: [
-          { id: 'A', text: '', score: 0 },
-          { id: 'B', text: '', score: 0 },
-          { id: 'C', text: '', score: 0 },
-          { id: 'D', text: '', score: 0 },
-          { id: 'E', text: '', score: 0 }
+          { id: 'A', text: '1b, 2a, 3a', score: 0 },
+          { id: 'B', text: '1b, 2a, 3b', score: 0 },
+          { id: 'C', text: '1b, 2b, 3a', score: 3.33 },
+          { id: 'D', text: '1b, 2b, 4b', score: 0 },
+          { id: 'E', text: '1b, 2b, 4b', score: 0 }
         ],
       },
        { id: 'bio_6', packageId: 'tka_sma_bio', category: 'TKA', 
-        question: "", 
-        image: "",
+        question: "Bakteri gram positif adalah bakteri yang peptidoglikan nya ...1... dan dengan pewarnaan gram akan menyerap warna ...2....?", 
         options: [
-          { id: 'A', text: '', score: 0 },
-          { id: 'B', text: '', score: 0 },
-          { id: 'C', text: '', score: 0 },
-          { id: 'D', text: '', score: 0 },
-          { id: 'E', text: '', score: 0 }
+          { id: 'A', text: '1 = tipis, 2 = ungu', score: 0 },
+          { id: 'B', text: '1 = tipis, 2 = merah', score: 0 },
+          { id: 'C', text: '1 = tebal, 2 = ungu', score: 3.33 },
+          { id: 'D', text: '1 = tebal, 2 = merah', score: 0 },
+          { id: 'E', text: '1 = sedang, 2 = ungu', score: 0 }
         ],
       },
        { id: 'bio_7', packageId: 'tka_sma_bio', category: 'TKA', 
-        question: "", 
+        question: "Sel prokariotik memiliki ciri yaitu ....", 
+        options: [
+          { id: 'A', text: 'memiliki mitokondria', score: 0 },
+          { id: 'B', text: 'tidak bermembran sel', score: 0 },
+          { id: 'C', text: 'tidak memiliki DNA', score: 0 },
+          { id: 'D', text: 'tidak memiliki ribosom', score: 0 },
+          { id: 'E', text: 'tidak bermembran inti', score: 3.33 }
+        ],
+      },
+       { id: 'bio_8', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Berikut ini merupakan karakteristik Archaebacteria yang membedakannya dengan Eubacteria, kecuali .....", 
+        options: [
+          { id: 'A', text: 'tidak sensitif terhadap antibiotik', score: 0 },
+          { id: 'B', text: 'merupakan prokariotik', score: 3.33 },
+          { id: 'C', text: 'dinding selnya tidak mengandung peptidoglikan', score: 0 },
+          { id: 'D', text: 'hidup pada lingkungan yang ekstrim', score: 0 },
+          { id: 'E', text: 'memiliki intron', score: 0 }
+        ],
+      },
+       { id: 'bio_9', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Pada saat kondisi lingkungan tidak menguntungkan, bakteri akan membentuk...", 
+        options: [
+          { id: 'A', text: 'Kapsid', score: 0 },
+          { id: 'B', text: 'Endospora', score: 3.33 },
+          { id: 'C', text: 'Sporangium', score: 0 },
+          { id: 'D', text: 'Sporokista', score: 0 },
+          { id: 'E', text: 'Selaput lendir', score: 0 }
+        ],
+      },
+       { id: 'bio_10', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Kelompok tumbuhan yang merupakan keanekaragaman tingkat gen adalah...", 
+        options: [
+          { id: 'A', text: 'Aren, jambu dan kelapa sawit', score: 0 },
+          { id: 'B', text: 'Bawang merah, bawang putih dan bawang daun', score: 0 },
+          { id: 'C', text: 'Kelapa sawit, kelapa gading dan aren', score: 0 },
+          { id: 'D', text: 'Mangga manalagi, mangga gedong, dan mangga harum manis', score: 3.33 },
+          { id: 'E', text: 'Jambu, mangga dan pepaya', score: 0 }
+        ],
+      },
+       { id: 'bio_11', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Perhatikan grafik yang menunjukkan hubungan pengaruh enzim dengan pemanfaatan energi untuk reaksi kimia berikut ! <br><br>Berdasarkan grafik tersebut dapat disimpulkan bahwa ...", 
+        image: "https://i.ibb.co.com/PsrYYWvw/image.png",
+        options: [
+          { id: 'A', text: 'enzim meningkatkan pemanfaatan energi pengaktifan', score: 0 },
+          { id: 'B', text: 'energi pengaktifan tidak mempengaruhi kerja enzim', score: 0 },
+          { id: 'C', text: 'energi pengaktifan meningkatkan kerja enzim', score: 0 },
+          { id: 'D', text: 'enzim menurunkan energi pengaktifan', score: 3.33 },
+          { id: 'E', text: 'kerja enzim tidak ada hubungannya dengan energi pengaktifan', score: 0 }
+        ],
+      },
+       { id: 'bio_12', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Enzim yang bekerja pada reaksi penggabungan dua senyawa atau lebih disebut ....", 
+        options: [
+          { id: 'A', text: 'Hidrolase', score: 0 },
+          { id: 'B', text: 'Liase', score: 0 },
+          { id: 'C', text: 'Ligasa', score: 3.33 },
+          { id: 'D', text: 'Transferase', score: 0 },
+          { id: 'E', text: 'Isomerase', score: 0 }
+        ],
+      },
+       { id: 'bio_13', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Seorang siswa ingin memahami teori tentang mekanisme kerja enzim yaitu Teori Lock and Key dan Teori Induced Fit. <br> Pilihlah semua pernyataan yang benar mengenai kesimpulan yang dipelajari siswa tersebut.", 
+        options: [
+          { id: 'A', text: 'Menurut Teori Induced Fit, sisi aktif enzim fleksibel yang dapat termodifikasi sesuai dengan bentuk substrat', score: 1.11 },
+          { id: 'B', text: 'Menurut Teori Lock and key, sisi aktif enzim spesifik sehingga hanya subtrat tertentu yang dapat berikatan dengan enzim', score: 1.11 },
+          { id: 'C', text: 'Menurut Teori Induced Fit, sisi aktif enzim fleksibel, yang dapat berubah bentuk sesuai dengan bentuk substrat', score: 1.11 },
+          { id: 'D', text: 'Menurut Teori Induced Fit, enzim memiliki sisi non aktif yang akan berikatan dengan substrat yang spesifik', score: 0 },
+          { id: 'E', text: 'Menurut Teori Induced Fit, enzim mampu berikatan dengan substrat pada bagian sisi aktif dan sisi non aktif', score: 0 }
+        ],
+      },
+       { id: 'bio_14', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Asetil Ko.A memasuki reaksi siklus Krebs di mitokondria. Sepanjang rangkaian siklus Krebs, senyawa apa saja yang pernah dihasilkan? <br>Pilihlah semua jawaban yang benar. (bisa satu jawaban atau lebih)", 
+        options: [
+          { id: 'A', text: 'asam laktat', score: 0 },
+          { id: 'B', text: 'asam isositrat', score: 1.11 },
+          { id: 'C', text: 'asam malat', score: 1.11 },
+          { id: 'D', text: 'asam sitrat', score: 1.11 },
+          { id: 'E', text: 'asam asetat', score: 0 }
+        ],
+      },
+       { id: 'bio_15', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Respirasi aerob membutuhkan oksigen, sedangkan respirasi anaerob tidak membutuhkan oksigen. Contoh respirasi anerob adalah Fermentasi alkohol. Berikut ini adalah produk dari fermentasi alkohol..... <br>Pilihlah semua jawaban yang benar. (bisa satu jawaban atau lebih)", 
+          options: [
+          { id: 'A', text: 'Etanol', score: 1.665 },
+          { id: 'B', text: 'H<sub>2</sub>O', score: 0 },
+          { id: 'C', text: 'O<sub>2</sub>', score: 0 },
+          { id: 'D', text: 'Alkohol', score: 1.665 },
+          { id: 'E', text: 'CO<sub>2</sub>', score: 0 }
+        ],
+      },
+       { id: 'bio_16', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Berikut ini beberapa pernyataan tentang proses metabolisme. Yang manakah merupakan proses fotosintesis? <br>Pilihlah semua jawaban yang benar. (bisa satu jawaban atau lebih)", 
+          options: [
+          { id: 'A', text: 'Menghasilkan senyawa RuBP dan glukosa', score: 0.8325 },
+          { id: 'B', text: 'Proses pemecahan molekul air oleh cahaya', score: 0.8325 },
+          { id: 'C', text: 'Perubahan senyawa anorganik menjadi senyawa organik', score: 0.8325 },
+          { id: 'D', text: 'Merupakan reaksi eksergonik', score: 0 },
+          { id: 'E', text: 'pembentukan glukosa dari 2 molekul APG', score: 0.8325 }
+        ],
+      },
+       { id: 'bio_17', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Reaksi Fotosintesis berlangsung 2 tahapan. Tahapan reaksi terang dan tahapan reaksi gelap. Manakah pernyataan dibawah ini yang berhubungan dengan tahapan reaksi gelap? <br>Pilihlah semua jawaban yang benar. (bisa satu jawaban atau lebih)", 
+        options: [
+          { id: 'A', text: 'tidak dapat berlangsung di siang hari', score: 0 },
+          { id: 'B', text: 'berlangsungnya hanya dimalam hari', score: 0 },
+          { id: 'C', text: 'reaksi yang terjadi setelah reaksi terang', score: 0 },
+          { id: 'D', text: 'reaksi yang masih belum jelas', score: 0 },
+          { id: 'E', text: 'tidak memerlukan energi cahaya', score: 3.33 }
+        ],
+      },
+       { id: 'bio_18', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Berikut ini pernyataan tentang fungsi enzim katalase dalam percobaan dengan ekstrak hati. <br>Pilihlah semua jawaban yang benar. (bisa satu jawaban atau lebih)", 
+        options: [
+          { id: 'A', text: 'enzim katalase berperan untuk menetralkan asam dalam tubuh', score: 0 },
+          { id: 'B', text: 'enzim katalase berperan untuk menguraikan racun dari H2O2 menjadi H2O dan O2', score: 1.11 },
+          { id: 'C', text: 'enzim katalase optimum bekerja pada pH netral', score: 1.11 },
+          { id: 'D', text: 'enzim katalase berperan dalam pembentukan gelembung gas', score: 1.11 },
+          { id: 'E', text: 'enzim katalase berperan penting dalam sistem pencernaan', score: 0 }
+        ],
+      },
+       { id: 'bio_19', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Dalam peristiwa glikolisis, yaitu pemecahan 1 molekul glukosa menjadi 2 molekul asam piruvat, didapati reaksi yang membutuhkan ATP dan reaksi yang membebaskan ATP. Manakah reaksi yang membutuhkan ATP? <br>Pilihlah semua jawaban yang benar. (bisa satu jawaban atau lebih)", 
+        options: [
+          { id: 'A', text: 'Fruktosa 6P menjadi glukosa 6P', score: 0 },
+          { id: 'B', text: 'glukosa 6P menjadi fruktosa 6P', score: 0 },
+          { id: 'C', text: 'Gliseraldehid 3P menjadi 1,3 diposfogliserat', score: 0 },
+          { id: 'D', text: 'Fruktosa 6 P menjadi fruktosa 1,6 diposfat', score: 3.33 },
+          { id: 'E', text: 'DAP menjadi G3P', score: 0 }
+        ],
+      },
+       { id: 'bio_20', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Reaksi gelap terdiri dari peristiwa fiksasi CO2 udara dan siklus Calvin-Benson. Senyawa berikut yang <b>TIDAK</b> terlibat dalam rangkaian reaksi gelap tanaman C3 adalah....?  <br>Pilihlah semua jawaban yang benar. (bisa satu jawaban atau lebih) ", 
+        options: [
+          { id: 'A', text: 'posfoenol piruvat', score: 0.8325 },
+          { id: 'B', text: 'asam malat', score: 0.8325 },
+          { id: 'C', text: 'asam posfogliserat', score: 0 },
+          { id: 'D', text: 'asam piruvat', score: 0.8325 },
+          { id: 'E', text: 'asam oksaloasetat', score: 0.8325 }
+        ],
+      },
+       { id: 'bio_21', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Dalam sistem peredaran darah manusia dikenal pembuluh darah vena, arteri dan kapiler. Pernyataan di bawah ini yang <b>TIDAK</b> benar mengenai pembuluh darah vena adalah..... <br>Pilihlah semua jawaban yang benar. (bisa satu jawaban atau lebih)", 
+        options: [
+          { id: 'A', text: 'semua vena kaya CO<sub>2</sub>', score: 0.8325 },
+          { id: 'B', text: 'alirannya menuju jantung', score: 0 },
+          { id: 'C', text: 'dindingnya tebal dan elastis', score: 0.8325 },
+          { id: 'D', text: 'tekanannya lebih kuat dari arteri', score: 0.8325 },
+          { id: 'E', text: 'tidak memiliki katup', score: 0.8325 }
+        ],
+      },
+       { id: 'bio_22', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Dibawah ini adalah jalur aliran darah pada sistem peredaran darah manusia. Manakah aliran darah yang <b>TIDAK BENAR</b>? <br>Pilihlah semua jawaban yang benar. (bisa satu jawaban atau lebih)", 
+        options: [
+          { id: 'A', text: 'bilik kanan - arteri pulmo - paru-paru vena pulmo - serambi kiri', score: 0 },
+          { id: 'B', text: 'bilik kanan - vena pulmo - paru-paru - arteri pulmo - serambi kiri', score: 1.11 },
+          { id: 'C', text: 'bilik kiri -aorta - seluruh tubuh - vena cava serambi kanan', score: 0 },
+          { id: 'D', text: 'bilik kiri - aorta - seluruh jaringan - vena cava - serambi kanan', score: 1.11 },
+          { id: 'E', text: 'bilik kanan - aorta - paru-paru - seluruh tubuh - vena cava - serambi kiri', score: 1.11 }
+        ],
+      },
+       { id: 'bio_23', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Sel keping darah ( trombosit ) berperan dalam proses pembekuan darah bila terjadi luka. Berikut adalah komponen yang terlibat dalam proses pembekuan darah. <br>Pilihlah semua jawaban yang benar. (bisa satu jawaban atau lebih)", 
+        options: [
+          { id: 'A', text: 'Trombokinase', score: 0 },
+          { id: 'B', text: 'Protrombin', score: 0 },
+          { id: 'C', text: 'ion Ca<sup>2+</sup>', score: 0 },
+          { id: 'D', text: 'globin', score: 0 },
+          { id: 'E', text: 'vitamin K', score: 0 }
+        ],
+      },
+       { id: 'bio_24', packageId: 'tka_sma_bio', category: 'TKA', 
+       image: "https://i.ibb.co.com/9MPXFSN/image.png",
+       question: "Tentukan Benar atau Salah", 
+        options: [
+          { id: 'A', text: 'Benar, Benar, Salah', score: 0 },
+          { id: 'B', text: 'Benar, Salah, Benar', score: 0 },
+          { id: 'C', text: 'Salah, Benar, Benar', score: 3.33 },
+          { id: 'D', text: 'Benar, Benar, Benar', score: 0 },
+          { id: 'E', text: 'Salah, Benar, Salah', score: 0 }
+        ],
+      },
+       { id: 'bio_25', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Berikut ini mengenai mekanisme pernapasan dada dan pernapasan perut . Nyatakanlah Benar (B) atau Salah (S) pernyataan dibawah ini!", 
+        image: "https://i.ibb.co.com/7tZ9Vbp0/image.png",
+        options: [
+          { id: 'A', text: 'Benar, Benar, Salah, Benar', score: 0 },
+          { id: 'B', text: 'Benar, Salah, Salah, Benar', score: 3.33 },
+          { id: 'C', text: 'Salah, Benar, Benar, Salah', score: 0 },
+          { id: 'D', text: 'Benar, Benar, Benar, Salah', score: 0 },
+          { id: 'E', text: 'Salah, Benar, Salah, Benar', score: 0 }
+        ],
+      },
+       { id: 'bio_26', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Pernapasan manusia berdasarkan tempat terjadinya pertukaran oksigen dan karbondioksida maka jenis pernapasan ada dua yaitu pernapasan dalam dan pernapasan luar. Nyatakanlah Benar (B) atau Salah (S) pernyataan dibawah ini!", 
+        image: "https://i.ibb.co.com/pBdNmGgL/image.png",
+        options: [
+          { id: 'A', text: 'Benar, Benar, Salah, Benar', score: 0 },
+          { id: 'B', text: 'Benar, Salah, Salah, Benar', score: 0 },
+          { id: 'C', text: 'Salah, Benar, Benar, Salah', score: 3.33 },
+          { id: 'D', text: 'Benar, Benar, Benar, Salah', score: 0 },
+          { id: 'E', text: 'Salah, Benar, Salah, Benar', score: 0 }
+        ],
+      },
+       { id: 'bio_27', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Dalam proses pernapasan manusia, terdapat jenis-jenis udara yang dipernapaskan. Nyatakanlah Benar (B) atau Salah (S) mengenai udara pernapasan dibawah ini!", 
+        image: "https://i.ibb.co.com/RpbDpWhf/image.png",
+        options: [
+          { id: 'A', text: 'Benar, Benar, Salah', score: 0 },
+          { id: 'B', text: 'Benar, Salah, Benar', score: 0 },
+          { id: 'C', text: 'Salah, Benar, Benar', score: 0 },
+          { id: 'D', text: 'Benar, Benar, Benar', score: 0 },
+          { id: 'E', text: 'Salah, Benar, Salah', score: 3.33 }
+        ],
+      },
+       { id: 'bio_28', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Budi memiliki pekerjaan rumah biologi. Budi disuruh gurunya menentukan mana dari pernyataan dibawah ini yang merupakan ciri-ciri sistem hormon yang benar. Bila anda disuruh membantu PR Budi untuk menentukan pilihan mana yang Benar (B) dan mana yang Salah (S)? <br>(1) respon cepat <br>(2) respon bersifat langsung terhadap rangsang dari luar <br>(3) respon lambat <br>(4) impuls dibawa melalui neuron <br>(5) respon bersifat tidak langsung terhadap stimulus internal <br>(6) impuls di bawa oleh sistem sirkulasi", 
+        image: "https://i.ibb.co.com/220mRfp/image.png",
+        options: [
+          { id: 'A', text: 'Benar, Benar, Salah, Benar', score: 0 },
+          { id: 'B', text: 'Benar, Salah, Salah, Benar', score: 0 },
+          { id: 'C', text: 'Salah, Benar, Benar, Salah', score: 0 },
+          { id: 'D', text: 'Benar, Benar, Benar, Salah', score: 0 },
+          { id: 'E', text: 'Salah, Salah, Salah, Benar', score: 3.33 }
+        ],
+      },
+       { id: 'bio_29', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "29. Kulit manusia terdiri dari lapisan epidermis dan dermis. Nyatakanlah pernyataan berikut dibawah ini Benar (B) atau Salah (S)", 
+        image: "https://i.ibb.co.com/84GL97BJ/image.png",
+        options: [
+          { id: 'A', text: 'Benar, Benar, Salah, Benar', score: 0 },
+          { id: 'B', text: 'Benar, Salah, Salah, Benar', score: 0 },
+          { id: 'C', text: 'Salah, Benar, Benar, Salah', score: 0 },
+          { id: 'D', text: 'Benar, Benar, Benar, Salah', score: 0 },
+          { id: 'E', text: 'Salah, Salah, Salah, Benar', score: 3.33 }
+        ],
+      },
+       { id: 'bio_30', packageId: 'tka_sma_bio', category: 'TKA', 
+        question: "Pada ginjal terdapat nefron. Nefron sangat berperan dalam melaksanakan fungsi ginjal. Pilihlah mana yang Benar (B) atau Salah (S) peranan bagian-bagian nefron dibawah ini.", 
+        image: "https://i.ibb.co.com/Y7Qd13mt/image.png",
+        options: [
+          { id: 'A', text: 'Benar, Benar, Salah', score: 0 },
+          { id: 'B', text: 'Benar, Salah, Benar', score: 0 },
+          { id: 'C', text: 'Salah, Benar, Benar', score: 3.33 },
+          { id: 'D', text: 'Benar, Benar, Benar', score: 0 },
+          { id: 'E', text: 'Salah, Benar, Salah', score: 0 }
+        ],
+      },
+       { id: 'ppkn_1', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Kedudukan Pancasila sebagai dasar negara tertuang dalam...", 
+        options: [
+          { id: 'A', text: 'Pembukaan UUD 1945', score: 3.33 },
+          { id: 'B', text: 'Kepres (Keputusan Presiden)', score: 0 },
+          { id: 'C', text: 'GBHN', score: 0 },
+          { id: 'D', text: 'Ketetapan MPR RI', score: 0 },
+          { id: 'E', text: 'Batang tubuh UUD 1945', score: 0 }
+        ],
+      },
+       { id: 'ppkn_2', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Tentukan Sesuai atau Tidak sesuai untuk menyatakan ciri khas Pancasila sebagai Ideologi terbuka", 
+        image: "https://i.ibb.co.com/fVYbmQgb/image.png",
+        options: [
+          { id: 'A', text: 'Sesuai, Sesuai, Sesuai, Sesuai, Tidak Sesuai', score: 0 },
+          { id: 'B', text: 'Tidak Sesuai, Tidak Sesuai, Sesuai, Sesuai, Tidak Sesuai', score: 3.33 },
+          { id: 'C', text: 'Tidak Sesuai, Sesuai, Tidak Sesuai, Sesuai, Tidak Sesuai', score: 0 },
+          { id: 'D', text: 'Sesuai, Tidak Sesuai, Sesuai, Tidak Sesuai, Sesuai', score: 0 },
+          { id: 'E', text: 'Sesuai, Sesuai, Tidak Sesuai, Sesuai, Tidak Sesuai', score: 0 }
+        ],
+      },
+       { id: 'ppkn_3', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Salah satu tujuan reformasi indonesia adalah terciptanya pemerintahan demokratis, sehingga pemerintahan yang dijalankan harus konstitusional yang disepakati bersama. Berikut yang BUKAN sebagai ciri pemerintahan konstitusional yaitu...", 
+        image: "https://i.ibb.co.com/jP0Wc4X8/image.png",
+        options: [
+          { id: 'A', text: 'Diberlakukan pembatasan pada kekuasaan eksekutif', score: 0 },
+          { id: 'B', text: 'Adanya jaminan Hak Asasi Manusia', score: 0 },
+          { id: 'C', text: 'Adanya sistem hukum positif dalam melakukan pengaturan negara', score: 0 },
+          { id: 'D', text: 'Tidak memberlakuan pembagian kekuasaan antara legislatif, eksekutif dan yudikatif', score: 3.33 },
+          { id: 'E', text: 'Adanya pergantian kepemimpinan melalui pelaksanaan PEMILU', score: 0 }
+        ],
+      },
+       { id: 'ppkn_4', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Persamaan di bidang hukum dan pemerintahan bagi setiap warga negara tercantum dalam UUD 1945 , yaitu...", 
+        options: [
+          { id: 'A', text: 'Pasal 1 ayat 1', score: 0 },
+          { id: 'B', text: 'Pasal 7 ayat 1', score: 0 },
+          { id: 'C', text: 'Pasal 17 ayat 2', score: 0 },
+          { id: 'D', text: 'Pasal 27 ayat 1', score: 3.33 },
+          { id: 'E', text: 'Pasal 27 ayat 2', score: 0 }
+        ],
+      },
+       { id: 'ppkn_5', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "1) Ketatapan MPR <br>2) Undang-undang <br>3) UUD 1945 <br>4) Perpu (peraturan pemerintah pengganti Undang-undang) <br>5) Peraturan Daerah <br>6) Peraturan pemerintah <br>7) Keputusan presiden <br>Tata urutan peraturan perundang-undangan Republik Indonesia yang tepat adalah...", 
+        options: [
+          { id: 'A', text: '1,2,7,3,4,5,6', score: 0 },
+          { id: 'B', text: '2,3,6,7,5,4,1', score: 0 },
+          { id: 'C', text: '3,2,1,4,6,7,5', score: 0 },
+          { id: 'D', text: '3,2,4,1,6,5,7', score: 3.33 },
+          { id: 'E', text: '1,2,3,6,5,4,7', score: 0 }
+        ],
+      },
+       { id: 'ppkn_6', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Penjabaran Pancasila kedalam norma atau aturan yang tersusun dalam perundang-undangan yang berlaku di Indonesia merupakan ideologi Pancasila dalam dimensi...", 
+        options: [
+          { id: 'A', text: 'Idealitas', score: 0 },
+          { id: 'B', text: 'Normatif', score: 3.33 },
+          { id: 'C', text: 'Realitas', score: 0 },
+          { id: 'D', text: 'Subtantif', score: 0 },
+          { id: 'E', text: 'Komplementer', score: 0 }
+        ],
+      },
+       { id: 'ppkn_7', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Indonesia menganut sistem ekonomi Pancasila, sehingga hal-hal berikut tidak diperbolehkan tumbuh di indonesia, kecuali...", 
+        options: [
+          { id: 'A', text: 'Persaingan bebas', score: 0 },
+          { id: 'B', text: 'Mengembangkan ekonomi berbasis kerarifan lokal', score: 3.33 },
+          { id: 'C', text: 'Monopoli perdagangan', score: 0 },
+          { id: 'D', text: 'Pengawasan dari pemerintah secara mutlak', score: 0 },
+          { id: 'E', text: 'Ketidakadilan dalam berusaha', score: 0 }
+        ],
+      },
+       { id: 'ppkn_8', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Berikit ini yang BUKAN katergori Hak sosial dan budaya dalam konsep HAM adalah...", 
+        options: [
+          { id: 'A', text: 'Hak untuk memilih, memeluk dan menjalankan Agama dan kepercayaan', score: 3.33 },
+          { id: 'B', text: 'Hak untuk mengembangkan dan berpartisipasi dalam kebudayaan', score: 0 },
+          { id: 'C', text: 'Hak mendapatkan perlindungan terhadap karya cipta', score: 0 },
+          { id: 'D', text: 'Hak untuk mendapatkan pendidikan', score: 0 },
+          { id: 'E', text: 'Hak untuk mendapatkan kesejahteraan Ekonomi', score: 0 }
+        ],
+      },
+       { id: 'ppkn_9', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Berdasarkan sifatnya, pelanggaran HAM ada 2 jenis yaitu Pelanggaran HAM berat dan Pelanggaran HAM ringan. Berikut yang BUKAN termasuk dalam kategori pelanggaran HAM berat, yaitu...", 
+        options: [
+          { id: 'A', text: 'Memusnahkan seluruh atau sebagian kelompok Ras tertentu', score: 0 },
+          { id: 'B', text: 'Kejahatan Apartheid', score: 0 },
+          { id: 'C', text: 'Perbudakan', score: 0 },
+          { id: 'D', text: 'Penghilangan orang secara paksa', score: 0 },
+          { id: 'E', text: 'Kelalaian dalam memberi pelayan kesehatan', score: 3.33 }
+        ],
+      },
+       { id: 'ppkn_10', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Upaya penegakan HAM dapat dilakukan melalui pembentukam Komnas HAM oleh pemerintah RI. Berikut ini yang BUKAN merupakan wewenang Komnas HAM yaitu...", 
+        options: [
+          { id: 'A', text: 'Melakukan perdamaian pada kedua belah pihak yang bermasalah', score: 0 },
+          { id: 'B', text: 'Melakukan peradilan terhadap pelanggaran HAM berat pada kasus HAM yang terjadi diseluruh indonesia', score: 3.33 },
+          { id: 'C', text: 'Memberi saran kepada pihak yang bermasalah untuk menyelesaikan sengketa di pengadilan', score: 0 },
+          { id: 'D', text: 'Menyampaikan rekomendasi atas kasus pelanggaran HAM kepada pemerintah dan DPR', score: 0 },
+          { id: 'E', text: 'Menyelesaikan masalah secara konsultasi maupun negosiasi', score: 0 }
+        ],
+      },
+       { id: 'ppkn_11', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Indonesia adalah negara hukum, tercantum dalam UUD 1945 pasal...", 
+        options: [
+          { id: 'A', text: 'Pasal 1 ayat (3)', score: 3.33 },
+          { id: 'B', text: 'Pasal 3 ayat (1)', score: 0 },
+          { id: 'C', text: 'Pasal 4 ayat (1)', score: 0 },
+          { id: 'D', text: 'Pasal 5 ayat (2)', score: 0 },
+          { id: 'E', text: 'Pasal 6 ayat (1)', score: 0 }
+        ],
+      },
+       { id: 'ppkn_12', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Lembaga Independen yang berperan sebagai pengawas internal sekaligus mitra lembaga kejaksaan dalam memerangi segala kasus pelanggaran hukum, khususnya korupsi adalah...", 
+        options: [
+          { id: 'A', text: 'Kepolisian', score: 0 },
+          { id: 'B', text: 'Komnas HAM', score: 0 },
+          { id: 'C', text: 'KPK', score: 3.33 },
+          { id: 'D', text: 'ICW (<i>Indonesia Coruption Watch</i>)', score: 0 },
+          { id: 'E', text: 'OJK (Otoritas Jasa Keuangan)', score: 0 }
+        ],
+      },
+       { id: 'ppkn_13', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Makna yang terkandung dalam Alinea Pertama Pembukaan UUD 1945 adalah sebagai berikut, kecuali...", 
+        options: [
+          { id: 'A', text: 'Bangsa Indonesia siap mambantu bangsa lain untuk merdeka', score: 0 },
+          { id: 'B', text: 'Bangsa Indonesia memiliki keinginan untuk melepaskan diri dari penjajahan', score: 0 },
+          { id: 'C', text: 'Perluasan kekuasaan melalui penjajahan negara lain', score: 3.33 },
+          { id: 'D', text: 'Bangsa Indonesia menjunjung tinggi hak kodrat setiap bangsa untuk merdeka', score: 0 },
+          { id: 'E', text: 'Kemerdekaan bagi seluruh rakyat Indonesia', score: 0 }
+        ],
+      },
+       { id: 'ppkn_14', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Konstitusi sebagai pedoman penyelenggaraan kehidupan berbangsa dan bernegara pada dasarnya memuat unsur-unsur sebagai berkut, kecuali...", 
+        options: [
+          { id: 'A', text: 'Pembagian kekuasan dalam sistem politik (<i>balance of power</i>)', score: 0 },
+          { id: 'B', text: 'Memberikan kedaulatan penuh ditangan Pemerintah', score: 3.33 },
+          { id: 'C', text: 'Adanya lembaga-lembaga negara', score: 0 },
+          { id: 'D', text: 'Pembatasan kekuasaan bagi penguasa', score: 0 },
+          { id: 'E', text: 'Hak Asasi Manusia', score: 0 }
+        ],
+      },
+       { id: 'ppkn_15', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Menurut Pasal 1 UUD 1945 Amandemen, Lembaga MPR tidak lagi melakukan sepenuhnya kedaulatan rakyat, karena...", 
+        options: [
+          { id: 'A', text: 'Kedaulatan rakyat ditangan rakyat', score: 3.33 },
+          { id: 'B', text: 'Kedaulatan sepenuhnya dilakukan melalui Pilpres langsung', score: 0 },
+          { id: 'C', text: 'Kedaulatan berada ditangan legisatif dan presiden/Wapres melalui mekanisme pemilihan langsung', score: 0 },
+          { id: 'D', text: 'Kedaulatan berada ditangan Presiden/ Wapres', score: 0 },
+          { id: 'E', text: 'Kedaulatan berada ditangan Mahkamah Agung', score: 0 }
+        ],
+      },
+       { id: 'ppkn_16', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Tentukan Sesuai atau tidak sesuai untuk setiap pernyataan bentuk hubungan antara pemerintah pusat dan daerah dibawah ini :", 
+        image: "https://i.ibb.co.com/Zzfgnq21/image.png",
+        options: [
+          { id: 'A', text: 'Sesuai, Sesuai, Sesuai, Sesuai, Tidak Sesuai', score: 0 },
+          { id: 'B', text: 'Tidak Sesuai, Tidak Sesuai, Sesuai, Sesuai, Tidak Sesuai', score: 0 },
+          { id: 'C', text: 'Tidak Sesuai, Sesuai, Tidak Sesuai, Sesuai, Tidak Sesuai', score: 0 },
+          { id: 'D', text: 'Sesuai, Tidak Sesuai, Sesuai, Tidak Sesuai, Sesuai', score: 0 },
+          { id: 'E', text: 'Sesuai, Sesuai, Tidak Sesuai, Tidak Sesuai, Sesuai', score: 3.33 }
+
+        ],
+      },
+       { id: 'ppkn_17', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "17. Berdasarkan UU nomor 32 tahun 2014 tentang Pemerintah Daerah pasal 10 ayat (1), yang menjadi kewenangan absolut pemerintah pusat, kecuali...", 
+        options: [
+          { id: 'A', text: 'Pengelolaan pelayanan dasar seperti sarana kesehatan dan pendidikan', score: 3.33 },
+          { id: 'B', text: 'Moneter dan fiskal nasional', score: 0 },
+          { id: 'C', text: 'Agama', score: 0 },
+          { id: 'D', text: 'Keamanan', score: 0 },
+          { id: 'E', text: 'Politik Luar Negeri', score: 0 }
+        ],
+      },
+       { id: 'ppkn_18', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Dalam sistem pemerintahan Presidensil seperi Indonesia, apabila DPR tidak menyetujui rancangan APBN yang diajuak Presiden, maka...", 
+        options: [
+          { id: 'A', text: 'DPR mengubahnya dengan kekuatan politik', score: 0 },
+          { id: 'B', text: 'Presiden menetapkan APBN sendiri', score: 0 },
+          { id: 'C', text: 'Pemerintah meningkatkan pemungutan biaya', score: 0 },
+          { id: 'D', text: 'Pemerintah menjalankan APBN tahun lalu', score: 3.33 },
+          { id: 'E', text: 'Pemerintah merancang APBN baru', score: 0 }
+        ],
+      },
+       { id: 'ppkn_19', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Sebuah penyerahan wewenang pemerintahan oleh pemerintah pusat kepada daerah otonom untuk mengatur dan mengurus urusan pemerintahan dalam sistem NKRI disebut...", 
+        options: [
+          { id: 'A', text: 'Negara kesatuan Sistem desentralisasi', score: 3.33 },
+          { id: 'B', text: 'Negara Kesatuan dengan sistem dekonsentrasi', score: 0 },
+          { id: 'C', text: 'Negara Kesatuan dengan Sistem sentralisasi', score: 0 },
+          { id: 'D', text: 'Sistem Kesatuan dengan sistem Tugas perbantuan', score: 0 },
+          { id: 'E', text: 'Negara serikat dengan sistem sentralisasi', score: 0 }
+        ],
+      },
+       { id: 'ppkn_20', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "1) Menetapkan Undang-Undang Dasar dan atau perubahannya <br>2) Memilih Presiden dan Wakil Presiden <br>3) Menetapkan GBHN <br>4) Melantik Presiden dan wakil Presiden <br>5) Memberhentikan presiden dan Wakil Presiden <br>Berdasarkan pernyataan diatas yang termasuk kewenangan lembaga MPR sesuai UUD 1945 Amandemen, yaitu...", 
+        options: [
+          { id: 'A', text: '1,2,3', score: 0 },
+          { id: 'B', text: '2,3,4', score: 0 },
+          { id: 'C', text: '1,4,5', score: 3.33 },
+          { id: 'D', text: '3,4,5', score: 0 },
+          { id: 'E', text: '2,4,5', score: 0 }
+        ],
+      },
+       { id: 'ppkn_21', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Tentukan Sesuai atau Tidak Sesuai Setiap pernyataan yang menggambarkan Status kedudukan Lembaga Eksekutif setara dengan Lembaga lainnya seperti Legistatif dan Yudikatif", 
+        image: "https://i.ibb.co.com/zWf8zf5G/image.png",
+        options: [
+          { id: 'A', text: 'Sesuai, Sesuai, Sesuai, Sesuai, Tidak Sesuai', score: 0 },
+          { id: 'B', text: 'Tidak Sesuai, Tidak Sesuai, Sesuai, Sesuai, Tidak Sesuai', score: 0 },
+          { id: 'C', text: 'Tidak Sesuai, Sesuai, Tidak Sesuai, Sesuai, Tidak Sesuai', score: 3.33 },
+          { id: 'D', text: 'Sesuai, Tidak Sesuai, Sesuai, Tidak Sesuai, Sesuai', score: 0 },
+          { id: 'E', text: 'Sesuai, Sesuai, Tidak Sesuai, Tidak Sesuai, Sesuai', score: 0 }
+        ],
+      },
+       { id: 'ppkn_22', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Bhinneka Tunggal Ika sebagai semboyan Bangsa Indonesia ditandai adanya keberagaman dalam hal berikut, kecuali...", 
+        options: [
+          { id: 'A', text: 'Sistem Mata pencaharian', score: 0 },
+          { id: 'B', text: 'Ras', score: 0 },
+          { id: 'C', text: 'Status Kasta', score: 3.33 },
+          { id: 'D', text: 'Etnis atau suku bangsa', score: 0 },
+          { id: 'E', text: 'Gender/jenis kelamin', score: 0 }
+        ],
+      },
+       { id: 'ppkn_23', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Pemberian sifat tertentu terhadap seseorang atau kelompok berdasarkan kategori bersifat subyektif yang dapat menghambat terciptanya Integrasi dinamakan...", 
+        options: [
+          { id: 'A', text: 'Prasangka negatif', score: 0 },
+          { id: 'B', text: 'Etnosentrisme', score: 0 },
+          { id: 'C', text: 'Rasisme', score: 0 },
+          { id: 'D', text: 'Stereotipe', score: 3.33 },
+          { id: 'E', text: 'Eksklusivisme', score: 0 }
+        ],
+      },
+       { id: 'ppkn_24', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Yang termasuk hak dan kewajiban warga negara dalam UUD 1945 bidang sosial-budaya adalah...", 
         image: "",
         options: [
-          { id: 'A', text: '', score: 0 },
-          { id: 'B', text: '', score: 0 },
-          { id: 'C', text: '', score: 0 },
-          { id: 'D', text: '', score: 0 },
-          { id: 'E', text: '', score: 0 }
+          { id: 'A', text: 'Hak berserikat dan berkumpul', score: 0 },
+          { id: 'B', text: 'Hak mendapatka perlakuan yang sama dalam hukum dan pemerintahan', score: 0 },
+          { id: 'C', text: 'Hak mendapatkan peendidikan', score: 3.33 },
+          { id: 'D', text: 'Hak ikut serta menjaga pertahanan dan keamanan negara', score: 0 },
+          { id: 'E', text: 'Hak memperoleh jaminan kesejahteraan ekonomi', score: 0 }
+        ],
+      },
+       { id: 'ppkn_25', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Dampak dari sikap dan tindakan Intoleransi dalam kehidupan berbangsa menurut pasal 29 UUD RI 1945 adalah...", 
+        options: [
+          { id: 'A', text: 'Megurangi HAM dalam beragama', score: 0 },
+          { id: 'B', text: 'Mengganggu ketertiban umum dan nilai kebhinekaan', score: 0 },
+          { id: 'C', text: 'Menjamin kebebasan beragama tanpa batas', score: 0 },
+          { id: 'D', text: 'Mendorong konflik antar agama secara sistematis', score: 0 },
+          { id: 'E', text: 'Membatasi hak membentuk agama baru', score: 0 }
+        ],
+      },
+       { id: 'ppkn_26', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Tentukan sesuai atau Tidak Sesuai pernyataan terkait upaya membangun identitas nasional yang inklusif di Indonesia", 
+        image: "https://i.ibb.co.com/5gmCPdx4/image.png",
+        options: [
+          { id: 'A', text: 'Sesuai, Sesuai, Sesuai, Sesuai, Tidak Sesuai', score: 0 },
+          { id: 'B', text: 'Tidak Sesuai, Tidak Sesuai, Sesuai, Tidak Sesuai, Sesuai', score: 3.33 },
+          { id: 'C', text: 'Tidak Sesuai, Sesuai, Tidak Sesuai, Sesuai, Tidak Sesuai', score: 0 },
+          { id: 'D', text: 'Sesuai, Tidak Sesuai, Sesuai, Tidak Sesuai, Sesuai', score: 0 },
+          { id: 'E', text: 'Sesuai, Sesuai, Tidak Sesuai, Tidak Sesuai, Sesuai', score: 0 }
+        ],
+      },
+       { id: 'ppkn_27', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Dalam konteks Identitas nasional, yang merupakan indentitas fundamental adalah...", 
+        options: [
+          { id: 'A', text: 'UUD 1945', score: 0 },
+          { id: 'B', text: 'Pancasila', score: 3.33 },
+          { id: 'C', text: 'Garuda pancasila', score: 0 },
+          { id: 'D', text: 'Bendera Merah-Putih', score: 0 },
+          { id: 'E', text: 'Bahasa Indonesia', score: 0 }
+        ],
+      },
+       { id: 'ppkn_28', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Penggunaan Lambang negara beserta semboyan negara diatur lebih rinci pada Undang-Undang Nomor 24 tahun 2009 tentang...", 
+        image: "",
+        options: [
+          { id: 'A', text: 'Lambang dan Bahasa negara', score: 0 },
+          { id: 'B', text: 'Bahasa dan Bendera nagara', score: 0 },
+          { id: 'C', text: 'Bendera negara', score: 0 },
+          { id: 'D', text: 'Lagu kebangsaan', score: 0 },
+          { id: 'E', text: 'Bendera,Bahasa, Lambang negara, dan Lagu kebangsaaan', score: 3.33 }
+        ],
+      },
+       { id: 'ppkn_29', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "1) Semua keberagaman di Indonesia merupak kelemahan bangsa <br>2) Keberagaman bangsa menjadi kekuatan bangsa <br>3) Keberagaman bangsa menjadi penghalang tercapai cita-cita nasional <br>4) Keberagaman merupakan aset bangsa dan anugerah Tuhan <br>5) Keberagaman dengan mengutamakan hak kelompok mayoritas <br>Hal yang sesuai konsep Bhineka Tunggal Ika dalam menciptakan integrasi bangsa ditunjukkan pada pernyataan nomor...", 
+        image: "https://i.ibb.co.com/zHhR7sxc/image.png",
+        options: [
+          { id: 'A', text: '1 dan 3', score: 0 },
+          { id: 'B', text: '2 dan 3', score: 0 },
+          { id: 'C', text: '1 dan 5', score: 0 },
+          { id: 'D', text: '3 dan 4', score: 0 },
+          { id: 'E', text: '2 dan 4', score: 3.33 }
+        ],
+      },
+       { id: 'ppkn_30', packageId: 'tka_sma_ppkn', category: 'TKA', 
+        question: "Gerakan Disintegrasi Bangsa yang pernah mengancam persatuan bangsa yang dilatarbelakangi oleh adanya kepentingan kelompok (<i>vested interest</i>) dalam sejarah yaitu...", 
+        image: "",
+        options: [
+          { id: 'A', text: 'PKI madin 1948', score: 0 },
+          { id: 'B', text: 'Darul Islam/TII jawa barat', score: 0 },
+          { id: 'C', text: 'Gerakan Aceh Merdeka', score: 0 },
+          { id: 'D', text: 'Gerakan Andi Azis', score: 0 },
+          { id: 'E', text: 'PRRI/Permesta', score: 3.33 }
         ],
       },
 
-
 ];
-
 
 
 // === CATEGORY MAPPING (BARU) ===
@@ -6699,6 +7255,7 @@
       userName: '',
       userClass: '',
       selectedExamType: null,
+      selectedSubCategory: null,
       selectedPackage: null,
       currentQuestionIndex: 0,
       lastRenderedQuestionIndex: -1, // <-- TAMBAHKAN BARIS INI
@@ -6724,8 +7281,7 @@
       timerInterval: null 
     };
 
-// === CORE LOGIC & SYNC ===
-// Fungsi bantu untuk memusatkan render dan sync
+
 async function refreshApp() {
     await syncStateToCloud();
     render();
@@ -6770,50 +7326,70 @@ async function refreshApp() {
 
 // [DIMODIFIKASI] Sync State User Individu (Posisi soal, timer, dll)    
 async function syncStateToCloud() {
-        if (!window.fbProvider || !window.fbProvider.auth.currentUser) return;
-        const { db, appId, setDoc, doc, auth } = window.fbProvider;
-        try {
-            await setDoc(doc(db, 'artifacts', appId, 'users', auth.currentUser.uid, 'app_state', 'current'), {
-                ...appState,
-                timerInterval: null // Jangan sync objek interval
-            });
-        } catch (e) { console.warn("Personal sync failed"); }
-    
-        const dataToSave = {
-            screen: appState.screen,
-            userName: appState.userName,
-            userClass: appState.userClass,
-            selectedExamType: appState.selectedExamType,
-            selectedPackage: appState.selectedPackage,
-            currentQuestionIndex: appState.currentQuestionIndex,
-            answers: appState.answers,
-            targetEndTime: appState.targetEndTime,
-            allowedPackages: appState.allowedPackages,
-            examHistory: appState.examHistory,
-            isAdmin: appState.isAdmin,
-            lastSync: Date.now()
-        };
+    if (!window.fbProvider || !window.fbProvider.auth.currentUser) return;
 
- try {
-    // 1. Simpan State Sesi User (Agar tidak hilang saat refresh/ganti device)
-            await setDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'app_state', 'current'), {
-                ...appState,
-                lastSync: Date.now(),
-                timerInterval: null // Don't sync interval object
-            });
-// 2. [PENTING] Jika bukan admin, update data diri di daftar Global agar Admin bisa lihat
-if(!appState.isAdmin) {
-                const idx = appState.registeredUsers.findIndex(u => u.name === appState.userName);
-                if(idx !== -1) {
-                    // Update history terbaru ke array global
-                    appState.registeredUsers[idx].history = appState.examHistory;
-                    // Simpan ke Cloud Global
-                    saveGlobalUsersToCloud();
-                }
+    const { db, appId, setDoc, doc, auth } = window.fbProvider;
+    const user = auth.currentUser;
+
+    try {
+
+        await setDoc(
+            doc(
+                db,
+                'artifacts',
+                appId,
+                'users',
+                user.uid,
+                'app_state',
+                'current'
+            ),
+            {
+                screen: appState.screen,
+                userName: appState.userName,
+                userClass: appState.userClass,
+                selectedExamType: appState.selectedExamType,
+                selectedSubCategory: appState.selectedSubCategory || null,
+                selectedPackage: appState.selectedPackage,
+                currentQuestionIndex: appState.currentQuestionIndex,
+                answers: appState.answers,
+                targetEndTime: appState.targetEndTime,
+                allowedPackages: appState.allowedPackages,
+                examHistory: appState.isAdmin ? [] : appState.examHistory,
+                isAdmin: appState.isAdmin,
+                lastSync: Date.now()
             }
-        } catch (e) { console.warn("Cloud sync failed"); }
+        );
+
+        // Update history user biasa ke database global
+        if (!appState.isAdmin && appState.userName) {
+
+            const users =
+                JSON.parse(localStorage.getItem('neoprime_users')) || [];
+
+            const idx = users.findIndex(
+                u => u.name.toLowerCase() ===
+                     appState.userName.toLowerCase()
+            );
+
+            if (idx !== -1) {
+
+                users[idx].history = appState.examHistory;
+
+                localStorage.setItem(
+                    'neoprime_users',
+                    JSON.stringify(users)
+                );
+
+                appState.registeredUsers = users;
+
+                await saveGlobalUsersToCloud();
+            }
+        }
+
+    } catch (e) {
+        console.warn("Cloud sync failed:", e);
     }
-  
+}  
 
   // === REVISED RECOVERY LOGIC ===
     async function recoverStateFromCloud() {
@@ -6862,7 +7438,13 @@ if(!appState.isAdmin) {
 
                 // Inisialisasi ulang jika dalam mode ujian
                 if (appState.screen === 'exam') {
-                    const allQ = appState.selectedExamType === 'SNBT' ? SNBT_QUESTIONS : SKD_QUESTIONS;
+                  const allQ = [
+                      ...SNBT_QUESTIONS,
+                      ...SKD_QUESTIONS,
+                      ...TKA_SMP_QUESTIONS,
+                      ...US_SMA_QUESTIONS,
+                      ...TKA_SMA_QUESTIONS
+                  ];
                     appState.currentQuestions = allQ.filter(q => q.packageId === appState.selectedPackage);
                     if(appState.currentQuestions.length === 0) appState.currentQuestions = allQ;
                   // LOGIC BARU: Cek apakah ini ujian baru atau melanjutkan
@@ -6879,9 +7461,7 @@ if(!appState.isAdmin) {
                   
                   appState.screen = 'exam';
                   
-                  syncStateToCloud();
-                  render();  
-                  startTimerInterval();
+
                 }
                 // Di dalam recoverStateFromCloud, pastikan inisialisasi array jawaban:
                 if (cloudData.answers) {
@@ -6889,6 +7469,9 @@ if(!appState.isAdmin) {
                 } else {
                     appState.answers = []; 
                 }
+                                  syncStateToCloud();
+                  render();  
+                  startTimerInterval();
             }
         } catch (e) { 
             console.warn("Recovery skipped or failed:", e.message); 
@@ -6967,6 +7550,18 @@ async function adminResetUserSession() {
         }
     });
 
+function typesetMathJax() {
+
+    if (
+        window.MathJax &&
+        typeof window.MathJax.typesetPromise === 'function'
+    ) {
+        MathJax.typesetPromise().catch(err => {
+            console.warn("MathJax typeset gagal:", err);
+        });
+    }
+}
+
  // === RENDER ENGINE ===
 function render() {
     const app = document.getElementById('app');
@@ -6997,6 +7592,7 @@ function render() {
   
  // 3. Terapkan Konten Baru
     app.innerHTML = content;
+    typesetMathJax();
     
     // 4. Kembalikan Posisi Scroll dengan Tepat (TANPA setTimeout agar sangat smooth)
     if (appState.screen === 'exam') {
@@ -7031,8 +7627,6 @@ function render() {
         appState.lastRenderedQuestionIndex = -1;
     }
 } 
-    // === COMPONENTS ===
-    
     // 1. Landing Page
  function renderLandingPage(showModal = false, modalType = 'login') {
   return `
@@ -7115,8 +7709,6 @@ function render() {
       `;
     }
 
-    // REGISTER MODAL
-// REGISTER MODAL
     function renderRegisterModal() {
       // Step 1: Select Program (Disederhanakan)
       if (appState.registerStep === 0 || appState.registerStep === 1) {
@@ -7140,30 +7732,60 @@ function render() {
                       </div>
                   </button>
                   
-                  <button onclick="setRegProgram('SNBT_SKD_SKD')" class="p-4 rounded-xl border border-slate-200 hover:border-amber-500 hover:bg-amber-50 transition flex items-center gap-4 group text-left">
+                  <button onclick="setRegProgram('SNBT_SKD')"
+                      class="p-4 rounded-xl border border-slate-200 hover:border-amber-500 hover:bg-amber-50 transition flex items-center gap-4 group text-left">
+
                       <span class="text-2xl w-10 text-center">🏛️</span>
+
                       <div>
-                        <div class="font-bold text-slate-800 group-hover:text-amber-700">Program SKD (CPNS/Kedinasan)</div>
-                        <div class="text-xs text-slate-500">TWK, TIU, TKP</div>
+                          <div class="font-bold text-slate-800 group-hover:text-amber-700">
+                              Program SKD (CPNS/Kedinasan)
+                          </div>
+
+                          <div class="text-xs text-slate-500">
+                              TWK, TIU, TKP
+                          </div>
                       </div>
                   </button>
+                  <button onclick="setRegProgram('TKA_SMP')"
+                      class="p-4 rounded-xl border border-slate-200 hover:border-indigo-500 hover:bg-indigo-50 transition flex items-center gap-4 group text-left">
 
-                  <button onclick="setRegPackage('ALL_TKA_SMP')" class="p-4 rounded-xl border border-slate-200 hover:border-indigo-500 hover:bg-indigo-50 transition flex items-center gap-4 group text-left">
                       <span class="text-2xl w-10 text-center">🎒</span>
-                      <div>
-                        <div class="font-bold text-slate-800 group-hover:text-indigo-700">Program TKA SMP</div>
-                        <div class="text-xs text-slate-500">Persiapan Masuk SMA (Paket Lengkap)</div>
-                      </div>
-                  </button>
 
-                  <button onclick="setRegPackage('ALL_US_SMA')" class="w-full p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition flex items-center gap-4 text-left group">
-                      <span class="text-2xl w-10 text-center">🏫</span>
                       <div>
-                        <div class="font-bold text-slate-800 group-hover:text-emerald-700">Ujian Sekolah SMA</div>
-                        <div class="text-xs text-slate-500">Semua Mapel (Kimia, Ekonomi, MTK)</div>
+                          <div class="font-bold text-slate-800 group-hover:text-indigo-700">
+                              Program TKA SMP
+                          </div>
+
+                          <div class="text-xs text-slate-500">
+                              Persiapan Masuk SMA (Paket Lengkap)
+                          </div>
                       </div>
                   </button>
-                </div>
+                  <button onclick="setRegProgram('TKA_SMA')"
+                      class="p-4 rounded-xl border border-slate-200 hover:border-violet-500 hover:bg-violet-50 transition flex items-center gap-4 group text-left">
+                      <span class="text-2xl w-10 text-center">🧠</span>
+                      <div>
+                          <div class="font-bold text-slate-800 group-hover:text-violet-700">Program TKA SMA</div>
+                          <div class="text-xs text-slate-500">Matematika, B. Indonesia, B. Inggris, Kimia, Ekonomi, PPKN</div>
+                      </div>
+                  </button>
+                  <button onclick="setRegProgram('US_SMA')"
+                      class="w-full p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition flex items-center gap-4 text-left group">
+
+                      <span class="text-2xl w-10 text-center">🏫</span>
+
+                      <div>
+                          <div class="font-bold text-slate-800 group-hover:text-emerald-700">
+                              Ujian Sekolah SMA
+                          </div>
+
+                          <div class="text-xs text-slate-500">
+                              Semua Mapel (Kimia, Ekonomi, MTK)
+                          </div>
+                      </div>
+                  </button>
+                  </div>
               </div>
             </div>
           `;
@@ -7215,8 +7837,16 @@ function render() {
 
       // Step 3: Input Form
       if (appState.registerStep === 3) {
-          const backStep = (appState.regPackage === 'ALL_US_SMA' || appState.regPackage === 'ALL_TKA_SMP') ? 1 : 2;
-          
+const backStep =
+    (
+        appState.regProgram === 'TKA_SMP' ||
+        appState.regProgram === 'TKA_SMA' ||
+        appState.regProgram === 'US_SMA' ||
+        appState.regProgram === 'SNBT_SKD'
+    )
+        ? 1
+        : 2;
+
           return `
             <div class="fixed inset-0 z-[100] flex items-center justify-center p-4">
               <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeModal()"></div>
@@ -7265,7 +7895,6 @@ function render() {
     }
     
 // === UI COMPONENTS (REVISED) ===
-    // 2. App Layout (Standard)
     function renderAppLayout(content) {
       return `
         <div class="min-h-screen bg-slate-50 flex flex-col md:flex-row relative">
@@ -7373,6 +8002,12 @@ function renderSubMenuModal() {
                  <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center text-xl">🏫</div>
                  <div><h4 class="font-bold text-slate-900">Ujian SMA</h4></div>
               </div>
+              <div onclick="selectExamType('TKA_SMA'); closeSubMenu()" class="group flex items-center gap-4 p-4 rounded-xl border border-slate-200 hover:border-violet-500 hover:bg-violet-50 cursor-pointer transition">
+                 <div class="w-10 h-10 bg-violet-100 rounded-lg flex items-center justify-center text-xl">🧠</div>
+                 <div><h4 class="font-bold text-slate-900">TKA SMA</h4>
+                      <p class="text-xs text-slate-500"> Matematika, B. Indonesia, B. Inggris, Kimia, Ekonomi, PPKN </p>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
@@ -7390,7 +8025,8 @@ function renderSubMenuModal() {
       
       const isSnbt = isAdmin || allowedPackages.some(pkg => pkg.startsWith('snbt_'));
       const isSkd = isAdmin || allowedPackages.some(pkg => pkg.startsWith('skd_'));
-      const isSmp = isAdmin || allowedPackages.some(pkg => pkg.startsWith('tka_'));
+      const isSmp = isAdmin || allowedPackages.some(pkg => pkg.startsWith('tka_smp_'));
+      const isTkaSma = isAdmin || allowedPackages.some(pkg => pkg.startsWith('tka_sma_'));
       const isSma = isAdmin || allowedPackages.some(pkg => pkg.startsWith('us_'));
     let adminMonitor = '';
         if(appState.isAdmin) {
@@ -7468,6 +8104,32 @@ function renderSubMenuModal() {
                 ${getStatusBadge(isAdmin, isSmp, 'indigo')}
               </div>
             </div>
+            <div onclick="${(isAdmin || (appState.allowedPackages || []).some(pkg => pkg.startsWith('tka_sma_')))
+                ? "selectExamType('TKA_SMA')"
+                : "alert('Anda tidak memiliki akses ke program ini.')"}"
+                class="group bg-white p-8 rounded-2xl border
+                ${(isAdmin || (appState.allowedPackages || []).some(pkg => pkg.startsWith('tka_sma_')))
+                    ? 'border-violet-200 hover:border-violet-500 hover:shadow-xl cursor-pointer'
+                    : 'border-slate-100 opacity-60 cursor-not-allowed bg-slate-50'}
+                transition relative overflow-hidden">
+
+                <div class="relative z-10">
+
+                    <span class="inline-block p-3 bg-violet-50 rounded-xl text-2xl mb-4">
+                        🧠
+                    </span>
+
+                    <h3 class="text-xl font-bold text-slate-900 mb-6">
+                        ${defaultConfig.tka_sma_label}
+                    </h3>
+
+                    ${getStatusBadge(
+                        isAdmin,
+                        isAdmin || (appState.allowedPackages || []).some(pkg => pkg.startsWith('tka_sma_')),
+                        'violet'
+                    )}
+                </div>
+            </div>
 
             <div onclick="${isSma ? "selectExamType('US_SMA')" : "alert('Anda tidak memiliki akses ke program ini.')"}" 
                  class="group bg-white p-8 rounded-2xl border ${isSma ? 'border-emerald-200 hover:border-emerald-500 hover:shadow-xl cursor-pointer' : 'border-slate-100 opacity-60 cursor-not-allowed bg-slate-50'} transition relative overflow-hidden">
@@ -7485,74 +8147,241 @@ function renderSubMenuModal() {
     }
 
     // Helper untuk badge status (letakkan di luar atau di dalam script)
-    function getStatusBadge(isAdmin, isUnlocked, color) {
-        if (isAdmin) return `<span class="text-green-600 font-semibold text-sm flex items-center">Akses Admin <i class="fa-solid fa-check-circle ml-2"></i></span>`;
-        if (isUnlocked) return `<span class="text-${color}-600 font-semibold text-sm flex items-center">Akses Terbuka <i class="fa-solid fa-lock-open ml-2"></i></span>`;
-        return `<span class="text-slate-400 font-medium text-sm flex items-center"><i class="fa-solid fa-lock mr-2"></i> Terkunci</span>`;
+function getStatusBadge(isAdmin, isUnlocked, color) {
+
+    if (isAdmin) {
+        return `
+            <span class="text-green-600 font-semibold text-sm flex items-center">
+                Akses Admin
+                <i class="fa-solid fa-check-circle ml-2"></i>
+            </span>
+        `;
     }
 
-    function renderPackageSelect() {
-      const type = appState.selectedExamType;
-      const packages = PACKAGES[type];
-      // Jika packages undfined (tidak ketemu di const PACKAGES), stop agar tidak error
-      if (!packages) {
-          return `<div class="p-8 text-center text-red-500">Gagal memuat paket. ID: ${type} tidak ditemukan di database. <br><button onclick="appState.screen='exam-select'; render()" class="mt-4 px-4 py-2 bg-slate-900 text-white rounded-lg">Kembali</button></div>`;
-      }
-      const colorClass = type === 'SNBT' ? 'blue' : 'amber';
-      const typeLabel = type === 'SNBT' ? defaultConfig.snbt_label : defaultConfig.snbt_skd_label;
-      const unlockedId = appState.unlockedAccess ? appState.unlockedAccess.pkgId : null;
-      const isAdmin = appState.isAdmin;
-      const allowedPackages = appState.allowedPackages || [];
-        
-      let backAction = "appState.screen = 'exam-select'; render()";
-  
-        if (type.startsWith('SNBT_SKD_')) {
-            backAction = "appState.selectedExamType = 'SNBT_SKD'; appState.screen = 'subcategory-select'; render()";
-        } else if (type.startsWith('US_SMA_')) {
-            backAction = "appState.selectedExamType = 'US_SMA'; appState.screen = 'subcategory-select'; render()";
-        }
-      return `
-        <div class="max-w-4xl mx-auto fade-in">
-        <button onclick="${backAction}" class="flex items-center text-slate-500 hover:text-slate-900 mb-6 transition">
-        <i class="fa-solid fa-arrow-left mr-2"></i>
-        Kembali
-        </button>
-          <header class="mb-8">
-            <h1 class="text-3xl font-bold text-slate-900 mb-2">Pilih Paket Belajar</h1>
-            <p class="text-slate-500 text-lg">${typeLabel}</p>
-          </header>
-          <div class="grid gap-4">
-            ${packages.map(pkg => {
-              const isUnlocked = isAdmin || allowedPackages.includes(pkg.id);
-              return `
-              <div onclick="${isUnlocked ? `selectPackage('${pkg.id}')` : ''}" 
-                   class="bg-white p-6 rounded-xl border ${isUnlocked ? `border-slate-200 hover:border-${colorClass}-500 hover:shadow-lg cursor-pointer` : 'border-slate-100 bg-slate-50 opacity-60 cursor-not-allowed'} transition flex items-center gap-6 relative">
-                ${!isUnlocked ? `<div class="absolute top-4 right-4 text-slate-400"><i class="fa-solid fa-lock"></i></div>` : ''}
-                <div class="w-16 h-16 rounded-xl ${isUnlocked ? `bg-${colorClass}-50` : 'bg-slate-100'} flex items-center justify-center text-3xl shrink-0">
-                  ${pkg.icon || '📝'}
-                </div>
-                <div class="flex-1">
-                  <h3 class="text-lg font-bold text-slate-900">${pkg.name}</h3>
-                  <p class="text-slate-500 text-sm">${pkg.desc}</p>
-                  <div class="flex gap-4 mt-3 text-xs font-medium text-slate-400">
-                    <span class="flex items-center gap-1">Kerjakan sebelum batas waktu selesai</span>
-                    <span class="flex items-center gap-1"></span>
-                  </div>
-                </div>
-                <div class="hidden sm:block">
-                  <button class="px-6 py-2 ${isUnlocked ? `bg-${colorClass}-600 text-white hover:bg-${colorClass}-700` : 'bg-slate-200 text-slate-400'} rounded-lg font-semibold transition" ${!isUnlocked ? 'disabled' : ''}>Mulai</button>
-                </div>
-              </div>
-            `}).join('')}
-          </div>
-        </div>
-      `;
+    if (isUnlocked) {
+        return `
+            <span class="text-${color}-600 font-semibold text-sm flex items-center">
+                Akses Terbuka
+                <i class="fa-solid fa-lock-open ml-2"></i>
+            </span>
+        `;
     }
+
+    return `
+        <span class="text-slate-400 font-medium text-sm flex items-center">
+            <i class="fa-solid fa-lock mr-2"></i>
+            Terkunci
+        </span>
+    `;
+}
+
+function renderPackageSelect() {
+    const type = appState.selectedExamType;
+    let packages = [];
+    let typeLabel = '';
+    let colorClass = 'blue';
+
+    // =========================================================
+    // Tentukan daftar paket berdasarkan program / subkategori
+    // =========================================================
+    if (appState.selectedSubCategory && PACKAGE_GROUPS[appState.selectedSubCategory]) {
+        const packageIds = PACKAGE_GROUPS[appState.selectedSubCategory];
+
+        const allPackages = [
+            ...Object.values(PACKAGES).flat()
+        ];
+
+        packages = allPackages.filter(pkg => packageIds.includes(pkg.id));
+
+        if (appState.selectedSubCategory.startsWith('SNBT_SKD_SNBT')) {
+            typeLabel = 'Program SNBT';
+            colorClass = 'blue';
+        } else if (appState.selectedSubCategory.startsWith('SNBT_SKD_SKD')) {
+            typeLabel = 'Program SKD';
+            colorClass = 'amber';
+        } else if (appState.selectedSubCategory.startsWith('US_SMA_')) {
+            typeLabel = defaultConfig.us_sma_label;
+            colorClass = 'emerald';
+        }
+    } else {
+        const packageSource = PACKAGES[type] || [];
+        packages = packageSource;
+
+        switch (type) {
+            case 'SNBT':
+                typeLabel = defaultConfig.snbt_label;
+                colorClass = 'blue';
+                break;
+
+            case 'TKA_SMP':
+                typeLabel = defaultConfig.tka_smp_label;
+                colorClass = 'indigo';
+                break;
+
+            case 'US_SMA':
+                typeLabel = defaultConfig.us_sma_label;
+                colorClass = 'emerald';
+                break;
+
+            case 'TKA_SMA':
+                typeLabel = defaultConfig.tka_sma_label;
+                colorClass = 'violet';
+                break;
+
+            case 'SNBT_SKD':
+                typeLabel = defaultConfig.snbt_skd_label;
+                colorClass = 'amber';
+                break;
+
+            default:
+                typeLabel = 'Pilih Paket';
+        }
+    }
+
+    if (!packages || packages.length === 0) {
+        return `
+            <div class="p-8 text-center text-red-500">
+                Gagal memuat paket untuk kategori:
+                <b>${appState.selectedSubCategory || type}</b>
+                <br>
+                <button
+                    onclick="appState.screen='exam-select'; appState.selectedSubCategory=null; render()"
+                    class="mt-4 px-4 py-2 bg-slate-900 text-white rounded-lg">
+                    Kembali
+                </button>
+            </div>
+        `;
+    }
+
+    const isAdmin = appState.isAdmin;
+    const allowedPackages = appState.allowedPackages || [];
+
+    let backAction = `
+        appState.selectedSubCategory = null;
+        appState.screen = 'exam-select';
+        render()
+    `;
+
+    if (appState.selectedSubCategory) {
+        backAction = `
+            appState.selectedSubCategory = null;
+            appState.screen = 'subcategory-select';
+            render()
+        `;
+    }
+
+    return `
+        <div class="max-w-4xl mx-auto fade-in">
+            <button
+                onclick="${backAction}"
+                class="flex items-center text-slate-500 hover:text-slate-900 mb-6 transition">
+                <i class="fa-solid fa-arrow-left mr-2"></i>
+                Kembali
+            </button>
+
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-slate-900 mb-2">
+                    Pilih Paket Belajar
+                </h1>
+                <p class="text-slate-500 text-lg">${typeLabel}</p>
+            </header>
+
+            <div class="grid gap-4">
+                ${packages.map(pkg => {
+
+                    const isUnlocked =
+                        isAdmin ||
+                        allowedPackages.includes(pkg.id);
+
+                    return `
+                        <div
+                            onclick="${isUnlocked ? `selectPackage('${pkg.id}')` : "alert('Anda tidak memiliki akses ke paket ini.')"}"
+                            class="bg-white p-6 rounded-xl border
+                            ${isUnlocked
+                                ? `border-slate-200 hover:border-${colorClass}-500 hover:shadow-lg cursor-pointer`
+                                : 'border-slate-100 bg-slate-50 opacity-60 cursor-not-allowed'}
+                            transition flex items-center gap-6 relative">
+
+                            ${!isUnlocked ? `
+                                <div class="absolute top-4 right-4 text-slate-400">
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>
+                            ` : ''}
+
+                            <div class="w-16 h-16 rounded-xl
+                                ${isUnlocked ? `bg-${colorClass}-50` : 'bg-slate-100'}
+                                flex items-center justify-center text-3xl shrink-0">
+                                ${pkg.icon || '📝'}
+                            </div>
+
+                            <div class="flex-1">
+                                <h3 class="text-lg font-bold text-slate-900">
+                                    ${pkg.name}
+                                </h3>
+
+                                <p class="text-slate-500 text-sm">
+                                    ${pkg.desc || ''}
+                                </p>
+
+                                <div class="flex gap-4 mt-3 text-xs font-medium text-slate-400">
+                                    <span>
+                                        Kerjakan sebelum batas waktu selesai
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="hidden sm:block">
+                                <button
+                                    class="px-6 py-2
+                                    ${isUnlocked
+                                        ? `bg-${colorClass}-600 text-white hover:bg-${colorClass}-700`
+                                        : 'bg-slate-200 text-slate-400'}
+                                    rounded-lg font-semibold transition"
+                                    ${!isUnlocked ? 'disabled' : ''}>
+                                    ${isUnlocked ? 'Mulai' : 'Terkunci'}
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        </div>
+    `;
+}
 
 function renderExamInterface() {
-    const q = appState.currentQuestions[appState.currentQuestionIndex];
-    const total = appState.currentQuestions.length;
-    const subJudul = CATEGORY_TITLES[q.category] || q.category;
+
+    const q =
+        appState.currentQuestions?.[
+            appState.currentQuestionIndex
+        ];
+
+    const total =
+        appState.currentQuestions?.length || 0;
+
+    if (!q) {
+        return `
+            <div class="h-screen flex items-center justify-center bg-slate-50">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-center">
+                    <div class="text-4xl mb-4">⚠️</div>
+                    <h2 class="text-xl font-bold text-slate-900 mb-2">
+                        Soal Tidak Ditemukan
+                    </h2>
+                    <p class="text-slate-500 mb-6">
+                        Bank soal belum tersedia atau gagal dimuat.
+                    </p>
+                    <button
+                        onclick="resetExamSession(); appState.screen='exam-select'; render()"
+                        class="px-6 py-3 bg-slate-900 text-white rounded-xl font-bold">
+                        Kembali ke Dashboard
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+const subJudul = 
+    CATEGORY_TITLES[q.category] || q.category;
 
     return `
         <div class="h-screen flex flex-col bg-slate-50 overflow-hidden text-slate-900 relative">
@@ -7729,10 +8558,29 @@ function renderFinishConfirmModal() {
 }
 
 // --- TEMPEL KODE INI ---
+
 function renderResults() {
+
     const res = appState.lastResult;
-    // Judul Header
-    const pageTitle = appState.fromScreen === 'history' ? 'Detail Riwayat & Pembahasan' : 'Hasil Ujian Kamu';
+
+    if (!res) {
+        return `
+            <div class="h-full flex items-center justify-center bg-slate-50">
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 text-center">
+                    <div class="text-4xl mb-4">⚠️</div>
+                    <h2 class="text-xl font-bold text-slate-900 mb-2">
+                        Hasil Tidak Ditemukan
+                    </h2>
+                    <button
+                        onclick="appState.screen='exam-select'; render()"
+                        class="mt-4 px-5 py-2.5 bg-slate-900 text-white rounded-xl font-bold">
+                        Kembali
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+const pageTitle = appState.fromScreen === 'history' ? 'Detail Riwayat & Pembahasan' : 'Hasil Ujian Kamu';
     
     return `
     <div class="h-full flex flex-col bg-slate-50 overflow-hidden fade-in">
@@ -7778,51 +8626,122 @@ function renderResults() {
                            const userOptions = q.options.filter(opt => userAnsArray.includes(opt.id));
                            
                            // Akumulasi skor khusus pada soal ini
-                           const totalUserScore = userOptions.reduce((sum, opt) => sum + opt.score, 0);
-                           const isCorrect = totalUserScore > 0; // Tampil hijau jika ada poin yang didapat
-                           
+                          const maxScoreQuestion = q.options
+                              .filter(opt => Number(opt.score) > 0)
+                              .reduce((sum, opt) => sum + Number(opt.score), 0);
+
+                          const totalUserScore = userOptions
+                              .reduce((sum, opt) => sum + (Number(opt.score) || 0), 0);
+
+                          const isCorrect =
+                              maxScoreQuestion > 0 &&
+                              totalUserScore >= maxScoreQuestion;
+
+                          const isPartial =
+                              totalUserScore > 0 &&
+                              totalUserScore < maxScoreQuestion;
                            // Tangkap opsi yang punya skor positif sebagai kunci jawaban
                            const correctOptions = q.options.filter(opt => opt.score > 0);
                            
                            const userAnsText = userOptions.length > 0 ? userOptions.map(uo => uo.id).join(', ') : 'Tidak Menjawab';
                            const correctAnsText = correctOptions.map(co => co.id).join(', ');
 
-                           return `
-                           <div class="p-4 rounded-xl border ${isCorrect ? 'border-green-200 bg-green-50/50' : 'border-red-200 bg-red-50/50'}">
-                               <div class="flex items-start gap-3">
-                                   <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-700 text-sm shadow-sm">${index + 1}</span>
-                                   <div class="flex-1 overflow-hidden">
-                                       <p class="text-slate-800 font-medium mb-3 text-sm md:text-base">${q.question}</p>
-                                       ${q.image ? `<div class="question-image-container !p-2 !my-2"><img src="${q.image}" class="question-image !max-h-32"></div>` : ''}
-                                       
-                                       <div class="text-xs md:text-sm space-y-2">
-                                           <div class="flex items-center gap-2 p-2 rounded-lg bg-white border ${isCorrect ? 'border-green-200 text-green-700' : 'border-red-200 text-red-700'}">
-                                               <i class="fa-solid ${isCorrect ? 'fa-check-circle' : 'fa-circle-xmark'}"></i>
-                                               <span>Jawaban ${appState.isAdmin ? 'Member' : 'Kamu'}:
-                                                   <strong>${userAnsText}</strong>
-                                               </span>
-                                           </div>
-                                                                                                                   
-                                           ${!isCorrect && correctOptions.length > 0 ? `
-                                           <div class="flex items-center gap-2 p-2 rounded-lg bg-green-600 text-white shadow-sm font-medium">
-                                               <i class="fa-solid fa-circle-check"></i>
-                                               <span>Kunci Jawaban: <strong>${correctAnsText}</strong>
-                                               </span>
-                                           </div>` : ''}s
+                            return `
+                                <div class="p-4 rounded-xl border ${
+                                    isCorrect
+                                        ? 'border-green-200 bg-green-50/50'
+                                        : isPartial
+                                            ? 'border-yellow-200 bg-yellow-50/50'
+                                            : 'border-red-200 bg-red-50/50'
+                                }">
 
-                                            ${q.explanation ? `
-                                            <div class="mt-2 p-3 bg-slate-100 rounded-lg text-slate-600 italic border border-slate-200">
-                                                <i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> ${q.explanation}
-                                            </div>` : ''}
+                                    <div class="flex items-start gap-3">
+
+                                        <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-slate-700 text-sm shadow-sm">
+                                            ${index + 1}
+                                        </span>
+
+                                        <div class="flex-1 overflow-hidden">
+
+                                            <p class="text-slate-800 font-medium mb-3 text-sm md:text-base">
+                                                ${q.question || ''}
+                                            </p>
+
+                                            ${q.image ? `
+                                                <div class="question-image-container !p-2 !my-2">
+                                                    <img src="${q.image}" class="question-image !max-h-32">
+                                                </div>
+                                            ` : ''}
+
+                                            <div class="space-y-2">
+
+                                                <div class="flex items-center gap-2 p-2 rounded-lg bg-white border ${
+                                                    isCorrect
+                                                        ? 'border-green-200 text-green-700'
+                                                        : isPartial
+                                                            ? 'border-yellow-200 text-yellow-700'
+                                                            : 'border-red-200 text-red-700'
+                                                }">
+
+                                                    <i class="fa-solid ${
+                                                        isCorrect
+                                                            ? 'fa-check-circle'
+                                                            : isPartial
+                                                                ? 'fa-circle-half-stroke'
+                                                                : 'fa-circle-xmark'
+                                                    }"></i>
+
+                                                    <span>
+                                                        ${
+                                                            isCorrect
+                                                                ? 'Benar'
+                                                                : isPartial
+                                                                    ? 'Sebagian Benar'
+                                                                    : 'Salah'
+                                                        }
+                                                        —
+                                                        Jawaban ${
+                                                            appState.isAdmin
+                                                                ? 'Member'
+                                                                : 'Kamu'
+                                                        }:
+                                                        <strong>${userAnsText}</strong>
+                                                    </span>
+
+                                                </div>
+
+                                                ${(!isCorrect && correctOptions.length > 0) ? `
+                                                    <div class="flex items-center gap-2 p-2 rounded-lg bg-green-600 text-white shadow-sm font-medium">
+                                                        <i class="fa-solid fa-circle-check"></i>
+                                                        <span>
+                                                            Kunci Jawaban:
+                                                            <strong>${correctAnsText}</strong>
+                                                        </span>
+                                                    </div>
+                                                ` : ''}
+
+                                                <div class="text-xs text-slate-500">
+                                                    Poin:
+                                                    <strong>${totalUserScore.toFixed(2)}</strong>
+                                                    /
+                                                    <strong>${maxScoreQuestion.toFixed(2)}</strong>
+                                                </div>
+
+                                                ${q.explanation ? `
+                                                    <div class="mt-2 p-3 bg-slate-100 rounded-lg text-slate-600 italic border border-slate-200">
+                                                        <i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i>
+                                                        ${q.explanation}
+                                                    </div>
+                                                ` : ''}
+
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
-                            </div>`;
+                            `;
+
                         }).join('')}
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="bg-white border-t border-slate-200 p-4 md:p-6 shrink-0 z-20">
             <div class="max-w-4xl mx-auto flex gap-4">
@@ -7834,7 +8753,8 @@ function renderResults() {
         </div>
     </div>
     `;
-}
+  }                        
+
 
 // --- GANTI SELURUH FUNGSI renderHistory DENGAN INI ---
 function renderHistory() {
@@ -7963,8 +8883,9 @@ function renderHistory() {
         
         // Jika data ditemukan di DB, pakai itu. Jika tidak, kosong (array baru).
         // Ini menjamin User A tidak akan melihat history User B atau Admin.
-        const cleanUserHistory = currentUserData ? (currentUserData.history || []) : [];
-
+const cleanUserHistory = currentUserData
+    ? [...(currentUserData.history || [])]
+    : [];
         // 3. [PERBAIKAN PENTING] Sinkronkan Session State dengan Database
         // Ini memastikan tombol "Lihat Detail" membuka data yang benar, 
         // bukan data sisa dari sesi Admin/User lain sebelumnya.
@@ -8030,9 +8951,13 @@ function handleRegister() {
     const code = codeEl.value.trim();
     const cls = classEl.value.trim();
 
-      if(!name || !pass || !confirmPass || !code) {
-        alert("Semua data wajib diisi!");
+if (!name || !pass || !confirmPass || !code || !cls) {
+      alert("Semua data wajib diisi!");
         return;
+      }
+      if (pass.length < 6) {
+          alert("Password minimal 6 karakter.");
+          return;
       }
       if(pass !== confirmPass) {
         alert("Konfirmasi password tidak cocok!");
@@ -8043,22 +8968,49 @@ function handleRegister() {
       
       // LOGIKA VALIDASI BARU
       // Jika kode valid, kita berikan hak akses paket ke user
-      let isCodeValid = false;
+ let isCodeValid = false;
 
- // --- PERBAIKAN LOGIKA VALIDASI KODE ---
-    // Pastikan allowedPkgs ada (tidak undefined) sebelum memanggil .includes()
-    if (allowedPkgs && Array.isArray(allowedPkgs)) {
-        if (appState.regPackage === 'ALL_US_SMA') {
-            // Cek apakah kode mengizinkan paket US SMA
-            isCodeValid = allowedPkgs.some(pkg => pkg.startsWith('us_sma_'));
-        } else if (appState.regPackage === 'ALL_TKA_SMP') {
-             // Cek apakah kode mengizinkan paket TKA SMP
-            isCodeValid = allowedPkgs.some(pkg => pkg.startsWith('tka_smp_'));
-        } else {
-            // Untuk SNBT dan SKD biasa
-            isCodeValid = allowedPkgs.includes(appState.regPackage);
-        }
+if (allowedPkgs && Array.isArray(allowedPkgs)) {
+
+    switch (appState.regProgram) {
+
+        case 'SNBT':
+            isCodeValid = allowedPkgs.some(pkg =>
+                pkg.startsWith('snbt_')
+            );
+            break;
+
+        case 'SNBT_SKD':
+            isCodeValid = allowedPkgs.some(pkg =>
+                pkg.startsWith('skd_')
+            );
+            break;
+
+        case 'TKA_SMP':
+            isCodeValid = allowedPkgs.some(pkg =>
+                pkg.startsWith('tka_smp_')
+            );
+            break;
+
+        case 'TKA_SMA':
+            isCodeValid = allowedPkgs.some(pkg =>
+                pkg.startsWith('tka_sma_')
+            );
+            break;
+
+        case 'US_SMA':
+            isCodeValid = allowedPkgs.some(pkg =>
+                pkg.startsWith('us_sma_')
+            );
+            break;
+
+        default:
+            // Untuk registrasi berdasarkan paket individual
+            isCodeValid = appState.regPackage
+                ? allowedPkgs.includes(appState.regPackage)
+                : false;
     }
+}
     
  if (isCodeValid) {
         const exists = appState.registeredUsers.find(u => u.name.toLowerCase() === name.toLowerCase());
@@ -8067,7 +9019,7 @@ function handleRegister() {
             return;
         }
         
-        const newUser = { name, password: pass, access: allowedPkgs, class: cls, history: [] };
+        const newUser = { name, password: pass, access: allowedPkgs, class: cls, program: appState.regProgram, history: [] };
         appState.registeredUsers.push(newUser);
         localStorage.setItem('neoprime_users', JSON.stringify(appState.registeredUsers)); 
         
@@ -8158,23 +9110,35 @@ if (name === 'neoprimeadmin' && pass === 'irfrif28') {
 
     function initiateLogout() { appState.showLogoutModal = true; render(); }
     function cancelLogout() { appState.showLogoutModal = false; render(); }
-    function confirmLogout() { 
-    appState.showLogoutModal = false; 
-    
-    // Reset Data Diri
-    appState.userName = ''; 
-    appState.allowedPackages = []; 
-    appState.isAdmin = false; 
-    
-    // [PERBAIKAN] Hapus data riwayat dari memori sesi
-    appState.examHistory = []; 
+    function confirmLogout() {
+    appState.showLogoutModal = false;
+    resetExamSession();
+    appState.userName = '';
+    appState.userClass = '';
+    appState.allowedPackages = [];
+    appState.examHistory = [];
     appState.lastResult = null;
+    appState.selectedExamType = null;
+    appState.selectedSubCategory = null;
+    appState.isAdmin = false;
+    appState.screen = 'landing';
+    syncStateToCloud();
+    render();
+}
 
-    // Reset Layar
-    appState.screen = 'landing'; 
-    syncStateToCloud(); 
-    render(); 
-}    function openSubMenu() { appState.showSubMenu = true; render(); }
+function resetExamSession() {
+    clearInterval(appState.timerInterval);
+    appState.timerInterval = null;
+    appState.targetEndTime = null;
+    appState.startTime = null;
+    appState.timeRemaining = 0;
+    appState.currentQuestionIndex = 0;
+    appState.lastRenderedQuestionIndex = -1;
+    appState.currentQuestions = [];
+    appState.answers = [];
+    appState.selectedPackage = null;
+}
+    function openSubMenu() { appState.showSubMenu = true; render(); }
     function closeSubMenu() { appState.showSubMenu = false; render(); }
     function openLogin() { appState.screen = 'login-modal'; render(); }
     function closeLogin() { closeModal(); }
@@ -8186,10 +9150,28 @@ if (name === 'neoprimeadmin' && pass === 'irfrif28') {
     appState.registerStep = 0;
     appState.regProgram = null;
     appState.regPackage = null;
+    appState.selectedSubCategory = null;
     render();
 }
-    function setRegProgram(prog) { appState.regProgram = prog; appState.registerStep = 2; render(); }
-    function setRegPackage(pkg) { appState.regPackage = pkg; appState.registerStep = 3; render(); }
+function setRegProgram(prog) {
+    appState.regProgram = prog;
+
+    // Program yang langsung memilih kode akses,
+    // tanpa perlu memilih paket individual saat registrasi
+    if (
+        prog === 'TKA_SMP' ||
+        prog === 'TKA_SMA' ||
+        prog === 'US_SMA' ||
+        prog === 'SNBT_SKD'
+    ) {
+        appState.registerStep = 3;
+    } else {
+        appState.registerStep = 2;
+    }
+
+    render();
+}
+function setRegPackage(pkg) { appState.regPackage = pkg; appState.registerStep = 3; render(); }
 
     function goHome() {
       if(appState.screen === 'exam') confirmExit();
@@ -8198,82 +9180,161 @@ if (name === 'neoprimeadmin' && pass === 'irfrif28') {
     
     function confirmExit() { appState.showExitExamModal = true; render(); }
     function cancelExit() { appState.showExitExamModal = false; render(); }
-    function performExit() { appState.showExitExamModal = false; clearInterval(appState.timerInterval); appState.screen = 'exam-select'; syncStateToCloud(); render(); }
+    function performExit() {
 
-   function selectExamType(type) { 
-    appState.selectedExamType = type; 
-  
-  // Jika memilih SNBT_SKD atau US_SMA, arahkan ke layar sub-menu
-        if (type === 'SNBT_SKD' || type === 'US_SMA') {
-            appState.screen = 'subcategory-select';
-        } else {
-            appState.screen = 'package-select';
-        }
-  
-  syncStateToCloud(); 
-  render(); 
+        appState.showExitExamModal = false;
+
+        resetExamSession();
+
+        appState.screen = 'exam-select';
+
+        syncStateToCloud();
+        render();
+    }
+    function selectExamType(type) {
+
+    appState.selectedExamType = type;
+    appState.selectedSubCategory = null;
+
+    if (
+        type === 'SNBT_SKD' ||
+        type === 'US_SMA'
+    ) {
+        appState.screen = 'subcategory-select';
+    } else {
+        appState.screen = 'package-select';
+    }
+
+    syncStateToCloud();
+    render();
 }
 
 function selectSubCategory(subType) {
-  appState.selectedExamType = subType; // Menggunakan nama sub-paket dari PACKAGES
-  appState.screen = 'package-select';
-  syncStateToCloud();
-  render();
+    appState.selectedSubCategory = subType;
+    appState.screen = 'package-select';
+    syncStateToCloud();
+    render();
 }
 
 function renderSubCategorySelect() {
-  const type = appState.selectedExamType;
-  let subCategories = [];
-  let title = '';
+    const type = appState.selectedExamType;
+    let subCategories = [];
+    let title = '';
 
-  if (type === 'SNBT_SKD') {
-    title = 'Pilih Kategori Ujian';
-    subCategories = [
-      { id: 'SNBT_SKD_SNBT', name: 'Paket SNBT', icon: '🎓', color: 'blue' },
-      { id: 'SNBT_SKD_SKD', name: 'Paket SKD', icon: '🏛️', color: 'amber' }
-    ];
-  } else if (type === 'US_SMA') {
-    title = 'Pilih Mata Pelajaran';
-    subCategories = [
-      // PERBAIKAN: id harus persis dengan yang tertulis di const PACKAGES
-      { id: 'US_SMA_KIMIA', name: 'Kimia', icon: '🧪', color: 'emerald' },
-      { id: 'US_SMA_EKONOMI', name: 'Ekonomi', icon: '📈', color: 'emerald' },
-      { id: 'US_SMA_MATWAJIB', name: 'Matematika Wajib', icon: '📐', color: 'emerald' },
-      { id: 'US_SMA_MATTL', name: 'Matematika Tingkat Lanjut', icon: '🧮', color: 'emerald' }
-    ];
-  }
+    if (type === 'SNBT_SKD') {
+        title = 'Pilih Kategori Ujian';
 
+        subCategories = [
+            {
+                id: 'SNBT_SKD_SNBT',
+                name: 'Paket SNBT',
+                desc: 'SNBT 1, SNBT 2, SNBT 3',
+                icon: '🎓',
+                color: 'blue'
+            },
+            {
+                id: 'SNBT_SKD_SKD',
+                name: 'Paket SKD',
+                desc: 'SKD 1, SKD 2, SKD 3',
+                icon: '🏛️',
+                color: 'amber'
+            }
+        ];
+    }
 
-  return `
-    <div class="max-w-4xl mx-auto fade-in">
-      <button onclick="appState.screen = 'exam-select'; render()" class="flex items-center text-slate-500 hover:text-slate-900 mb-6 transition">
-        <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Dashboard
-      </button>
-      <header class="mb-8">
-        <h1 class="text-3xl font-bold text-slate-900 mb-2">${title}</h1>
-        <p class="text-slate-500 text-lg">Silakan pilih spesifikasi soal yang ingin dikerjakan.</p>
-      </header>
-      <div class="grid md:grid-cols-2 gap-4">
-        ${subCategories.map(sub => `
-          <div onclick="selectSubCategory('${sub.id}')" class="bg-white p-6 rounded-xl border border-slate-200 hover:border-${sub.color}-500 hover:shadow-lg cursor-pointer transition flex items-center gap-6 group relative overflow-hidden">
-            <div class="w-16 h-16 rounded-xl bg-${sub.color}-50 flex items-center justify-center text-3xl shrink-0">
-              ${sub.icon}
+    else if (type === 'US_SMA') {
+        title = 'Pilih Mata Pelajaran';
+
+        subCategories = [
+            {
+                id: 'US_SMA_KIMIA',
+                name: 'Kimia',
+                desc: 'Paket Kimia 1, 2, dan 3',
+                icon: '🧪',
+                color: 'emerald'
+            },
+            {
+                id: 'US_SMA_EKONOMI',
+                name: 'Ekonomi',
+                desc: 'Paket Ekonomi 1, 2, dan 3',
+                icon: '📈',
+                color: 'emerald'
+            },
+            {
+                id: 'US_SMA_MATWAJIB',
+                name: 'Matematika Wajib',
+                desc: 'Paket Matematika Wajib 1, 2, dan 3',
+                icon: '📐',
+                color: 'emerald'
+            },
+            {
+                id: 'US_SMA_MATTL',
+                name: 'Matematika Tingkat Lanjut',
+                desc: 'Paket Matematika TL 1, 2, dan 3',
+                icon: '🧮',
+                color: 'emerald'
+            }
+        ];
+    }
+
+    return `
+        <div class="max-w-4xl mx-auto fade-in">
+
+            <button
+                onclick="appState.screen = 'exam-select'; appState.selectedSubCategory = null; render()"
+                class="flex items-center text-slate-500 hover:text-slate-900 mb-6 transition">
+                <i class="fa-solid fa-arrow-left mr-2"></i>
+                Kembali ke Dashboard
+            </button>
+
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-slate-900 mb-2">
+                    ${title}
+                </h1>
+
+                <p class="text-slate-500 text-lg">
+                    Silakan pilih spesifikasi soal yang ingin dikerjakan.
+                </p>
+            </header>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                ${subCategories.map(sub => `
+                    <div
+                        onclick="selectSubCategory('${sub.id}')"
+                        class="bg-white p-6 rounded-xl border border-slate-200
+                        hover:border-${sub.color}-500 hover:shadow-lg
+                        cursor-pointer transition flex items-center gap-6
+                        group relative overflow-hidden">
+
+                        <div class="w-16 h-16 rounded-xl bg-${sub.color}-50
+                            flex items-center justify-center text-3xl shrink-0">
+                            ${sub.icon}
+                        </div>
+
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-slate-900">
+                                ${sub.name}
+                            </h3>
+
+                            <p class="text-sm text-slate-500 mt-1">
+                                ${sub.desc}
+                            </p>
+                        </div>
+
+                        <div class="text-${sub.color}-500 opacity-0 group-hover:opacity-100 transition text-2xl">
+                            →
+                        </div>
+                    </div>
+                `).join('')}
             </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-bold text-slate-900">${sub.name}</h3>
-            </div>
-            <div class="text-${sub.color}-500 opacity-0 group-hover:opacity-100 transition text-2xl">→</div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `;
+        </div>
+    `;
 }
     function selectPackage(pkgId) { appState.selectedPackage = pkgId; startExam(); }
 
     function startExam() {
     // Gabungkan semua bank soal untuk pencarian
-    const allQ = [...SNBT_QUESTIONS, ...SKD_QUESTIONS, ...TKA_SMP_QUESTIONS, ...US_SMA_QUESTIONS];
+    const allQ = [...SNBT_QUESTIONS, ...SKD_QUESTIONS, ...TKA_SMP_QUESTIONS, ...US_SMA_QUESTIONS, ...TKA_SMA_QUESTIONS];
     
     // Gunakan filter
     appState.currentQuestions = allQ.filter(q => q.packageId === appState.selectedPackage);
@@ -8285,16 +9346,26 @@ function renderSubCategorySelect() {
         return;
     }
 
-    // Reset hanya jika benar-benar ujian baru
+    // Reset ujian jika tidak sedang melanjutkan ujian aktif
     if (!appState.targetEndTime) {
-        appState.answers = new Array(appState.currentQuestions.length).fill(undefined);
+
+        appState.answers =
+            new Array(appState.currentQuestions.length).fill(undefined);
+
         appState.currentQuestionIndex = 0;
         appState.startTime = Date.now();
-        const durationMinutes = (appState.selectedExamType === 'SNBT' ? 195 : 100);
-        appState.targetEndTime = Date.now() + (durationMinutes * 60 * 1000);
+
+        const durationMinutes =
+            appState.selectedExamType === 'SNBT'
+                ? 195
+                : 100;
+
+        appState.targetEndTime =
+            Date.now() + (durationMinutes * 60 * 1000);
     }
-    
+
     appState.screen = 'exam';
+
     syncStateToCloud();
     render();
     startTimerInterval();
@@ -8340,25 +9411,40 @@ function renderSubCategorySelect() {
         render(); 
     }
 
-function selectAnswer(id) { 
-   let currentAns = appState.answers[appState.currentQuestionIndex];
-   // Ubah format jawaban menjadi Array jika belum
-   if (!Array.isArray(currentAns)) {
-       currentAns = currentAns ? [currentAns] : [];
-   }
-   
-   // Tambah atau Hapus jawaban (Toggle)
-   const index = currentAns.indexOf(id);
-   if (index > -1) {
-       currentAns.splice(index, 1); 
-   } else {
-       currentAns.push(id); 
-   }
-   
-   // Kembalikan menjadi undefined jika array kosong (agar navigasi indikator soal terjawab akurat)
-   appState.answers[appState.currentQuestionIndex] = currentAns.length > 0 ? currentAns : undefined;
-   syncStateToCloud(); 
-   render(); 
+function selectAnswer(id) {
+
+    if (
+        !appState.currentQuestions ||
+        !appState.currentQuestions[appState.currentQuestionIndex]
+    ) {
+        return;
+    }
+
+    let currentAns =
+        appState.answers[appState.currentQuestionIndex];
+
+    if (!Array.isArray(currentAns)) {
+        currentAns = currentAns ? [currentAns] : [];
+    }
+
+    const index = currentAns.indexOf(id);
+
+    // Toggle:
+    // kalau sudah dipilih → hapus
+    // kalau belum → tambahkan
+    if (index !== -1) {
+        currentAns.splice(index, 1);
+    } else {
+        currentAns.push(id);
+    }
+
+    appState.answers[appState.currentQuestionIndex] =
+        currentAns.length > 0
+            ? currentAns
+            : undefined;
+
+    syncStateToCloud();
+    render();
 }
 
 function nextQuestion() { 
@@ -8384,111 +9470,263 @@ function jumpToQuestion(idx) {
 }
 
 function finishExam() {
+
     appState.showFinishConfirmModal = false;
+
     clearInterval(appState.timerInterval);
-    
+    appState.timerInterval = null;
+
     let score = 0;
     let maxScore = 0;
-    
-    // 1. Hitung Skor
-    // Cek apakah paket ini sudah pernah dikerjakan sebelumnya
-    const previousAttempt = appState.examHistory.find(h => h.package_id === appState.selectedPackage);
-    const isFirstAttempt = !previousAttempt;
 
+    // ==========================================
+    // Cek apakah ini percobaan pertama
+    // ==========================================
+    const previousAttempt =
+        (appState.examHistory || []).find(
+            h => h.package_id === appState.selectedPackage
+        );
+
+    const isFirstAttempt =
+        !previousAttempt;
+
+    // ==========================================
+    // HITUNG SKOR
+    // ==========================================
     appState.currentQuestions.forEach((q, i) => {
-       const ans = appState.answers[i];
-       const maxScoreInQuestion = Math.max(...q.options.map(o => o.score));
-       maxScore += maxScoreInQuestion > 0 ? maxScoreInQuestion : 0; // Cegah NaN jika tidak ada nilai plus
-       
-       if(ans) { 
-           if (Array.isArray(ans)) {
-               // Akumulasi skor dari semua jawaban yang diklik
-               ans.forEach(a => {
-                   const chosen = q.options.find(o => o.id === a);
-                   if (chosen) score += chosen.score;
-               });
-           } else {
-               const chosen = q.options.find(o => o.id === ans);
-               if (chosen) score += chosen.score;
-           }
-       }
-   });
 
-    // 2. Buat Objek Result
+        // Maksimal soal = total seluruh poin opsi benar
+        const questionMaxScore =
+            q.options
+                .filter(o => Number(o.score) > 0)
+                .reduce(
+                    (sum, o) => sum + Number(o.score),
+                    0
+                );
+
+        maxScore += questionMaxScore;
+
+        const ans =
+            appState.answers[i];
+
+        if (!ans) return;
+
+        const selectedAnswers =
+            Array.isArray(ans)
+                ? ans
+                : [ans];
+
+        selectedAnswers.forEach(answerId => {
+
+            const chosen =
+                q.options.find(
+                    o => o.id === answerId
+                );
+
+            if (chosen) {
+                score +=
+                    Number(chosen.score) || 0;
+            }
+        });
+    });
+
+    // Jangan sampai angka floating-point menghasilkan
+    // percentage di atas 100
+    const percentage =
+        maxScore > 0
+            ? Math.min(
+                100,
+                (score / maxScore) * 100
+            )
+            : 0;
+
+    // ==========================================
+    // RESULT
+    // ==========================================
     const result = {
-        exam_type: appState.selectedExamType,
-        package_id: appState.selectedPackage,
-        score: parseFloat(score.toFixed(2)),
-        max_score: maxScore,
-        percentage: (score/maxScore) * 100,
-        answered: appState.answers.filter(x => x !== undefined).length,
-        total_questions: appState.currentQuestions.length,
-        duration: Math.floor((Date.now() - appState.startTime) / 1000),
-        completed_at: new Date().toISOString(),
-        isFirstAttempt: isFirstAttempt,
-        answers: [...appState.answers] 
+        exam_type:
+            appState.selectedExamType,
+
+        package_id:
+            appState.selectedPackage,
+
+        score:
+            parseFloat(
+                score.toFixed(2)
+            ),
+
+        max_score:
+            parseFloat(
+                maxScore.toFixed(2)
+            ),
+
+        percentage:
+            parseFloat(
+                percentage.toFixed(2)
+            ),
+
+        answered:
+            appState.answers.filter(
+                x => x !== undefined &&
+                     x !== null
+            ).length,
+
+        total_questions:
+            appState.currentQuestions.length,
+
+        duration:
+            appState.startTime
+                ? Math.floor(
+                    (Date.now() -
+                    appState.startTime) / 1000
+                )
+                : 0,
+
+        completed_at:
+            new Date().toISOString(),
+
+        isFirstAttempt,
+
+        answers:
+            [...appState.answers]
     };
 
-    // 3. Update State Lokal Sesi Ini
+    // ==========================================
+    // STATE
+    // ==========================================
     appState.lastResult = result;
-    appState.examHistory.unshift(result);
-    appState.fromScreen = 'exam';
-    appState.targetEndTime = null;
 
-    // --- [PERBAIKAN UTAMA DI SINI] ---
-    // 4. Simpan ke Database Lokal agar tidak hilang
+    if (!Array.isArray(appState.examHistory)) {
+        appState.examHistory = [];
+    }
+
+    appState.examHistory.unshift(result);
+
+    appState.fromScreen = 'exam';
+
+    // Reset sesi aktif
+    appState.targetEndTime = null;
+    appState.timeRemaining = 0;
+    appState.startTime = null;
+
+    // ==========================================
+    // SIMPAN DATABASE LOCAL
+    // ==========================================
+    let allUsers = [];
+
     if (appState.isAdmin) {
-        // Simpan riwayat khusus Admin
-        localStorage.setItem('neoprime_admin_history', JSON.stringify(appState.examHistory));
+
+        localStorage.setItem(
+            'neoprime_admin_history',
+            JSON.stringify(
+                appState.examHistory
+            )
+        );
+
     } else {
-        // Simpan riwayat khusus User
-        const allUsers = JSON.parse(localStorage.getItem('neoprime_users')) || [];
-        const userIdx = allUsers.findIndex(u => u.name === appState.userName);
-        
+
+        allUsers =
+            JSON.parse(
+                localStorage.getItem(
+                    'neoprime_users'
+                )
+            ) || [];
+
+        const userIdx =
+            allUsers.findIndex(
+                u =>
+                    u.name.toLowerCase() ===
+                    appState.userName.toLowerCase()
+            );
+
         if (userIdx !== -1) {
-            // Tempelkan history terbaru ke user yang tepat di database
-            allUsers[userIdx].history = appState.examHistory;
-            
-            // Simpan database yang sudah diupdate ke LocalStorage
-            localStorage.setItem('neoprime_users', JSON.stringify(allUsers));
-            
-            // Update variable global
-            appState.registeredUsers = allUsers;
+
+            allUsers[userIdx].history =
+                appState.examHistory;
+
+            localStorage.setItem(
+                'neoprime_users',
+                JSON.stringify(
+                    allUsers
+                )
+            );
+
+            appState.registeredUsers =
+                allUsers;
         }
     }
-    // ----------------------------------
 
-    // 5. Tampilkan Hasil ke Layar
+    // ==========================================
+    // TAMPILKAN HASIL
+    // ==========================================
     updateScreen('results');
 
-    // 6. Sinkronisasi ke Cloud (Admin Monitoring)
-    // Menggunakan data 'allUsers' yang sudah diupdate di langkah 4
+    // ==========================================
+    // CLOUD SYNC
+    // ==========================================
     (async () => {
-        if (!window.fbProvider) return;
-        const { db, appId, setDoc, doc } = window.fbProvider;
-        
-        try {
-            // Update dokumen User Global di Cloud
-            // Kita kirim 'allUsers' yang sudah berisi history terbaru si User
-            await setDoc(doc(db, 'artifacts', appId, 'system', 'users_db'), {
-                all_users: allUsers, 
-                last_update: Date.now()
-            });
 
-            // Backup ke dokumen personal user (agar aman jika ganti device)
-            const auth = window.fbProvider.auth;
-            if (auth.currentUser) {
-                await setDoc(doc(db, 'artifacts', appId, 'users', auth.currentUser.uid, 'app_state', 'current'), {
-                    ...appState,
-                    lastSync: Date.now(),
-                    timerInterval: null
-                });
+        if (!window.fbProvider) return;
+
+        const {
+            db,
+            appId,
+            setDoc,
+            doc,
+            auth
+        } = window.fbProvider;
+
+        try {
+
+            // Simpan database user global
+            if (!appState.isAdmin && allUsers.length > 0) {
+
+                await setDoc(
+                    doc(
+                        db,
+                        'artifacts',
+                        appId,
+                        'system',
+                        'users_db'
+                    ),
+                    {
+                        all_users: allUsers,
+                        last_update: Date.now()
+                    }
+                );
             }
+
+            // Simpan state pribadi
+            if (auth.currentUser) {
+
+                await setDoc(
+                    doc(
+                        db,
+                        'artifacts',
+                        appId,
+                        'users',
+                        auth.currentUser.uid,
+                        'app_state',
+                        'current'
+                    ),
+                    {
+                        ...appState,
+                        timerInterval: null,
+                        lastSync: Date.now()
+                    }
+                );
+            }
+
         } catch (e) {
-            console.warn("Gagal sinkronisasi data:", e);
+
+            console.warn(
+                "Gagal sinkronisasi data:",
+                e
+            );
         }
+
     })();
-}   
+}
 
 function requestFinishExam() {
     // Hapus logika confirm() browser yang memblokir
@@ -8513,73 +9751,102 @@ function cancelFinishExam() {
         appState.registeredUsers = JSON.parse(localStorage.getItem('neoprime_users'));
     }
 
-// --- TAMBAHAN BARU ---
-
-// Helper untuk load soal berdasarkan paket ID (karena history cuma simpan ID)
 function loadQuestionsForReview(packageId) {
-    // Gabungkan semua bank soal yang ada
-    const allQ = [...SNBT_QUESTIONS, ...SKD_QUESTIONS, ...TKA_SMP_QUESTIONS, ...TKA_SMA_QUESTIONS];
-    return allQ.filter(q => q.packageId === packageId);
-}
 
+    const allQ = [
+        ...SNBT_QUESTIONS,
+        ...SKD_QUESTIONS,
+        ...TKA_SMP_QUESTIONS,
+        ...US_SMA_QUESTIONS,
+        ...TKA_SMA_QUESTIONS
+    ];
+
+    return allQ.filter(
+        q => q.packageId === packageId
+    );
+}
 // Handler: Klik Riwayat User Biasa
 function viewHistoryDetail(index) {
-    const historyItem = appState.examHistory[index];
-    
-    if(historyItem) {
-        // Load soal dan jawaban dari riwayat lokal session
-        appState.currentQuestions = loadQuestionsForReview(historyItem.package_id);
-        appState.answers = historyItem.answers || []; 
-        appState.lastResult = historyItem;
-        
-        // Reset info user (karena melihat punya sendiri)
-        if(appState.lastResult.userName) delete appState.lastResult.userName;
 
-        appState.fromScreen = 'history';
-        updateScreen('results');
+    const historyItem =
+        appState.examHistory[index];
+
+    if (!historyItem) {
+        alert("Data riwayat tidak ditemukan.");
+        return;
     }
+
+    appState.currentQuestions =
+        loadQuestionsForReview(
+            historyItem.package_id
+        );
+
+    if (appState.currentQuestions.length === 0) {
+        alert("Bank soal untuk riwayat ini tidak ditemukan.");
+        return;
+    }
+
+    appState.answers =
+        historyItem.answers || [];
+
+    appState.lastResult =
+        historyItem;
+
+    appState.fromScreen = 'history';
+
+    updateScreen('results');
 }
 
 // Handler: Klik Riwayat User oleh Admin
-// Handler: Klik Riwayat User oleh Admin
 function viewAdminResultDetail(targetUserName, historyIndex) {
-    // 1. Ambil database user terbaru
-    const allUsers = JSON.parse(localStorage.getItem('neoprime_users')) || [];
-    
-    // 2. Cari User berdasarkan Nama (Pastikan exact match)
-    const targetUser = allUsers.find(u => u.name === targetUserName);
-    
-    // 3. Validasi apakah data history ada
-    if (targetUser && targetUser.history && targetUser.history[historyIndex]) {
-        const h = targetUser.history[historyIndex];
-        
-        // 4. Muat Soal berdasarkan Package ID yang ada di history
-        appState.currentQuestions = loadQuestionsForReview(h.package_id);
-        
-        // 5. Muat Jawaban User tersebut ke state aplikasi saat ini
-        appState.answers = h.answers || [];
-        
-        // 6. Siapkan data hasil untuk ditampilkan
-        appState.lastResult = { 
-            ...h, 
-            userName: targetUser.name, 
-            userClass: targetUser.class 
-        }; 
-        
-        // 7. Pindah ke layar hasil
-        appState.fromScreen = 'history';
-        updateScreen('results');
-    } else {
-        alert("Maaf, data detail ujian member ini tidak ditemukan. Kemungkinan data local storage belum tersinkronisasi.");
+    const allUsers =
+        JSON.parse(
+            localStorage.getItem('neoprime_users')
+        ) || [];
+
+    const targetUser =
+        allUsers.find(
+            u =>
+                u.name.toLowerCase() ===
+                targetUserName.toLowerCase()
+        );
+
+    if (
+        !targetUser ||
+        !targetUser.history ||
+        !targetUser.history[historyIndex]
+    ) {
+        alert("Data detail ujian member tidak ditemukan.");
+        return;
     }
+
+    const h =
+        targetUser.history[historyIndex];
+
+    appState.currentQuestions =
+        loadQuestionsForReview(
+            h.package_id
+        );
+
+    if (appState.currentQuestions.length === 0) {
+        alert("Bank soal untuk riwayat ini tidak tersedia.");
+        return;
+    }
+
+    appState.answers =
+        h.answers || [];
+
+    appState.lastResult = {
+        ...h,
+        userName: targetUser.name,
+        userClass: targetUser.class
+    };
+
+    appState.fromScreen = 'history';
+
+    updateScreen('results');
 }
     render();
   </script>
  </body>
 </html>
-
-
-
-
-
-
