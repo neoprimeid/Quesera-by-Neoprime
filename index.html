@@ -210,17 +210,27 @@ US_SMA_KIMIA: [
         { id: 'us_sma_mtl_3', name: 'Paket Matematika TL 3', desc: '', icon: '📝' }
       ],
 
-      TKA_SMA: [
-        { id: 'tka_sma_mtkw', name: 'Paket TKA Matematika', desc: '', icon: '🧮' },
-        { id: 'tka_sma_bind', name: 'Paket TKA B. Indonesia', desc: '', icon: '🔬' },
-        { id: 'tka_sma_bing', name: 'Paket TKA B. Inggris', desc: '', icon: '🌐' },
-        { id: 'tka_sma_kimia', name: 'Paket TKA Kimia', desc: '', icon: '🧠' },
-        { id: 'tka_sma_eko', name: 'Paket TKA Ekonomi', desc: '', icon: '📈' },
-        { id: 'tka_sma_ppkn', name: 'Paket TKA PPKN', desc: '', icon: '🖊️' },
-        { id: 'tka_sma_bio', name: 'Paket TKA Biologi', desc: '', icon: '🧬' }
-      ]
+TKA_SMA: [
+    {
+        id: 'tka_sma_1',
+        name: 'Paket TKA SMA 1',
+        desc: 'Matematika, B. Indonesia, B. Inggris, Kimia, Ekonomi, Biologi, PPKN',
+        icon: '🧮'
+    },
+    {
+        id: 'tka_sma_2',
+        name: 'Paket TKA SMA 2',
+        desc: 'Matematika, B. Indonesia, B. Inggris, Kimia, Ekonomi, Biologi, PPKN',
+        icon: '📚'
+    },
+    {
+        id: 'tka_sma_3',
+        name: 'Paket TKA SMA 3',
+        desc: 'Matematika, B. Indonesia, B. Inggris, Kimia, Ekonomi, Biologi, PPKN',
+        icon: '🎓'
+    }
+],
     };
-
 const PACKAGE_GROUPS = {
     SNBT_SKD_SNBT: ['snbt_1', 'snbt_2', 'snbt_3'],
     SNBT_SKD_SKD: ['skd_1', 'skd_2', 'skd_3'],
@@ -228,8 +238,56 @@ const PACKAGE_GROUPS = {
     US_SMA_KIMIA: ['us_sma_kimia_1', 'us_sma_kimia_2', 'us_sma_kimia_3'],
     US_SMA_EKONOMI: ['us_sma_eko_1', 'us_sma_eko_2', 'us_sma_eko_3'],
     US_SMA_MATWAJIB: ['us_sma_mtw_1', 'us_sma_mtw_2', 'us_sma_mtw_3'],
-    US_SMA_MATTL: ['us_sma_mtl_1', 'us_sma_mtl_2', 'us_sma_mtl_3']
+    TKA_SMA: ['tka_sma_1','tka_sma_2','tka_sma_3']
+
 };
+// ==========================================
+// MATA PELAJARAN TKA SMA
+// ==========================================
+const TKA_SMA_SUBJECTS = [
+    {
+        id: 'MTKW',
+        name: 'Matematika',
+        desc: 'Soal TKA Matematika',
+        icon: '🧮'
+    },
+    {
+        id: 'BIND',
+        name: 'Bahasa Indonesia',
+        desc: 'Soal TKA Bahasa Indonesia',
+        icon: '📖'
+    },
+    {
+        id: 'BING',
+        name: 'Bahasa Inggris',
+        desc: 'Soal TKA Bahasa Inggris',
+        icon: '🌐'
+    },
+    {
+        id: 'KIMIA',
+        name: 'Kimia',
+        desc: 'Soal TKA Kimia',
+        icon: '⚗️'
+    },
+    {
+        id: 'EKO',
+        name: 'Ekonomi',
+        desc: 'Soal TKA Ekonomi',
+        icon: '📈'
+    },
+    {
+        id: 'BIO',
+        name: 'Biologi',
+        desc: 'Soal TKA Biologi',
+        icon: '🧬'
+    },
+    {
+        id: 'PPKN',
+        name: 'PPKN',
+        desc: 'Soal TKA PPKN',
+        icon: '🇮🇩'
+    }
+];
 
     // === ACCESS CODES (TIERED ACCESS) ===
     const ACCESS_CODES = {
@@ -249,8 +307,9 @@ const PACKAGE_GROUPS = {
       // [BARU] Kode Akses Ujian Sekolah SMA
       'X9&mD5@hN3^kF7': ['us_sma_kimia_1', 'us_sma_kimia_2', 'us_sma_kimia_3', 'us_sma_eko_1', 'us_sma_eko_2', 'us_sma_eko_3', 'us_sma_mtw_1', 'us_sma_mtw_2', 'us_sma_mtw_3', 'us_sma_mtl_1', 'us_sma_mtl_2', 'us_sma_mtl_3'],
     // [BARU] Kode Akses TKA SMA
-      'Y2#pL8!vQ4^sJ6': ['tka_sma_mtkw', 'tka_sma_bind', 'tka_sma_bing', 'tka_sma_kimia', 'tka_sma_eko', 'tka_sma_ppkn','tka_sma_bio' ],
+      'Y2#pL8!vQ4^sJ6': ['tka_sma_1', 'tka_sma_2', 'tka_sma_3'],
     };
+
 
     // ===== BANK SOAL SNBT =====
     const SNBT_QUESTIONS = [
@@ -5049,7 +5108,7 @@ const PACKAGE_GROUPS = {
      
 ];
     const TKA_SMA_QUESTIONS = [
-       { id: 'mtkw_1', packageId: 'tka_sma_mtkw', category: 'TKA', 
+       { id: '1_mtkw_1', packageId: 'tka_sma_1', category: 'TKA', 
         question: "Bentuk sederhana dari \\( \\frac{3^{\\frac{5}{6}} \\cdot 12^{\\frac{7}{12}}}{6^{\\frac{2}{3}} \\cdot 2^{-\\frac{1}{4}}} \\) adalah ....",
         options: [
           { id: 'A', text: '(6)^1/4', score: 0 },
@@ -7241,7 +7300,17 @@ const PACKAGE_GROUPS = {
         'TWK': 'Tes Wawasan Kebangsaan',
         'TIU': 'Tes Intelegensia Umum',
         'TKP': 'Tes Karakteristik Pribadi',
+         // TKA SMA
+    // ==============================
         'TKA': 'Tes Kemampuan Akademik',
+        'MTKW': 'TKA Matematika',
+        'BIND': 'TKA Bahasa Indonesia',
+        'BING': 'TKA Bahasa Inggris',
+        'KIMIA': 'TKA Kimia',
+        'EKO': 'TKA Ekonomi',
+        'BIO': 'TKA Biologi',
+        'PPKN': 'TKA PPKN',
+        // US SMA
         'KIMIA': 'US Kimia',
         'EKO': 'US Ekonomi',
         'MTW' : 'US Matematika Wajib',
@@ -7257,6 +7326,7 @@ const PACKAGE_GROUPS = {
       selectedExamType: null,
       selectedSubCategory: null,
       selectedPackage: null,
+      selectedTkaSubject: null, //TKA SMA
       currentQuestionIndex: 0,
       lastRenderedQuestionIndex: -1, // <-- TAMBAHKAN BARIS INI
       answers: [],
@@ -7281,7 +7351,8 @@ const PACKAGE_GROUPS = {
       timerInterval: null 
     };
 
-
+// === CORE LOGIC & SYNC ===
+// Fungsi bantu untuk memusatkan render dan sync
 async function refreshApp() {
     await syncStateToCloud();
     render();
@@ -7350,6 +7421,7 @@ async function syncStateToCloud() {
                 selectedExamType: appState.selectedExamType,
                 selectedSubCategory: appState.selectedSubCategory || null,
                 selectedPackage: appState.selectedPackage,
+                selectedTkaSubject: appState.selectedTkaSubject || null,
                 currentQuestionIndex: appState.currentQuestionIndex,
                 answers: appState.answers,
                 targetEndTime: appState.targetEndTime,
@@ -7445,8 +7517,17 @@ async function syncStateToCloud() {
                       ...US_SMA_QUESTIONS,
                       ...TKA_SMA_QUESTIONS
                   ];
-                    appState.currentQuestions = allQ.filter(q => q.packageId === appState.selectedPackage);
-                    if(appState.currentQuestions.length === 0) appState.currentQuestions = allQ;
+                if (appState.selectedExamType === 'TKA_SMA') {
+                    appState.currentQuestions = allQ.filter(q =>
+                        q.packageId === appState.selectedPackage &&
+                        q.category === appState.selectedTkaSubject
+                    );
+                } else {
+                    appState.currentQuestions = allQ.filter(
+                        q => q.packageId === appState.selectedPackage
+                    );
+}
+                  if(appState.currentQuestions.length === 0) appState.currentQuestions = allQ;
                   // LOGIC BARU: Cek apakah ini ujian baru atau melanjutkan
                   if (!appState.targetEndTime) {
                   // Hanya set waktu jika belum ada target waktu (Ujian Baru)
@@ -7584,6 +7665,7 @@ function render() {
         case 'exam-select': content = renderAppLayout(renderExamSelect()); break;
         case 'package-select': content = renderAppLayout(renderPackageSelect()); break;
         case 'subcategory-select': content = renderAppLayout(renderSubCategorySelect()); break;
+        case 'tka-subject-select': content = renderAppLayout(renderTkaSubjectSelect()); break;
         case 'exam': content = renderExamInterface(); break;
         case 'results': content = renderAppLayout(renderResults()); break;
         case 'history': content = renderAppLayout(renderHistory()); break;
@@ -7627,6 +7709,8 @@ function render() {
         appState.lastRenderedQuestionIndex = -1;
     }
 } 
+    // === COMPONENTS ===
+    
     // 1. Landing Page
  function renderLandingPage(showModal = false, modalType = 'login') {
   return `
@@ -7709,6 +7793,8 @@ function render() {
       `;
     }
 
+    // REGISTER MODAL
+// REGISTER MODAL
     function renderRegisterModal() {
       // Step 1: Select Program (Disederhanakan)
       if (appState.registerStep === 0 || appState.registerStep === 1) {
@@ -7767,8 +7853,9 @@ function render() {
                       <span class="text-2xl w-10 text-center">🧠</span>
                       <div>
                           <div class="font-bold text-slate-800 group-hover:text-violet-700">Program TKA SMA</div>
-                          <div class="text-xs text-slate-500">Matematika, B. Indonesia, B. Inggris, Kimia, Ekonomi, PPKN</div>
-                      </div>
+                        <div class="text-xs text-slate-500">
+                            3 Paket Lengkap: MTK, B. Indonesia, B. Inggris, Kimia, Ekonomi, Biologi, PPKN
+                        </div>
                   </button>
                   <button onclick="setRegProgram('US_SMA')"
                       class="w-full p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition flex items-center gap-4 text-left group">
@@ -7895,6 +7982,7 @@ const backStep =
     }
     
 // === UI COMPONENTS (REVISED) ===
+    // 2. App Layout (Standard)
     function renderAppLayout(content) {
       return `
         <div class="min-h-screen bg-slate-50 flex flex-col md:flex-row relative">
@@ -8005,7 +8093,7 @@ function renderSubMenuModal() {
               <div onclick="selectExamType('TKA_SMA'); closeSubMenu()" class="group flex items-center gap-4 p-4 rounded-xl border border-slate-200 hover:border-violet-500 hover:bg-violet-50 cursor-pointer transition">
                  <div class="w-10 h-10 bg-violet-100 rounded-lg flex items-center justify-center text-xl">🧠</div>
                  <div><h4 class="font-bold text-slate-900">TKA SMA</h4>
-                      <p class="text-xs text-slate-500"> Matematika, B. Indonesia, B. Inggris, Kimia, Ekonomi, PPKN </p>
+                      <p class="text-xs text-slate-500">   3 Paket Lengkap • Semua Mata Pelajaran </p>
                   </div>
               </div>
             </div>
@@ -8172,6 +8260,112 @@ function getStatusBadge(isAdmin, isUnlocked, color) {
             <i class="fa-solid fa-lock mr-2"></i>
             Terkunci
         </span>
+    `;
+}
+
+function renderTkaSubjectSelect() {
+
+    const packageData = (PACKAGES.TKA_SMA || [])
+        .find(pkg => pkg.id === appState.selectedPackage);
+
+    const packageName =
+        packageData?.name || 'Paket TKA SMA';
+
+    return `
+        <div class="max-w-4xl mx-auto fade-in">
+
+            <button
+                onclick="
+                    appState.selectedTkaSubject = null;
+                    appState.screen = 'package-select';
+                    render()
+                "
+                class="flex items-center text-slate-500 hover:text-slate-900 mb-6 transition">
+
+                <i class="fa-solid fa-arrow-left mr-2"></i>
+                Kembali ke Pilihan Paket
+            </button>
+
+            <header class="mb-8">
+
+                <div class="inline-flex items-center gap-2
+                            bg-violet-50 text-violet-700
+                            px-4 py-2 rounded-full
+                            text-xs font-black uppercase mb-4">
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                    ${packageName}
+                </div>
+
+                <h1 class="text-3xl font-bold text-slate-900 mb-2">
+                    Pilih Mata Pelajaran
+                </h1>
+
+                <p class="text-slate-500 text-lg">
+                    Pilih satu mata pelajaran untuk mulai mengerjakan.
+                </p>
+
+            </header>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+
+                ${TKA_SMA_SUBJECTS.map(subject => `
+
+                    <div
+                        onclick="selectTkaSubject('${subject.id}')"
+                        class="bg-white p-6 rounded-2xl
+                               border border-slate-200
+                               hover:border-violet-500
+                               hover:shadow-lg
+                               cursor-pointer
+                               transition
+                               flex items-center gap-5
+                               group">
+
+                        <div class="w-16 h-16
+                                    rounded-xl
+                                    bg-violet-50
+                                    flex items-center
+                                    justify-center
+                                    text-3xl
+                                    shrink-0
+                                    group-hover:bg-violet-100
+                                    transition">
+
+                            ${subject.icon}
+
+                        </div>
+
+                        <div class="flex-1">
+
+                            <h3 class="text-lg font-bold text-slate-900">
+                                ${subject.name}
+                            </h3>
+
+                            <p class="text-sm text-slate-500 mt-1">
+                                ${subject.desc}
+                            </p>
+
+                        </div>
+
+                        <div class="text-violet-500
+                                    opacity-0
+                                    group-hover:opacity-100
+                                    transition
+                                    text-2xl">
+
+                            →
+
+                        </div>
+
+                    </div>
+
+                `).join('')}
+
+            </div>
+
+        </div>
     `;
 }
 
@@ -8380,8 +8574,18 @@ function renderExamInterface() {
         `;
     }
 
-const subJudul = 
-    CATEGORY_TITLES[q.category] || q.category;
+const subJudul =
+    appState.selectedExamType === 'TKA_SMA'
+        ? ({
+            MTKW: 'TKA Matematika',
+            BIND: 'TKA Bahasa Indonesia',
+            BING: 'TKA Bahasa Inggris',
+            KIMIA: 'TKA Kimia',
+            EKO: 'TKA Ekonomi',
+            BIO: 'TKA Biologi',
+            PPKN: 'TKA PPKN'
+        }[q.category] || q.category)
+        : (CATEGORY_TITLES[q.category] || q.category);
 
     return `
         <div class="h-screen flex flex-col bg-slate-50 overflow-hidden text-slate-900 relative">
@@ -9111,6 +9315,10 @@ if (name === 'neoprimeadmin' && pass === 'irfrif28') {
     function initiateLogout() { appState.showLogoutModal = true; render(); }
     function cancelLogout() { appState.showLogoutModal = false; render(); }
     function confirmLogout() {
+    appState.selectedExamType = null;
+    appState.selectedSubCategory = null;
+    appState.selectedPackage = null;
+    appState.selectedTkaSubject = null;
     appState.showLogoutModal = false;
     resetExamSession();
     appState.userName = '';
@@ -9128,15 +9336,20 @@ if (name === 'neoprimeadmin' && pass === 'irfrif28') {
 
 function resetExamSession() {
     clearInterval(appState.timerInterval);
+
     appState.timerInterval = null;
     appState.targetEndTime = null;
     appState.startTime = null;
     appState.timeRemaining = 0;
+
     appState.currentQuestionIndex = 0;
     appState.lastRenderedQuestionIndex = -1;
+
     appState.currentQuestions = [];
     appState.answers = [];
+
     appState.selectedPackage = null;
+    appState.selectedTkaSubject = null;
 }
     function openSubMenu() { appState.showSubMenu = true; render(); }
     function closeSubMenu() { appState.showSubMenu = false; render(); }
@@ -9191,16 +9404,19 @@ function setRegPackage(pkg) { appState.regPackage = pkg; appState.registerStep =
         syncStateToCloud();
         render();
     }
-    function selectExamType(type) {
+function selectExamType(type) {
 
     appState.selectedExamType = type;
     appState.selectedSubCategory = null;
+    appState.selectedPackage = null;
+    appState.selectedTkaSubject = null;
 
     if (
         type === 'SNBT_SKD' ||
         type === 'US_SMA'
     ) {
         appState.screen = 'subcategory-select';
+
     } else {
         appState.screen = 'package-select';
     }
@@ -9330,29 +9546,122 @@ function renderSubCategorySelect() {
         </div>
     `;
 }
-    function selectPackage(pkgId) { appState.selectedPackage = pkgId; startExam(); }
+function selectPackage(pkgId) {
 
-    function startExam() {
-    // Gabungkan semua bank soal untuk pencarian
-    const allQ = [...SNBT_QUESTIONS, ...SKD_QUESTIONS, ...TKA_SMP_QUESTIONS, ...US_SMA_QUESTIONS, ...TKA_SMA_QUESTIONS];
-    
-    // Gunakan filter
-    appState.currentQuestions = allQ.filter(q => q.packageId === appState.selectedPackage);
-    
-    if(appState.currentQuestions.length === 0) {
-        alert("Soal untuk paket ini belum tersedia.");
-        appState.screen = 'package-select';
+    appState.selectedPackage = pkgId;
+
+    // ==========================================
+    // TKA SMA:
+    // Jangan langsung mulai ujian.
+    // Masuk dulu ke pemilihan mata pelajaran.
+    // ==========================================
+    if (appState.selectedExamType === 'TKA_SMA') {
+
+        appState.selectedTkaSubject = null;
+        appState.screen = 'tka-subject-select';
+
+        syncStateToCloud();
         render();
         return;
     }
 
-    // Reset ujian jika tidak sedang melanjutkan ujian aktif
+    // Program lain tetap seperti sebelumnya
+    startExam();
+}
+function selectTkaSubject(subjectId) {
+
+    if (!appState.selectedPackage) {
+        alert("Paket TKA belum dipilih.");
+        return;
+    }
+
+    const subject = TKA_SMA_SUBJECTS.find(
+        s => s.id === subjectId
+    );
+
+    if (!subject) {
+        alert("Mata pelajaran tidak ditemukan.");
+        return;
+    }
+
+    appState.selectedTkaSubject = subjectId;
+
+    // Mulai ujian setelah mapel dipilih
+    startExam();
+}
+
+
+function startExam() {
+
+    // ==========================================
+    // Gabungkan seluruh bank soal
+    // ==========================================
+    const allQ = [
+        ...SNBT_QUESTIONS,
+        ...SKD_QUESTIONS,
+        ...TKA_SMP_QUESTIONS,
+        ...US_SMA_QUESTIONS,
+        ...TKA_SMA_QUESTIONS
+    ];
+
+    // ==========================================
+    // FILTER SOAL
+    // ==========================================
+
+    if (appState.selectedExamType === 'TKA_SMA') {
+
+        // TKA SMA menggunakan:
+        // 1. packageId
+        // 2. category / mata pelajaran
+
+        appState.currentQuestions = allQ.filter(q =>
+            q.packageId === appState.selectedPackage &&
+            q.category === appState.selectedTkaSubject
+        );
+
+    } else {
+
+        // Program lain tetap menggunakan
+        // filter packageId seperti sebelumnya
+
+        appState.currentQuestions = allQ.filter(
+            q => q.packageId === appState.selectedPackage
+        );
+    }
+
+    // ==========================================
+    // VALIDASI
+    // ==========================================
+
+    if (appState.currentQuestions.length === 0) {
+
+        alert(
+            "Soal untuk paket dan mata pelajaran ini belum tersedia."
+        );
+
+        if (appState.selectedExamType === 'TKA_SMA') {
+            appState.screen = 'tka-subject-select';
+        } else {
+            appState.screen = 'package-select';
+        }
+
+        render();
+        return;
+    }
+
+    // ==========================================
+    // RESET UJIAN
+    // ==========================================
+
     if (!appState.targetEndTime) {
 
         appState.answers =
-            new Array(appState.currentQuestions.length).fill(undefined);
+            new Array(
+                appState.currentQuestions.length
+            ).fill(undefined);
 
         appState.currentQuestionIndex = 0;
+
         appState.startTime = Date.now();
 
         const durationMinutes =
@@ -9361,7 +9670,8 @@ function renderSubCategorySelect() {
                 : 100;
 
         appState.targetEndTime =
-            Date.now() + (durationMinutes * 60 * 1000);
+            Date.now() +
+            (durationMinutes * 60 * 1000);
     }
 
     appState.screen = 'exam';
@@ -9482,10 +9792,18 @@ function finishExam() {
     // ==========================================
     // Cek apakah ini percobaan pertama
     // ==========================================
-    const previousAttempt =
-        (appState.examHistory || []).find(
-            h => h.package_id === appState.selectedPackage
-        );
+const previousAttempt =
+    (appState.examHistory || []).find(h => {
+        if (h.package_id !== appState.selectedPackage) {
+            return false;
+        }
+
+        if (appState.selectedExamType === 'TKA_SMA') {
+            return h.subject === appState.selectedTkaSubject;
+        }
+
+        return true;
+    });
 
     const isFirstAttempt =
         !previousAttempt;
@@ -9543,53 +9861,58 @@ function finishExam() {
     // ==========================================
     // RESULT
     // ==========================================
-    const result = {
-        exam_type:
-            appState.selectedExamType,
+const result = {
+    exam_type:
+        appState.selectedExamType,
 
-        package_id:
-            appState.selectedPackage,
+    package_id:
+        appState.selectedPackage,
 
-        score:
-            parseFloat(
-                score.toFixed(2)
-            ),
+    subject:
+        appState.selectedExamType === 'TKA_SMA'
+            ? appState.selectedTkaSubject
+            : null,
 
-        max_score:
-            parseFloat(
-                maxScore.toFixed(2)
-            ),
+    score:
+        parseFloat(
+            score.toFixed(2)
+        ),
 
-        percentage:
-            parseFloat(
-                percentage.toFixed(2)
-            ),
+    max_score:
+        parseFloat(
+            maxScore.toFixed(2)
+        ),
 
-        answered:
-            appState.answers.filter(
-                x => x !== undefined &&
-                     x !== null
-            ).length,
+    percentage:
+        parseFloat(
+            percentage.toFixed(2)
+        ),
 
-        total_questions:
-            appState.currentQuestions.length,
+    answered:
+        appState.answers.filter(
+            x => x !== undefined &&
+                 x !== null
+        ).length,
 
-        duration:
-            appState.startTime
-                ? Math.floor(
-                    (Date.now() -
-                    appState.startTime) / 1000
-                )
-                : 0,
+    total_questions:
+        appState.currentQuestions.length,
 
-        completed_at:
-            new Date().toISOString(),
+    duration:
+        appState.startTime
+            ? Math.floor(
+                (Date.now() -
+                appState.startTime) / 1000
+            )
+            : 0,
 
-        isFirstAttempt,
+    completed_at:
+        new Date().toISOString(),
 
-        answers:
-            [...appState.answers]
-    };
+    isFirstAttempt,
+
+    answers:
+        [...appState.answers]
+};
 
     // ==========================================
     // STATE
@@ -9751,7 +10074,13 @@ function cancelFinishExam() {
         appState.registeredUsers = JSON.parse(localStorage.getItem('neoprime_users'));
     }
 
-function loadQuestionsForReview(packageId) {
+// --- TAMBAHAN BARU ---
+
+// Helper untuk load soal berdasarkan paket ID (karena history cuma simpan ID)
+function loadQuestionsForReview(
+    packageId,
+    subject = null
+) {
 
     const allQ = [
         ...SNBT_QUESTIONS,
@@ -9761,10 +10090,22 @@ function loadQuestionsForReview(packageId) {
         ...TKA_SMA_QUESTIONS
     ];
 
-    return allQ.filter(
-        q => q.packageId === packageId
-    );
+    return allQ.filter(q => {
+
+        if (q.packageId !== packageId) {
+            return false;
+        }
+
+        // Untuk TKA SMA,
+        // filter juga berdasarkan mapel
+        if (subject) {
+            return q.category === subject;
+        }
+
+        return true;
+    });
 }
+
 // Handler: Klik Riwayat User Biasa
 function viewHistoryDetail(index) {
 
@@ -9776,10 +10117,11 @@ function viewHistoryDetail(index) {
         return;
     }
 
-    appState.currentQuestions =
-        loadQuestionsForReview(
-            historyItem.package_id
-        );
+appState.currentQuestions =
+    loadQuestionsForReview(
+        historyItem.package_id,
+        historyItem.subject || null
+    );
 
     if (appState.currentQuestions.length === 0) {
         alert("Bank soal untuk riwayat ini tidak ditemukan.");
@@ -9823,10 +10165,11 @@ function viewAdminResultDetail(targetUserName, historyIndex) {
     const h =
         targetUser.history[historyIndex];
 
-    appState.currentQuestions =
-        loadQuestionsForReview(
-            h.package_id
-        );
+appState.currentQuestions =
+    loadQuestionsForReview(
+        h.package_id,
+        h.subject || null
+    );
 
     if (appState.currentQuestions.length === 0) {
         alert("Bank soal untuk riwayat ini tidak tersedia.");
