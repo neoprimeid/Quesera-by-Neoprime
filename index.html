@@ -214,19 +214,19 @@ TKA_SMA: [
     {
         id: 'tka_sma_1',
         name: 'Paket TKA SMA 1',
-        desc: 'Matematika, B. Indonesia, B. Inggris, Kimia, Ekonomi, Biologi, PPKN',
+        desc: 'Matematika, B. Indonesia, B. Inggris, MTK Lanjut, Kimia, Ekonomi, Biologi, PPKN',
         icon: '🧮'
     },
     {
         id: 'tka_sma_2',
         name: 'Paket TKA SMA 2',
-        desc: 'Matematika, B. Indonesia, B. Inggris, Kimia, Ekonomi, Biologi, PPKN',
+        desc: 'Matematika, B. Indonesia, B. Inggris, MTK Lanjut, Kimia, Ekonomi, Biologi, PPKN',
         icon: '📚'
     },
     {
         id: 'tka_sma_3',
         name: 'Paket TKA SMA 3',
-        desc: 'Matematika, B. Indonesia, B. Inggris, Kimia, Ekonomi, Biologi, PPKN',
+        desc: 'Matematika, B. Indonesia, B. Inggris, MTK Lanjut, Kimia, Ekonomi, Biologi, PPKN',
         icon: '🎓'
     }
 ],
@@ -253,13 +253,19 @@ const TKA_SMA_SUBJECTS = [
         icon: '🧮'
     },
     {
+        id: 'MTKL',
+        name: 'Matematika Lanjut',
+        desc: 'Soal TKA Matematika Lanjut',
+        icon: '🧮'
+    },
+    {
         id: 'BIND',
         name: 'Bahasa Indonesia',
         desc: 'Soal TKA Bahasa Indonesia',
         icon: '📖'
     },
     {
-        id: 'BING',
+        id: 'BING', 
         name: 'Bahasa Inggris',
         desc: 'Soal TKA Bahasa Inggris',
         icon: '🌐'
@@ -6047,6 +6053,315 @@ const TKA_SMA_SUBJECTS = [
           { id: 'E', text: 'had', score: 0 }
         ],
       },  
+
+      { id: 'tka_sma_1_mtkl_01', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Matriks A, B, C, dan D berturut-turut berukuran p × 3, 2 × q, r × s, dan t × u. Di antara lima nilai (p, q, r, s, t, u) berikut. Semua nilai yang dapat memenuhi persamaan matriks (2A + B) × 4C = 5D adalah ...<br><br><b>(Pilihlah semua jawaban yang benar!)</b>`,
+        options: [
+          { id: 'A', text: '(1, 2, 2, 3, 2, 3)', score: 0 },
+          { id: 'B', text: '(2, 2, 3, 3, 3, 3)', score: 0 },
+          { id: 'C', text: '(2, 3, 3, 3, 2, 3)', score: 1.665 },
+          { id: 'D', text: '(2, 3, 3, 3, 2, 2)', score: 0 },
+          { id: 'E', text: '(2, 3, 3, 4, 2, 4)', score: 1.665 }
+        ],
+      },
+    {   id: 'tka_sma_1_mtkl_02', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Nilai <i>a + b + c</i> yang memenuhi persamaan<br><br>    \\[    \\begin{pmatrix}    1 & 2\\\\    -2 & 3    \\end{pmatrix}    \\begin{pmatrix}    c & a\\\\    3c & 2a    \\end{pmatrix}    =    \\begin{pmatrix}    8a & 4\\\\    16b & 9c    \\end{pmatrix}    -    \\begin{pmatrix}    a & -6\\\\    2b & 5c    \\end{pmatrix}    \\]    <br>adalah .....`,
+        options: [
+          { id: 'A', text: '2', score: 0 },
+          { id: 'B', text: '3', score: 0 },
+          { id: 'C', text: '4', score: 0 },
+          { id: 'D', text: '5', score: 3.33 },
+          { id: 'E', text: '6', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_03', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Diketahui matriks A berukuran 2 × 2,    \\[    B =    \\begin{pmatrix}    -1 & 3\\\\    0 & 2    \\end{pmatrix}    \\]    dan    \\[    B-A =    \\begin{pmatrix}    2 & -1\\\\    1 & 0    \\end{pmatrix}.    \\]    <br><br>    Kliklah jawaban dari pilihan yang tersedia pada setiap baris.<br><br>`,
+        image: "https://i.ibb.co.com/r2rTDGsX/image.png",
+        options: [
+          { id: 'A', text: 'Benar, Benar, Benar', score: 0 },
+          { id: 'B', text: 'Benar, Benar, Salah', score: 3.33 },
+          { id: 'C', text: 'Benar, Salah, Benar', score: 0 },
+          { id: 'D', text: 'Salah, Benar, Salah', score: 0 },
+          { id: 'E', text: 'Salah, Salah, Benar', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_04', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Jika    \\[    \\begin{pmatrix}    2 & 4\\\\    0 & 1    \\end{pmatrix}A    =    \\begin{pmatrix}    2 & 3\\\\    0 & 1    \\end{pmatrix},    \\]    maka jumlah semua unsur matriks A<sup>−1</sup> adalah ...`,
+        options: [
+          { id: 'A', text: '3/2', score: 0 },
+          { id: 'B', text: '5/2', score: 3.33 },
+          { id: 'C', text: '3', score: 0 },
+          { id: 'D', text: '11/2', score: 0 },
+          { id: 'E', text: '15/2', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_05', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Diketahui suku banyak <i>x</i><sup>3</sup> + 14<i>x</i><sup>2</sup> − 5<i>x</i> + 3 dibagi oleh <i>x</i><sup>2</sup> + 3<i>x</i> − 4 maka ....<br><br><b>(Pilihlah semua jawaban yang benar!)</b>`,
+        options: [
+          { id: 'A', text: 'Hasil baginya adalah x − 11', score: 0 },
+          { id: 'B', text: 'Hasil bagi adalah x + 11', score: 1.665 },
+          { id: 'C', text: 'Sisanya adalah −34x + 47', score: 1.665 },
+          { id: 'D', text: 'Sisanya adalah 34x − 47', score: 0 },
+          { id: 'E', text: 'Sisanya adalah −34x − 47', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_06', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Suku banyak (2<i>x</i><sup>3</sup> + 7<i>x</i><sup>2</sup> + <i>ax</i> − 3) mempunyai faktor (2<i>x</i> − 1). Faktor-faktor linear yang lain adalah ....<br><br><b>(Pilihlah semua jawaban yang benar!)</b>`,
+        options: [
+          { id: 'A', text: '(x − 3)', score: 0 },
+          { id: 'B', text: '(x − 1)', score: 0 },
+          { id: 'C', text: '(x + 1)', score: 1.665 },
+          { id: 'D', text: '(x + 2)', score: 0 },
+          { id: 'E', text: '(x + 3)', score: 1.665 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_07', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Suku banyak <i>f</i>(x) dibagi (x + 1) sisanya −2 dan dibagi (x − 3) sisanya 7, sedangkan suku banyak <i>g</i>(x) dibagi (x + 1) sisanya 3 dan dibagi (x − 3) sisanya 2. Maka ....<br><br><b>(Pilihlah semua jawaban yang benar!)</b>`,
+        options: [
+          { id: 'A', text: '(f(x) + g(x)) dibagi (x² − 2x − 3) bersisa 2x + 3', score: 1.665 },
+          { id: 'B', text: '(f(x) − g(x)) dibagi (x² − 2x − 3) bersisa 4x − 1', score: 0 },
+          { id: 'C', text: '(f(x) · g(x)) dibagi (x² − 2x − 3) bersisa 5x − 1', score: 1.665 },
+          { id: 'D', text: 'x f(x + 1) dibagi (x² − 4) bersisa 2x + 9', score: 0 },
+          { id: 'E', text: 'x²g(x − 2) dibagi (x² − 6x + 5) bersisa 7x − 1', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_08', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Pendapatan sebuah perusahaan pada akhir tahun ke-<i>x</i> dinyatakan dengan fungsi    \\[    f(x)=2^{x^2-6x+10}+3    \\]    dengan <i>f</i>(x) dalam miliar rupiah. Pendapatan perusahaan tersebut yang mungkin pada akhir tahun pertama sampai akhir tahun kelima adalah ....<br><br><b>(Pilihlah semua jawaban yang benar!)</b>`,
+        options: [
+          { id: 'A', text: '3', score: 0 },
+          { id: 'B', text: '4', score: 0 },
+          { id: 'C', text: '5', score: 3.33 },
+          { id: 'D', text: '8', score: 0 },
+          { id: 'E', text: '16', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_09', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Suatu populasi hewan mengikuti hukum pertumbuhan yang berbunyi:    \\[    f(t)=100.000\\cdot2^{t-2}    \\]    <i>f</i>(t): besar populasi pada saat <i>t</i><br>    <i>t</i>: waktu dalam satuan tahun<br><br>    Agar besar populasi menjadi 3 kali lipat populasi awal (saat t = 0), maka t = ......`,
+        options: [
+          { id: 'A', text: '²log 3 + 2', score: 0 },
+          { id: 'B', text: '²log 3', score: 3.33 },
+          { id: 'C', text: '²log 3 − 4', score: 0 },
+          { id: 'D', text: '²log 3 − 2', score: 0 },
+          { id: 'E', text: '²log 3 − 1', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_10', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Diketahui fungsi    \\[    f(x)=\\,^{2}\\log(3-x)+\\,^{2}\\log(x+5)    \\]    <br>`,
+        image: "https://i.ibb.co.com/LD1mxGH7/image.png",
+        options: [
+          { id: 'A', text: 'Benar, Benar, Benar', score: 0 },
+          { id: 'B', text: 'Benar, Benar, Salah', score: 0 },
+          { id: 'C', text: 'Benar, Salah, Benar', score: 0 },
+          { id: 'D', text: 'Salah, Salah, Benar', score: 3.33 },
+          { id: 'E', text: 'Salah, Benar, Salah', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_11', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Daerah asal fungsi    \\[    f(x)=\\frac{\\sqrt{x^2+2x-3}}{x-4}    \\]    agar terdefinisi adalah ...`,
+        options: [
+          { id: 'A', text: '{ x | 1 ≤ x < 4, x ∈ R }', score: 0 },
+          { id: 'B', text: '{ x | x ≤ −1 atau 3 ≤ x < 4, x ∈ R }', score: 0 },
+          { id: 'C', text: '{ x | x ≤ −3 atau 1 ≤ x < 4, x ∈ R }', score: 0 },
+          { id: 'D', text: '{ x | 1 ≤ x ≤ 3 atau x > 4, x ∈ R }', score: 3.33 },
+          { id: 'E', text: '{ x | −3 ≤ x ≤ 1 atau x > 4, x ∈ R }', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_12', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Diberikan fungsi <i>f</i> dengan    \\[    f(x)=\\sqrt{2-x}+\\sqrt{1+x}.    \\]    Nilai yang berada dalam daerah hasil fungsi <i>f</i> adalah ...<br><br><b>Pilihlah semua jawaban yang benar! (jawaban benar lebih dari satu)</b>`,
+        options: [
+          { id: 'A', text: '1', score: 0 },
+          { id: 'B', text: '√2', score: 0 },
+          { id: 'C', text: '2', score: 1.665 },
+          { id: 'D', text: '√6', score: 1.665 },
+          { id: 'E', text: '2√2', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_13', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Jika daerah asal dari    \\[    f(x)=\\sqrt{5-|2x-a|}    \\]    adalah { x | −1 ≤ x ≤ 4, x ∈ R }, maka nilai <i>a</i> adalah ....`,
+        options: [
+          { id: 'A', text: '−4', score: 0 },
+          { id: 'B', text: '−3', score: 0 },
+          { id: 'C', text: '−1', score: 0 },
+          { id: 'D', text: '3', score: 3.33 },
+          { id: 'E', text: '4', score: 0 }
+        ],
+      },
+
+      { id: 'tka_sma_1_mtkl_14', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Diberikan fungsi    \\[    f(x)=x^2-2x-5|x|.    \\]    Nilai maksimum <i>f</i>(x) pada interval [−5, 10] adalah ...`,
+        options: [
+          { id: 'A', text: '9/4', score: 0 },
+          { id: 'B', text: '49/4', score: 0 },
+          { id: 'C', text: '10', score: 0 },
+          { id: 'D', text: '20', score: 0 },
+          { id: 'E', text: '30', score: 3.33 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_15', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Daerah hasil dari    \\[    f(x)=\\frac{2x+3}{x^2-4}    \\]    adalah ...`,
+        options: [
+          { id: 'A', text: '(−∞, ∞)', score: 3.33 },
+          { id: 'B', text: '(−∞, 1/5) atau (11/20, ∞)', score: 0 },
+          { id: 'C', text: '(−∞, 1/5) atau (1/5, 11/20) atau (11/20, ∞)', score: 0 },
+          { id: 'D', text: '(−1/5, 11/20)', score: 0 },
+          { id: 'E', text: '(1/5, 11/20)', score: 0 }
+        ],
+      },
+    {   id: 'tka_sma_1_mtkl_16', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Nilai maksimum dari fungsi    \\[    f(x)=2\\cos^2x+4\\cos x+6\\sin^2x    \\]    adalah ...`,
+        options: [
+          { id: 'A', text: '4', score: 0 },
+          { id: 'B', text: '5', score: 0 },
+          { id: 'C', text: '6', score: 0 },
+          { id: 'D', text: '7', score: 3.33 },
+          { id: 'E', text: '8', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_17', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Jika nilai maksimum dari    \\[    f(x)=\\frac{m}{15\\sin x-8\\cos x+25}    \\]    adalah 2, maka nilai <i>m</i> adalah ...`,
+        options: [
+          { id: 'A', text: '4', score: 0 },
+          { id: 'B', text: '16', score: 3.33 },
+          { id: 'C', text: '36', score: 0 },
+          { id: 'D', text: '64', score: 0 },
+          { id: 'E', text: '84', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_18', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Diketahui    \\[    \\vec a=3\\vec i-2\\vec j,\\quad    \\vec b=-\\vec i+4\\vec j    \\]    dan    \\[    \\vec r=7\\vec i-8\\vec j.    \\]    Jika \\(\\vec r=k\\vec a+m\\vec b\\), maka <i>k + m</i> = ...`,
+        options: [
+          { id: 'A', text: '−2', score: 0 },
+          { id: 'B', text: '−1', score: 0 },
+          { id: 'C', text: '1', score: 3.33 },
+          { id: 'D', text: '2', score: 0 },
+          { id: 'E', text: '3', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_19', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Diketahui segitiga ABC, dengan    \\[    \\overrightarrow{CA}=\\vec u    \\]    dan    \\[    \\overrightarrow{CB}=\\vec v.    \\]    Berapakah vektor \\(\\overrightarrow{PQ}\\)? Putuskan apakah pernyataan (1) dan (2) berikut cukup untuk menjawab pertanyaan tersebut.<br><br>    (1) Titik P merupakan titik berat segitiga ABC.<br>    (2) Titik Q merupakan titik tengah AC.`,
+        image: "https://i.ibb.co.com/cXJhQXZH/image.png",
+        options: [
+          { id: 'A', text: 'Pernyataan (1) SAJA cukup untuk menjawab pertanyaan, tetapi pernyataan (2) SAJA tidak cukup.', score: 0 },
+          { id: 'B', text: 'Pernyataan (2) SAJA cukup untuk menjawab pertanyaan, tetapi pernyataan (1) SAJA tidak cukup.', score: 0 },
+          { id: 'C', text: 'DUA pernyataan BERSAMA-SAMA cukup untuk menjawab pertanyaan, tetapi SATU pernyataan SAJA tidak cukup.', score: 3.33 },
+          { id: 'D', text: 'Pernyataan (1) SAJA cukup untuk menjawab pertanyaan dan pernyataan (2) SAJA cukup.', score: 0 },
+          { id: 'E', text: 'Pernyataan (1) dan pernyataan (2) tidak cukup untuk menjawab pertanyaan.', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_20', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Diketahui vektor    \\[    \\vec a=9\\vec i-2\\vec j+4\\vec k    \\]    dan    \\[    \\vec b=2\\vec i+2\\vec j+\\vec k.    \\]    Proyeksi orthogonal vektor <i>a</i> pada <i>b</i> adalah ...`,
+        options: [
+          { id: 'A', text: '−4i − 4j − 2k', score: 0 },
+          { id: 'B', text: '2i + 2j + 4k', score: 0 },
+          { id: 'C', text: '4i + 4j + 2k', score: 3.33 },
+          { id: 'D', text: '8i + 8j + 4k', score: 0 },
+          { id: 'E', text: '18i − 4j + 8k', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_21', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Persamaan lingkaran dengan pusat (−1, 1) dan menyinggung garis 3x − 4y + 12 = 0 adalah ...`,
+        options: [
+          { id: 'A', text: 'x² + y² + 2x − 2y + 1 = 0', score: 3.33 },
+          { id: 'B', text: 'x² + y² + 2x − 2y − 7 = 0', score: 0 },
+          { id: 'C', text: 'x² + y² + 2x − 2y − 2 = 0', score: 0 },
+          { id: 'D', text: '4x² + 4y² + 8x − 8y − 17 = 0', score: 0 },
+          { id: 'E', text: '4x² + 4y² + 8x − 8y − 1 = 0', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_22', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Persamaan garis singgung lingkaran    \\[    x^2+y^2-6x+4y-12=0    \\]    di titik yang berabsis 7 adalah ...<br><br><b>(Pilihlah semua jawaban yang benar!)</b>`,
+        options: [
+          { id: 'A', text: '4x + 7y − 23 = 0', score: 0 },
+          { id: 'B', text: '4x + 3y − 55 = 0', score: 0 },
+          { id: 'C', text: '4x + 3y − 31 = 0', score: 1.665 },
+          { id: 'D', text: '4x + y − 35 = 0', score: 0 },
+          { id: 'E', text: '4x − 3y − 43 = 0', score: 1.665 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_23', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Perhatikan gambar di bawah. Jika ∠AOB = 60° dan ∠COD = 105° dengan luas juring OAB = 24 cm², luas juring OCD ...`,
+        image: "https://i.ibb.co.com/jvD5QBpw/image.png",
+        options: [
+          { id: 'A', text: '56 cm²', score: 0 },
+          { id: 'B', text: '48 cm²', score: 0 },
+          { id: 'C', text: '42 cm²', score: 3.33 },
+          { id: 'D', text: '36 cm²', score: 0 },
+          { id: 'E', text: '32 cm²', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_24', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Segitiga PQR dengan titik P (−1,3), Q (3,3), dan R (1,−2) didilatasi dengan pusat titik (0,0) dan faktor skala 3. Luas segitiga tersebut setelah dilakukan dilatasi adalah ... satuan luas`,
+        options: [
+          { id: 'A', text: '10', score: 0 },
+          { id: 'B', text: '30', score: 0 },
+          { id: 'C', text: '90', score: 3.33 },
+          { id: 'D', text: '120', score: 0 },
+          { id: 'E', text: '180', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_25', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Persamaan bayangan lingkaran    \\[    x^2+y^2=4    \\]    bila dicerminkan terhadap garis <i>x</i> = 2 dilanjutkan dengan translasi    \\[    \\begin{pmatrix}    -3\\\\    4    \\end{pmatrix}    \\]    adalah ...`,
+        options: [
+          { id: 'A', text: 'x² + y² − 2x − 8y + 13 = 0', score: 3.33 },
+          { id: 'B', text: 'x² + y² + 2x − 8y + 13 = 0', score: 0 },
+          { id: 'C', text: 'x² + y² − 2x + 8y + 13 = 0', score: 0 },
+          { id: 'D', text: 'x² + y² + 2x + 8y + 13 = 0', score: 0 },
+          { id: 'E', text: 'x² + y² + 8x − 2y + 13 = 0', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_26', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Diketahui    \\[    f(x)=    \\begin{cases}    2x, & \\text{untuk }0<x<1\\\\    1, & \\text{untuk }x=1\\\\    3-x, & \\text{untuk }1<x\\leq3\\\\    1+(x-3)^2, & \\text{untuk }x>3    \\end{cases}    \\]    <br>    Tentukan Benar atau Salah untuk setiap pernyataan berikut!`,
+        image: "https://i.ibb.co.com/wZkmWgmq/image.png",
+        options: [
+          { id: 'A', text: 'Benar, Benar, Benar', score: 0 },
+          { id: 'B', text: 'Benar, Salah, Benar', score: 3.33 },
+          { id: 'C', text: 'Benar, Salah, Salah', score: 0 },
+          { id: 'D', text: 'Salah, Benar, Benar', score: 0 },
+          { id: 'E', text: 'Salah, Salah, Benar', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_27', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Nilai dari    \\[    \\lim_{x\\to0}    \\frac{4x}{\\sqrt{1-2x}-\\sqrt{1+2x}}    =\\cdots    \\]`,
+        options: [
+          { id: 'A', text: '−2', score: 3.33 },
+          { id: 'B', text: '0', score: 0 },
+          { id: 'C', text: '1', score: 0 },
+          { id: 'D', text: '2', score: 0 },
+          { id: 'E', text: '4', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_28', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Diketahui <i>f</i>(x) = <i>ax</i> + <i>b</i> dan    \\[    \\lim_{x\\to2}\\frac{2-x}{x f(x)}=-\\frac{1}{2}.    \\]    Kliklah jawaban dari pilihan yang tersedia pada setiap baris.`,
+        image: "https://i.ibb.co.com/Q32P7jS4/image.png",
+        options: [
+          { id: 'A', text: 'Benar, Benar, Benar', score: 0 },
+          { id: 'B', text: 'Benar, Salah, Salah', score: 3.33 },
+          { id: 'C', text: 'Benar, Salah, Benar', score: 0 },
+          { id: 'D', text: 'Salah, Benar, Salah', score: 0 },
+          { id: 'E', text: 'Salah, Salah, Benar', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_29', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `Nilai    \\[    \\lim_{x\\to-2}    \\frac{(x+6)\\sin(x+2)}    {x^2-3x-10}    =...    \\]`,
+        options: [
+          { id: 'A', text: '−4/3', score: 0 },
+          { id: 'B', text: '−4/7', score: 3.33 },
+          { id: 'C', text: '−2/5', score: 0 },
+          { id: 'D', text: '0', score: 0 },
+          { id: 'E', text: '1', score: 0 }
+        ],
+      },
+      { id: 'tka_sma_1_mtkl_30', packageId: 'tka_sma_1', category: 'MTKL',
+        question: `\\[    \\lim_{x\\to\\frac{\\pi}{2}}    \\frac{\\left(x-\\frac{\\pi}{2}\\right)^2    \\csc\\left(3\\left(x-\\frac{\\pi}{2}\\right)\\right)}    {\\sin x\\tan\\left(x-\\frac{\\pi}{2}\\right)}    =...    \\]`,
+        options: [
+          { id: 'A', text: '2', score: 0 },
+          { id: 'B', text: '1', score: 0 },
+          { id: 'C', text: '1/2', score: 0 },
+          { id: 'D', text: '1/3', score: 3.33 },
+          { id: 'E', text: '1/4', score: 0 }
+        ],
+      },
+
        { id: 'tka_sma_1_kimia_01', packageId: 'tka_sma_1', category: 'KIMIA', 
         question: "Seorang siswa melakukan perhitungan nilai konsentrasi berdasarkan data-data yang ada di dalam wadah.<br><br>Berdasarkan hasil hitungan nilai konsentrasi siswa di atas, maka jawaban yang <b>benar</b> adalah...", 
         image: "https://i.ibb.co.com/23kzN1Pn/image.png",
@@ -8211,6 +8526,316 @@ const TKA_SMA_SUBJECTS = [
         ],
       }, 
 
+        { id: 'tka_sma_2_mtkl_01', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Diketahui matriks P = <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>1</td><td>2</td></tr> <tr><td>−1</td><td>−4</td></tr> </table> dan Q = <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>2</td><td>5</td></tr> <tr><td>−1</td><td>2</td></tr> </table>. Determinan (P + Q) adalah ....`,
+          options: [
+            { id: 'A', text: '9', score: 0 },
+            { id: 'B', text: '8', score: 3.33 },
+            { id: 'C', text: '5', score: 0 },
+            { id: 'D', text: '−8', score: 0 },
+            { id: 'E', text: '−20', score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_02', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Diketahui matriks A = <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>−1</td><td>2</td></tr> <tr><td>3</td><td>4</td></tr> </table>, B = <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>−2</td><td>0</td></tr> <tr><td>3</td><td>3</td></tr> </table>, dan C = <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>−4</td><td>4</td></tr> <tr><td>−3</td><td>2</td></tr> </table>. Invers dari matriks 3A − 4B + C<sup>T</sup> adalah ....`,
+          options: [
+            { id: 'A', text: `<table border='1' cellspacing='0' cellpadding='5'> <tr><td>2/5</td><td>−3/5</td></tr> <tr><td>1/5</td><td>1/5</td></tr> </table>`,score: 0},
+            { id: 'B', text: `<table border='1' cellspacing='0' cellpadding='5'> <tr><td>−2/5</td><td>3/5</td></tr> <tr><td>1/5</td><td>−1/5</td></tr> </table>`, score: 0 },
+            { id: 'C', text: `<table border='1' cellspacing='0' cellpadding='5'> <tr><td>−2</td><td>3</td></tr> <tr><td>1</td><td>−1</td></tr> </table>`, score: 3.33 },
+            { id: 'D', text: `<table border='1' cellspacing='0' cellpadding='5'> <tr><td>2</td><td>−3</td></tr> <tr><td>−1</td><td>1</td></tr> </table>`, score: 0 },
+            { id: 'E', text: `<table border='1' cellspacing='0' cellpadding='5'> <tr><td>−1</td><td>1</td></tr> <tr><td>2</td><td>−3</td></tr> </table>`, score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_03', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Diketahui matriks A = <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>3</td><td>0</td></tr> <tr><td>2</td><td>5</td></tr> </table>, B = <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>x</td><td>−1</td></tr> <tr><td>y</td><td>1</td></tr> </table>, dan C = <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>0</td><td>3</td></tr> <tr><td>1</td><td>11</td></tr> </table>. Jika 2A<sup>T</sup> + B = C, maka nilai x − y adalah ....`,
+          options: [
+            { id: 'A', text: '5', score: 0 },
+            { id: 'B', text: '1', score: 0 },
+            { id: 'C', text: '−1', score: 0 },
+            { id: 'D', text: '−4', score: 0 },
+            { id: 'E', text: '−7', score: 3.33 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_04', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Diketahui fungsi trigonometri <i>f</i>(x) = −3 sin (2x − 30°) + 4. Periode fungsi <i>f</i>(x) adalah ....`,
+          options: [
+            { id: 'A', text: '90°', score: 0 },
+            { id: 'B', text: '120°', score: 0 },
+            { id: 'C', text: '150°', score: 0 },
+            { id: 'D', text: '180°', score: 3.33 },
+            { id: 'E', text: '720°', score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_05', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Di bawah ini yang merupakan grafik fungsi <i>y</i> = sin(2x) − 1/2 adalah ....`,
+          options: [
+            { id: 'A', image: "https://i.ibb.co.com/qLfw1bXf/image.png", score: 0 },
+            { id: 'B', image: "https://i.ibb.co.com/wFBrxh5G/image.png", score: 0 },
+            { id: 'C', image: "https://i.ibb.co.com/PGzRs4YJ/image.png", score: 0 },
+            { id: 'D', image: "https://i.ibb.co.com/Z6XghPHN/image.png", score: 0 },
+            { id: 'E', image: "https://i.ibb.co.com/qMnK6jVn/image.png", score: 3.33 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_06', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Suatu perahu akan menyeberangi sungai selebar 50 meter dari titik A di pinggir sungai. Kecepatan arus sungai 10 meter/menit sejajar dengan pinggiran sungai dengan arah ke hulu dan kecepatan perahu 20 meter/menit dengan arah tegak lurus dengan arah arus sungai. Jika B berada di seberang sungai dan berjarak terdekat dengan posisi A, jarak titik perahu pada saat sampai di seberang sungai dan titik B adalah ... meter.`,
+          image: "",
+          options: [
+            { id: 'A', text: '10', score: 0 },
+            { id: 'B', text: '15', score: 0 },
+            { id: 'C', text: '20', score: 0 },
+            { id: 'D', text: '25', score: 3.33 },
+            { id: 'E', text: '30', score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_07', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Diketahui persamaan lingkaran <i>x</i><sup>2</sup> + <i>y</i><sup>2</sup> − 6<i>x</i> − 2<i>y</i> − 26 = 0. Di antara lima pernyataan berikut, tentukan pernyataan yang benar! Jawaban benar lebih dari satu.`,
+          options: [
+            { id: 'A', text: 'Lingkaran tersebut berpusat di (1, 3).', score: 0 },
+            { id: 'B', text: 'Panjang jari-jari lingkaran tersebut 6 satuan panjang.', score: 1.665 },
+            { id: 'C', text: 'Jarak pusat lingkaran dengan sumbu-x adalah 3.', score: 0 },
+            { id: 'D', text: 'Jarak pusat lingkaran dengan sumbu-y adalah 1.', score: 0 },
+            { id: 'E', text: 'Garis y = 0 memotong lingkaran di dua titik.', score: 1.665 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_08', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Bayangan dari kurva <i>y</i> = 2<i>x</i><sup>2</sup> − 5 yang ditranslasikan oleh matriks <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>−3</td></tr>  <tr><td>2</td></tr> </table> kemudian didilatasikan oleh (O, 2) dengan O merupakan titik koordinat (0,0) adalah ....`,
+          options: [
+            { id: 'A', text: '<i>y</i> = 1/4<i>x</i><sup>2</sup> + 3<i>x</i> + 15/2', score: 0 },
+            { id: 'B', text: '<i>y</i> = 1/4<i>x</i><sup>2</sup> + 3<i>x</i> + 11/2', score: 0 },
+            { id: 'C', text: '<i>y</i> = <i>x</i><sup>2</sup> + 12<i>x</i> + 30', score: 3.33 },
+            { id: 'D', text: '<i>y</i> = <i>x</i><sup>2</sup> − 12<i>x</i> + 22', score: 0 },
+            { id: 'E', text: '<i>y</i> = 4<i>x</i><sup>2</sup> + 12<i>x</i> + 15', score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_09', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Nilai dari <br><br> <center> lim<sub>x→2</sub> <span style="font-size:18px;"> (x<sup>2</sup> + 5x − 14) / (4 − √(x<sup>2</sup> + 12)) </span> </center> adalah ....`,
+          options: [
+            { id: 'A', text: '−18', score: 3.33 },
+            { id: 'B', text: '−9', score: 0 },
+            { id: 'C', text: '0', score: 0 },
+            { id: 'D', text: '9', score: 0 },
+            { id: 'E', text: '18', score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_10', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Nilai dari <br><br> <center> lim<sub>x→∞</sub> (√(3x) − √(3x − 4))(√(3x + 2)) </center> adalah ....`,
+          options: [
+            { id: 'A', text: '−(4/3)√3', score: 0 },
+            { id: 'B', text: '−2', score: 0 },
+            { id: 'C', text: '0', score: 0 },
+            { id: 'D', text: '2', score: 3.33 },
+            { id: 'E', text: '(4/3)√3', score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_11', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Diketahui M = <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>2</td><td>5</td></tr> <tr><td>1</td><td>3</td></tr> </table> dan M<sup>−1</sup> melambangkan invers dari M. Berapakah nilai p dan q yang tepat memenuhi <br> pM<sup>−1</sup> = q <table border='1' cellspacing='0' cellpadding='5' style='display:inline-table; margin:5px;'> <tr><td>6</td><td>−10</td></tr> <tr><td>−2</td><td>4</td></tr> </table>? <br><br> Pilih semua jawaban benar! Jawaban benar lebih dari satu.`,
+          options: [
+            { id: 'A', text: 'p = 2 dan q = 1', score: 1.11 },
+            { id: 'B', text: 'p = 3 dan q = 3', score: 0 },
+            { id: 'C', text: 'p = 4 dan q = 2', score: 1.11 },
+            { id: 'D', text: 'p = 5 dan q = 1', score: 0 },
+            { id: 'E', text: 'p = 6 dan q = 3', score: 1.11 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_12', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Seorang murid memperkirakan banyaknya penonton suatu video dalam ribuan yang dibuat oleh <i>content creator</i> A di media sosial mengikuti model <i>f</i>(t) = 3(2<sup>t</sup>) dengan t adalah banyaknya hari sejak video diunggah.
+          <br><br> Tentukan Benar atau Salah untuk setiap pernyataan berikut!`,
+          image: "https://i.ibb.co.com/DgMswX9Z/image.png",
+          options: [
+            { id: 'A', text: 'Benar, Benar, Benar', score: 3.33 },
+            { id: 'A', text: 'Benar, Salah, Benar', score: 0 },
+            { id: 'A', text: 'Salah, Benar, Benar', score: 0 },
+            { id: 'A', text: 'Benar, Salah, Salah', score: 0 },
+            { id: 'A', text: 'Salah, Salah, Salah', score: 0 },
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_13', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Diketahui <i>u</i>, <i>v</i> dan <i>w</i> merupakan tiga vektor dengan <i>u</i> = (1, 1, −1), <i>v</i> = (1, <i>v</i><sub>1</sub>, 2), dan <i>w</i> = (0, <i>w</i><sub>1</sub>, <i>w</i><sub>2</sub>). Berapakah nilai <i>v</i><sub>1</sub> dan <i>w</i><sub>1</sub> yang mungkin sehingga memenuhi <i>w</i> = <i>u</i> − <i>v</i>? <br><br>Pilih semua jawaban benar! Jawaban benar lebih dari satu.`,
+          options: [
+            { id: 'A', text: '<i>v</i><sub>1</sub> = 0 dan <i>w</i><sub>1</sub> = 1', score: 1.11 },
+            { id: 'B', text: '<i>v</i><sub>1</sub> = 1 dan <i>w</i><sub>1</sub> = 0', score: 1.11 },
+            { id: 'C', text: '<i>v</i><sub>1</sub> = 1 dan <i>w</i><sub>1</sub> = 2', score: 0 },
+            { id: 'D', text: '<i>v</i><sub>1</sub> = 2 dan <i>w</i><sub>1</sub> = −1', score: 1.11 },
+            { id: 'E', text: '<i>v</i><sub>1</sub> = 2 dan <i>w</i><sub>1</sub> = 2', score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_14', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Segitiga PQR dengan titik P (−1,3), Q (3,3), dan R (1,−2) didilatasi dengan pusat titik (0,0) dan faktor skala 3. Luas segitiga tersebut setelah dilakukan dilatasi adalah ... satuan luas.`,
+          options: [
+            { id: 'A', text: '10', score: 0 },
+            { id: 'B', text: '30', score: 0 },
+            { id: 'C', text: '90', score: 3.33 },
+            { id: 'D', text: '120', score: 0 },
+            { id: 'E', text: '180', score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_15', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Diketahui fungsi <br> <center> <i>f</i>(x) = { 2x, untuk 0 &lt; x &lt; 1;<br> 1, untuk x = 1;<br> 3 − x, untuk 1 &lt; x ≤ 3;<br> 1 + (x − 3)<sup>2</sup>, untuk x &gt; 3. } </center> <br>Tentukan Benar atau Salah untuk setiap pernyataan berikut!`,
+          image: "https://i.ibb.co.com/R4Srkhnv/image.png",
+          options: [
+            { id: 'A', text: 'Benar, Benar, Benar', score: 0 },
+            { id: 'A', text: 'Benar, Salah, Benar', score: 3.33 },
+            { id: 'A', text: 'Salah, Benar, Benar', score: 0 },
+            { id: 'A', text: 'Benar, Salah, Salah', score: 0 },
+            { id: 'A', text: 'Salah, Salah, Salah', score: 0 },
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_16', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Nilai dari<br><br> <center> lim<sub>x→π</sub> <span style="font-size:18px;"> sin(x − π) / [3(π − x) cos(4x)] </span> </center> adalah ....`,
+          options: [
+            { id: 'A', text: '−1/3', score: 3.33 },
+            { id: 'B', text: '0', score: 0 },
+            { id: 'C', text: '1/3', score: 0 },
+            { id: 'D', text: '1', score: 0 },
+            { id: 'E', text: '3', score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_17', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Matriks A, B, C, dan D berturut-turut berukuran p × 3, 2 × q, r × s, dan t × u. Di antara lima nilai (p,q,r,s,t,u) berikut, tentukan semua nilai yang dapat memenuhi persamaan matriks (2A + B) × 4C = 5D! <br><br>Jawaban benar lebih dari satu.`,
+          options: [
+            { id: 'A', text: '(1, 2, 2, 3, 2, 3)', score: 0 },
+            { id: 'B', text: '(2, 2, 3, 3, 3, 3)', score: 0 },
+            { id: 'C', text: '(2, 3, 3, 3, 2, 2)', score: 0 },
+            { id: 'D', text: '(2, 3, 3, 3, 2, 3)', score: 1.665 },
+            { id: 'E', text: '(2, 3, 3, 4, 2, 4)', score: 1.665 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_18', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Fungsi polinomial berderajat tiga <i>f</i>(x) = x<sup>3</sup> + 2x<sup>2</sup> + ax + b memenuhi: <br>• sisa pembagian <i>f</i>(x) oleh x − 1 adalah 6 dan <br>• sisa pembagian <i>f</i>(x) oleh x + 1 adalah 2. <br><br>Berdasarkan informasi tersebut, pilihlah semua pernyataan berikut yang benar. Jawaban benar lebih dari satu!`,
+          options: [
+            { id: 'A', text: '<i>a</i> = 1.', score: 1.11 },
+            { id: 'B', text: '<i>f</i>(−2) = −4.', score: 0 },
+            { id: 'C', text: '<i>f</i>(0) = 2.', score: 1.11 },
+            { id: 'D', text: 'Sisa pembagian <i>f</i>(x) oleh x − 2 adalah 20.', score: 1.11 },
+            { id: 'E', text: 'Sisa pembagian <i>f</i>(x) oleh x + 3 adalah −2.', score: 0 }
+          ],
+        },
+        { id: 'tka_sma_2_mtkl_19', packageId: 'tka_sma_2', category: 'MTKL',
+          image: "https://i.ibb.co.com/KcQv3R8m/image.png",
+          question: `PQRS merupakan segiempat sembarang. Jika titik T terletak pada ruas garis PR dan titik U terletak pada ruas garis SQ dengan 2PT = TR dan 2SU = UQ, diperoleh persamaan vektor <br> 2PQ + 2PS + RQ + RS = aSQ + bTU. <br><br>Tentukan (10 × a) + b = ....`,
+          options: [
+            { id: 'A', text: '16', score: 3.33 },
+            { id: 'B', text: '32', score: 0 },
+            { id: 'C', text: '36', score: 0 },
+            { id: 'D', text: '42', score: 0 },
+            { id: 'E', text: '61', score: 0 }
+          ],
+        },
+        {
+          id: 'tka_sma_2_mtkl_20', packageId: 'tka_sma_2', category: 'MTKL',
+          question: `Persamaan lingkaran yang berpusat di A(−2,1) dan menyinggung garis 4x + 3y − 20 = 0 di titik B(2,4) adalah ....`,
+          options: [
+            { id: 'A', text: '<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup> + 4<i>x</i> − 2<i>y</i> − 30 = 0', score: 0 },
+            { id: 'B', text: '<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup> + 4<i>x</i> − 2<i>y</i> + 30 = 0', score: 0 },
+            { id: 'C', text: '<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup> + 4<i>x</i> − 2<i>y</i> − 25 = 0', score: 0 },
+            { id: 'D', text: '<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup> + 4<i>x</i> − 2<i>y</i> − 20 = 0', score: 3.33 },
+            { id: 'E', text: '<i>x</i><sup>2</sup> + <i>y</i><sup>2</sup> + 4<i>x</i> − 2<i>y</i> + 20 = 0', score: 0 }
+          ],
+        },
+      { id: 'tka_sma_2_mtkl_21', packageId: 'tka_sma_2', category: 'MTKL',
+        question: `Diketahui P(x) = (x - a)(x - b)Q(x) + (mx + n), di mana (mx + n) adalah sisa pembagian P(x) oleh (x - a)(x - b). Pernyataan yang digunakan untuk menemukan nilai m dan n adalah....`,
+        options: [
+          { id: 'A', text: `P(m) = a dan P(n) = b`, score: 0 },
+          { id: 'B', text: `P(a) = ma + n dan P(b) = mb + n`, score: 3.33 },
+          { id: 'C', text: `P(0) = n dan P(1) = m + n`, score: 0 },
+          { id: 'D', text: `Q(a) = 0 dan Q(b) = 0`, score: 0 },
+          { id: 'E', text: `P(a) = Q(a) dan P(b) = Q(b)`, score: 0 }
+        ],
+      },
+      { id: 'tka_sma_2_mtkl_22', packageId: 'tka_sma_2', category: 'MTKL',
+        question: `Suku banyak P(x) berderajat 4 habis dibagi oleh (x<sup>2</sup> - 4) dan (x<sup>2</sup> - 9). Manakah pernyataan berikut yang pasti benar?<br><br><b>Pilih semua jawaban yang benar!</b>`,
+        options: [
+          { id: 'A', text: `P(0) = 0`, score: 0 },
+          { id: 'B', text: `P(2) = 0`, score: 1.11},
+          { id: 'C', text: `P(3) = 0`, score: 1.11 },
+          { id: 'D', text: `P(x) adalah fungsi genap (P(-x) = P(x))`, score: 1.11 },
+          { id: 'E', text: `P(-3) = 0`, score: 0 }
+        ],
+      },
+      { id: 'tka_sma_2_mtkl_23', packageId: 'tka_sma_2', category: 'MTKL',
+        question: `Sebuah kotak tanpa tutup dibuat dari selembar karton persegi dengan panjang sisi 12 cm. Kotak dibuat dengan memotong empat persegi identik di setiap sudutnya, lalu melipat sisinya ke atas. Jika volume kotak dinyatakan sebagai fungsi V(x), di mana x adalah panjang sisi persegi yang dipotong, maka V(x) adalah sebuah polinomial. Faktor dari V(x) yang merepresentasikan salah satu dimensi kotak adalah....`,
+        options: [
+          { id: 'A', text: `(6 - x)`, score: 0 },
+          { id: 'B', text: `(12 - 2x)`, score: 3.33 },
+          { id: 'C', text: `(12 - x)`, score: 0 },
+          { id: 'D', text: `x<sup>2</sup>`, score: 0 },
+          { id: 'E', text: `12x`, score: 0 }
+        ],
+      },
+      { id: 'tka_sma_2_mtkl_24', packageId: 'tka_sma_2', category: 'MTKL',
+        question: `Diketahui akar-akar persamaan polinomial x<sup>3</sup> - 12x<sup>2</sup> + 39x - 28 = 0 adalah 1, 4, dan 7. Persamaan polinomial baru yang akar-akarnya dua kali dari akar-akar persamaan tersebut adalah....`,
+        options: [
+          { id: 'A', text: `y<sup>3</sup> - 24y<sup>2</sup> + 156y - 224 = 0`, score: 3.33 },
+          { id: 'B', text: `y<sup>3</sup> + 24y<sup>2</sup> - 156y + 224 = 0`, score: 0 },
+          { id: 'C', text: `y<sup>3</sup> + 12y<sup>2</sup> + 39y + 28 = 0`, score: 0 },
+          { id: 'D', text: `y<sup>3</sup> - 24y<sup>2</sup> - 156y - 224 = 0`, score: 0 },
+          { id: 'E', text: `y<sup>3</sup> - 6y<sup>2</sup> + 19.5y - 14 = 0`, score: 0 }
+        ],
+      },
+      { id: 'tka_sma_2_mtkl_25', packageId: 'tka_sma_2', category: 'MTKL',
+        question: `Diberikan fungsi nilai mutlak f(x) = |x - 3| + 2. Manakah pernyataan yang benar mengenai fungsi ini?<br><br><b>Pilih semua jawaban yang benar!</b>`,
+        options: [
+          { id: 'A', text: `Domainnya adalah semua bilangan real.`, score: 0.8325 },
+          { id: 'B', text: `Nilai f(0) adalah 5.`, score: 0.8325 },
+          { id: 'C', text: `Rangenya adalah {y | y &lt; 2, y ∈ R}.`, score: 0.8325 },
+          { id: 'D', text: `Grafiknya memiliki titik terendah (puncak) di (3, 2).`, score: 0.8325 },
+          { id: 'E', text: `Nilai minimum fungsi adalah -2.`, score: 0 }
+        ],
+      },
+      { id: 'tka_sma_2_mtkl_26', packageId: 'tka_sma_2', category: 'MTKL',
+        question: `Evaluasilah pernyataan berikut yang membandingkan fungsi f(x) = 2<sup>x</sup> dan inversnya, g(x) = log<sub>2</sub>(x).<br><br>Tentukan Benar atau Salah untuk setiap pernyataan.`,
+        image: "https://i.ibb.co.com/Rk0bcXP5/image.png",
+        options: [
+          { id: 'A', text: `Benar, Benar, Benar`, score: 3.33 },
+          { id: 'B', text: `Benar, Benar, Salah`, score: 0 },
+          { id: 'C', text: `Benar, Salah, Benar`, score: 0 },
+          { id: 'D', text: `Salah, Benar, Benar`, score: 0 },
+          { id: 'E', text: `Salah, Salah, Salah`, score: 0 }
+        ],
+      },
+      { id: 'tka_sma_2_mtkl_27', packageId: 'tka_sma_2', category: 'MTKL',
+        question: `Evaluasilah pernyataan berikut mengenai kedudukan dua lingkaran: L<sub>1</sub> = x<sup>2</sup> + y<sup>2</sup> = 9 dan L<sub>2</sub> = (x - 5)<sup>2</sup> + y<sup>2</sup> = 4.<br><br>Tentukan Benar atau Salah untuk setiap pernyataan.`,
+        image: "https://i.ibb.co.com/V0VP0G9N/image.png",
+        options: [
+          { id: 'A', text: `Benar, Benar, Salah`, score: 3.33 },
+          { id: 'B', text: `Benar, Salah, Benar`, score: 0 },
+          { id: 'C', text: `Salah, Benar, Salah`, score: 0 },
+          { id: 'D', text: `Salah, Salah, Benar`, score: 0 },
+          { id: 'E', text: `Salah, Salah, Salah`, score: 0 }
+        ],
+      },
+      { id: 'tka_sma_2_mtkl_28', packageId: 'tka_sma_2', category: 'MTKL',
+        question: `Sebuah juring lingkaran memiliki sudut pusat 90° dan jari-jari 14 cm. Evaluasilah kebenaran pernyataan berikut (π = 22/7).<br><br>Tentukan Benar atau Salah untuk setiap pernyataan.`,
+        image: "https://i.ibb.co.com/VpjHrMxn/image.png",
+        options: [
+          { id: 'A', text: `Benar, Benar, Benar`, score: 0 },
+          { id: 'B', text: `Benar, Salah, Benar`, score: 0 },
+          { id: 'C', text: `Salah, Benar, Benar`, score: 0 },
+          { id: 'D', text: `Salah, Salah, Benar`, score: 0 },
+          { id: 'E', text: `Benar, Benar, Salah`, score: 3.33 }
+        ],
+      },
+      { id: 'tka_sma_2_mtkl_29', packageId: 'tka_sma_2', category: 'MTKL',
+        question: `Titik B(-2, 6) dirotasikan sebesar 90° searah jarum jam dengan pusat O(0,0), kemudian hasilnya didilatasikan dengan pusat O(0,0) dan faktor skala 2. Koordinat bayangan akhir titik B adalah....`,
+        options: [
+          { id: 'A', text: `(4, 12)`, score: 0 },
+          { id: 'B', text: `(-4, 12)`, score: 0 },
+          { id: 'C', text: `(12, 4)`, score: 3.33 },
+          { id: 'D', text: `(6, 2)`, score: 0 },
+          { id: 'E', text: `(-12, -4)`, score: 0 }
+        ],
+      },
+      { id: 'tka_sma_2_mtkl_30', packageId: 'tka_sma_2', category: 'MTKL',
+        question: `Nilai dari <span style="white-space: nowrap;">lim<sub>x → π/4</sub> [cos(2x) / (cos(x) - sin(x))]</span> adalah....`,
+        options: [
+          { id: 'A', text: `1`, score: 0 },
+          { id: 'B', text: `0`, score: 0 },
+          { id: 'C', text: `√2`, score: 3.33 },
+          { id: 'D', text: `2`, score: 0 },
+          { id: 'E', text: `Tak hingga`, score: 0 }
+        ],
+      },
+
        { id: 'tka_sma_2_kimia_01', packageId: 'tka_sma_2', category: 'KIMIA', 
         question: "Suatu larutan elektrolit kuat dengan konsentrasi 0,1 m memiliki titik beku −0,558°C. Apabila diketahui tetapan penurunan titik beku dan tetapan kenaikan titik didih air masing-masing sebesar 1,86°C/molal dan 0,52°C/molal, maka titik didih larutan tersebut adalah ….",
         options: [
@@ -9641,6 +10266,7 @@ const TKA_SMA_SUBJECTS = [
         'MTKW': 'TKA Matematika',
         'BIND': 'TKA Bahasa Indonesia',
         'BING': 'TKA Bahasa Inggris',
+        'MTKL': 'TKA Matematika Lanjut',
         'KIMIA': 'TKA Kimia',
         'EKO': 'TKA Ekonomi',
         'BIO': 'TKA Biologi',
