@@ -170,7 +170,6 @@ try {
       accent_color: "#f59e0b",
       text_color: "#1e293b",
       platform_title: "Quesera by Neoprime",
-      snbt_label: "Program SNBT",
       snbt_skd_label: "Program SNBT + SKD",
       tka_smp_label: "Program TKA SMP", 
       us_sma_label: "Ujian Sekolah SMA",
@@ -179,12 +178,6 @@ try {
 
 // === DATA STRUCTURE ===
     const PACKAGES = {
-      SNBT: [
-        { id: 'snbt_1', name: 'SNBT 1', desc: '', icon: '📚' },
-        { id: 'snbt_2', name: 'SNBT 2', desc: '', icon: '📝' },
-        { id: 'snbt_3', name: 'SNBT 3', desc: '', icon: '🧮' }
-      ],
-
       // GABUNGKAN SNBT_SKD menjadi satu key:
       SNBT_SKD: [
         { id: 'snbt_1', name: 'SNBT 1', desc: '', icon: '📚' },
@@ -309,12 +302,7 @@ const TKA_SMA_SUBJECTS = [
 ];
 
     // === ACCESS CODES (TIERED ACCESS) ===
-    const ACCESS_CODES = {
-      // SNBT Tiers
-      '7v#N9!mX2$pW6s': ['snbt_1'],
-      '3StX6#Mv3!gA1d': ['snbt_1', 'snbt_2'],
-      'G3%fW5%kQ5*sJ8': ['snbt_1', 'snbt_2', 'snbt_3'],
-      
+    const ACCESS_CODES = {    
       // SNBT + SKD Tiers
       'zQ3DmB1hpT7&vO': ['snbt_1', 'skd_1'],
       'rF1*mc2^sQ5@tR': ['snbt_1', 'snbt_2', 'skd_1', 'skd_2'],
@@ -11264,14 +11252,7 @@ function render() {
                   <p class="text-slate-500 text-sm">Langkah 1: Tentukan jalur belajarmu</p>
                 </div>
                 <div class="grid gap-3">
-                  <button onclick="setRegProgram('SNBT')" class="p-4 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50 transition flex items-center gap-4 group text-left">
-                      <span class="text-2xl w-10 text-center">🎓</span>
-                      <div>
-                        <div class="font-bold text-slate-800 group-hover:text-blue-700">Program SNBT</div>
-                        <div class="text-xs text-slate-500">Materi TPS & Literasi</div>
-                      </div>
-                  </button>
-                  
+                 
                   <button onclick="setRegProgram('SNBT_SKD')"
                       class="p-4 rounded-xl border border-slate-200 hover:border-amber-500 hover:bg-amber-50 transition flex items-center gap-4 group text-left">
 
@@ -11528,10 +11509,6 @@ function renderSubMenuModal() {
               <h3 class="text-2xl font-bold text-slate-900">Pilih Kategori Belajar</h3>
             </div>
             <div class="grid gap-3">
-              <div onclick="selectExamType('SNBT'); closeSubMenu()" class="group flex items-center gap-4 p-4 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition">
-                 <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-xl">🎓</div>
-                 <div><h4 class="font-bold text-slate-900">Paket SNBT</h4></div>
-              </div>
               <div onclick="selectExamType('SNBT_SKD'); closeSubMenu()" class="group flex items-center gap-4 p-4 rounded-xl border border-slate-200 hover:border-amber-500 hover:bg-amber-50 cursor-pointer transition">
                  <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center text-xl">🏛️</div>
                  <div><h4 class="font-bold text-slate-900">Paket SKD</h4></div>
@@ -11565,7 +11542,6 @@ function renderSubMenuModal() {
       const isAdmin = appState.isAdmin;
       const allowedPackages = appState.allowedPackages || [];
       
-      const isSnbt = isAdmin || allowedPackages.some(pkg => pkg.startsWith('snbt_'));
       const isSkd = isAdmin || allowedPackages.some(pkg => pkg.startsWith('skd_'));
       const isSmp = isAdmin || allowedPackages.some(pkg => pkg.startsWith('tka_smp_'));
       const isTkaSma = isAdmin || allowedPackages.some(pkg => pkg.startsWith('tka_sma_'));
@@ -11620,14 +11596,6 @@ function renderSubMenuModal() {
           </header>
           
           <div class="grid md:grid-cols-2 gap-6">
-            <div onclick="${isSnbt ? "selectExamType('SNBT')" : "alert('Anda tidak memiliki akses ke program ini.')"}" 
-                 class="group bg-white p-8 rounded-2xl border ${isSnbt ? 'border-blue-200 hover:border-blue-500 hover:shadow-xl cursor-pointer' : 'border-slate-100 opacity-60 cursor-not-allowed bg-slate-50'} transition relative overflow-hidden">
-              <div class="relative z-10">
-                <span class="inline-block p-3 bg-blue-50 rounded-xl text-2xl mb-4">🎓</span>
-                <h3 class="text-xl font-bold text-slate-900 mb-6">${snbtLabel}</h3>
-                ${getStatusBadge(isAdmin, isSnbt, 'blue')}
-              </div>
-            </div>
 
             <div onclick="${isSkd ? "selectExamType('SNBT_SKD')" : "alert('Anda tidak memiliki akses ke program ini.')"}" 
                  class="group bg-white p-8 rounded-2xl border ${isSkd ? 'border-amber-200 hover:border-amber-500 hover:shadow-xl cursor-pointer' : 'border-slate-100 opacity-60 cursor-not-allowed bg-slate-50'} transition relative overflow-hidden">
@@ -11878,13 +11846,7 @@ function renderPackageSelect() {
     } else {
         const packageSource = PACKAGES[type] || [];
         packages = packageSource;
-
         switch (type) {
-            case 'SNBT':
-                typeLabel = defaultConfig.snbt_label;
-                colorClass = 'blue';
-                break;
-
             case 'TKA_SMP':
                 typeLabel = defaultConfig.tka_smp_label;
                 colorClass = 'indigo';
@@ -12675,12 +12637,6 @@ if (!name || !pass || !confirmPass || !code || !cls) {
 if (allowedPkgs && Array.isArray(allowedPkgs)) {
 
     switch (appState.regProgram) {
-
-        case 'SNBT':
-            isCodeValid = allowedPkgs.some(pkg =>
-                pkg.startsWith('snbt_')
-            );
-            break;
 
         case 'SNBT_SKD':
             isCodeValid = allowedPkgs.some(pkg =>
