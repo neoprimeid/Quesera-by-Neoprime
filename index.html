@@ -13,16 +13,28 @@
     import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
     import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
-    // Global Configs
-    const firebaseConfig = JSON.parse(__firebase_config);
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'neoprime-edu-v1';
+// Global Configs
+try {
+    const rawFirebaseConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : null;
 
-    // Bridge for non-module script
-    window.fbProvider = { auth, db, appId, setDoc, getDoc, doc, onAuthStateChanged, signInAnonymously };
-  </script>
+    if (rawFirebaseConfig) {
+        const firebaseConfig = typeof rawFirebaseConfig === 'string' ? JSON.parse(rawFirebaseConfig) : rawFirebaseConfig;
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'neoprime-edu-v1';
+
+        // Bridge for non-module script
+        window.fbProvider = { auth, db, appId, setDoc, getDoc, doc, onAuthStateChanged, signInAnonymously
+        };
+    } else {
+        console.warn('Firebase config tidak tersedia. Aplikasi berjalan dalam mode lokal.'
+        );
+    }
+} catch (error) {
+    console.error( 'Firebase gagal diinisialisasi:', error );
+}
+    </script>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -167,12 +179,6 @@
 
 // === DATA STRUCTURE ===
     const PACKAGES = {
-      SNBT: [
-        { id: 'snbt_1', name: 'SNBT 1', desc: '', icon: '📚' },
-        { id: 'snbt_2', name: 'SNBT 2', desc: '', icon: '📝' },
-        { id: 'snbt_3', name: 'SNBT 3', desc: '', icon: '🧮' }
-      ],
-
       // GABUNGKAN SNBT_SKD menjadi satu key:
       SNBT_SKD: [
         { id: 'snbt_1', name: 'SNBT 1', desc: '', icon: '📚' },
@@ -2242,7 +2248,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_04', packageId: 'snbt_3', category: 'LBE',
+        id: 'snbt_3_05', packageId: 'snbt_3', category: 'LBE',
         question: `What is jake's main point about how to prepare financially?`,
         options: [
           { id: 'A', text: 'Students should depend mainly on loans to pay for college.', score: 0 },
@@ -2253,7 +2259,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_05', packageId: 'snbt_3', category: 'LBE',
+        id: 'snbt_3_06', packageId: 'snbt_3', category: 'LBE',
         question: `Text for number 6-10 <br>Traditionally, Matcha - which is sought for its health benefits, caffeine and flavour - is the product of a centuries-old and highly-specialised process. It is made from green tea leaves called tencha, which are kept under shade for weeks while they're still growing. This step is crucial for developing the tea's signature "umami" flavour - a savoury taste that complements its natural sweetness. The leaves are harvested, dried band ground into powder using stone mills, which can produce just 40g (1.4oz) of matcha an hour. <br>But in recent months growers have struggled, as record-breaking heatwaves have hit crops. In the Kyoto region, where about a quarter of Japan's tencha comes from, hot weather has led to poor harvests even as demand soars. The country also faces a shortage of farmers as its population ages and not enough younger people go into the industry. <br>Shops in Uji, a city in Kyoto famous for matcha, often see their shelves emptied by tourists as soon as their doors open. As a result, many retailers have set limits on how much customers can buy. Kyoto-based Camellia Tea Ceremony allows customers to purchase only one tin of matcha each as visitor numbers doubled over the last year, says director Atsuko Mori. <br>Tea master Rie Takeda says she also has to closely monitor her stocks of matcha, as orders that would previously arrive in just days can now take more than a week. She works for Chazen, a tea ceremony chain based in Tokyo, which hosts traditional rituals serving matcha to guests. Shortages mean tea prices at Chazen's outlets have risen by around 30% this year. "[The demand] is good," Ms Takeda said through a translator. "It's a gateway for more people to know about Japanese culture." It has also attracted more growers. It also says green tea exports, including matcha, also rose 25% last year to 36.4bn yen (£180m; $250m). <br>Source: bbc.com <br>If tencha is being exposed to so much sunlight, what will happen?`,
         options: [
           { id: 'A', text: 'Tencha will be easier to grind', score: 0 },
@@ -2264,7 +2270,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_06', packageId: 'snbt_3', category: 'LBE',
+        id: 'snbt_3_07', packageId: 'snbt_3', category: 'LBE',
         question: `According to the text, the reason why matcha production has been limited is...`,
         options: [
           { id: 'A', text: 'Shops in Japan sells matcha with extremely high price', score: 0 },
@@ -2275,7 +2281,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_07', packageId: 'snbt_3', category: 'LBE',
+        id: 'snbt_3_08', packageId: 'snbt_3', category: 'LBE',
         question: `It can be inferred from the fourth paragraph that...`,
         options: [
           { id: 'A', text: 'Despite of matcha being limited, there is no delay in matcha delivery to sellers', score: 0 },
@@ -2286,7 +2292,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_08', packageId: 'snbt_3', category: 'LBE',
+        id: 'snbt_3_09', packageId: 'snbt_3', category: 'LBE',
         question: `What is the best title for the passage above?`,
         options: [
           { id: 'A', text: 'Japan’s matcha production crawls as demand soars', score: 5 },
@@ -2297,7 +2303,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_09', packageId: 'snbt_3', category: 'LBE',
+        id: 'snbt_3_10', packageId: 'snbt_3', category: 'LBE',
         question: `By, 2050, there will be another two to three billion people on Earth, and the planet's population will consume twice as much food as now. For 50 years farmland has grown at the cost of natural habitat and biodiversity, and already more than two-thirds of agricultural land is either in use or protected. <br>As a result, we need to develop the technology to double the output of the 10 — 15 main calorie crops, particularly if we are to alleviate the burden on developing countries of feeding a rapidly growing population, argues Jason Clay of the WWF in the journal Nature. He makes some strategic suggestions—described as "food wedges" for Africa, the continent that faces the greatest challenge of increasing food production. Clay believes the responsible use of genetics is one of the keys. He suggests that mapping the genomes of staple food crops such as yams, plantains and cassava, and selecting genetic traits, can both increase production and improve drought tolerance, disease resistance, and nutrient content. <br>Improving agricultural inputs and practice is also essential, he argues. It currently takes one liter of water to produce one calorie of food. Even if we halved water use and doubled production, food deficiency would still increase fourfold. Technologies already exist to achieve this, but in Africa, they have often not been taken up. Mulching, for example, can help rebuild soil fertility and reduce water usage, and is suitable for use even in household gardens, without need for high-tech tools. <br>Source: scidev.net <br>What is the main purpose of the author in this passage?`,
         options: [
           { id: 'A', text: 'To explain the impact of farmland expansion on biodiversity', score: 0 },
@@ -2308,7 +2314,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_10', packageId: 'snbt_3', category: 'LBI',
+        id: 'snbt_3_11', packageId: 'snbt_3', category: 'LBI',
         question: `Soal untuk nomor 11-16 <br><b>Kenapa Kucing Menggoyangkan Tubuhnya Sebelum Menerkam Sesuatu?</b> <br>(1) Kucing selalu punya kebiasaan unik yang membuat pemiliknya bingung. (2) Salah satu kebiasaannya yang lucu sekaligus membingungkan adalah kucing bisa menggoyangkan tubuhnya pada kondisi tertentu. (3) Kalau teman-teman adalah pemilik kucing, maka akan sering melihat kucing menggoyangkan tubuh dan pantatnya sebelum menerkam sesuatu. (4) Biasanya, kucing melakukan ini sambil menyiapkan kaki depannya, persis seperti orang yang melakukan ancang-ancang. (5) Kira-kira kenapa kucing suka menggoyangkan tubuhnya ketika hendak menerkam sesuatu? (6) Yuk, cari tahu alasannya dari artikel berikut ini! <br>(7) Jangan lupa, kucing adalah hewan karnivora yang kepribadian dan kemampuan bertahan hidupnya sama dengan kucing liar. (8) Meski dipelihara di rumah, diberi makan oleh pemiliknya, dan dimanjakan, kucing tidak bisa kehilangan insting berburunya. (9) Gerakan menggoyangkan tubuh sebelum menerkam menggambarkan gerakan yang akan dilakukan mangsa ketika mencoba melarikan diri. (10) Ini memberi kucing pelatihan praktis untuk menghadapi situasi di mana mangsa melawan atau mencoba melarikan diri. <br>(11) Gerakan menggoyangkan tubuh sebelum menerkam juga membantu kucing untuk mengukur jarak dan mengatur posisi untuk menerkam mangsa dengan lebih akurat. (12) Gerakan ini bisa meningkatkan peluang kucing untuk sukses menangkap mangsa. (13) Dengan mengambil ancang-ancang sambil menggoyangkan tubuh, kucing bisa memfokuskan perhatiannya pada mangsa dan merencanakan serangan. (14) Berdasarkan cara bertahan hidup, ini merupakan bagian dari strategi berburu mereka untuk menghindari gerakan terburu-buru. (15) Seorang profesor biomekanik di Royal Veterinary College di London, John Hutchinson menjelaskan bahwa goyangan tubuh dapat membantu menekan kaki belakang ke tanah. (16) Dengan begitu, kucing bisa menambah gesekan untuk mendorong tubuhnya maju dan menerkam. <br>(17) Dari penjelasan di atas, kita bisa mengetahui bahwa kucing domestik masih memiliki perilaku mirip kucing-kucing liar. (18) Pasalnya, kucing domestik (Felis catus) adalah hasil dari domestikasi kucing liar (Felis silvestris). (19) Meskipun keduanya berasal dari spesies yang sama, ada beberapa perbedaan dan kemiripan antara kucing domestik dan kucing liar. (20) Kucing domestik dan kucing liar adalah spesies yang sama, yaitu Felis silvestris. (21) Ini berarti mereka memiliki karakteristik fisik dan biologis yang serupa dalam banyak aspek. (22) Baik kucing domestik maupun kucing liar memiliki insting berburu yang kuat. (23) Kedua jenis kucing ini memiliki kemampuan alami untuk memburu dan menangkap mangsa seperti tikus atau burung. (24) Dengan kemampuan berburu inilah, kucing domestik bisa beradaptasi dengan lingkungan mereka. (25) Bahkan, kucing domestik yang dipelihara juga terkenal mampu bertahan dalam berbagai kondisi dan habitat. <br>Sumber: Eirin, G. (2023, August 8). Kenapa Kucing Menggoyangkan Tubuhnya Sebelum Menerkam Sesuatu? - Bobo. Bobo.grid.id. <br><br>Kesimpulan yang paling tepat berdasarkan informasi yang terkandung dalam teks di atas adalah...`,
         options: [
           { id: 'A', text: 'Baik kucing liar maupun kucing domestik memiliki perbedaan karakteristik yang begitu kentara.', score: 0 },
@@ -2319,7 +2325,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_11', packageId: 'snbt_3', category: 'LBI',
+        id: 'snbt_3_12', packageId: 'snbt_3', category: 'LBI',
         question: `Gagasan utama dari paragraf ke-4 atau paragraf terakhir pada teks di atas adalah...`,
         options: [
           { id: 'A', text: 'Kucing domestik dan kucing liar merupakan dua spesies yang berbeda, sehingga keduanya sama sekali tidak dapat disamakan antara satu sama lain.', score: 0 },
@@ -2330,7 +2336,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_12', packageId: 'snbt_3', category: 'LBI',
+        id: 'snbt_3_13', packageId: 'snbt_3', category: 'LBI',
         question: `Manakah di antara informasi-informasi di bawah ini yang <b>tidak</b> terkandung dalam teks di atas?`,
         options: [
           { id: 'A', text: 'Alasan di balik kebiasaan menggoyangkan tubuh yang dilakukan oleh kucing sebelum menerkam mangsa.', score: 0 },
@@ -2341,7 +2347,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_13', packageId: 'snbt_3', category: 'LBI',
+        id: 'snbt_3_14', packageId: 'snbt_3', category: 'LBI',
         question: `Hubungan antara kalimat nomor 20 dan kalimat nomor 21 adalah...`,
         options: [
           { id: 'A', text: 'Kalimat ke-20 menyatakan akibat, sementara kalimat ke-21 menyatakan sebab.', score: 0 },
@@ -2352,7 +2358,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
          {
-        id: 'snbt_3_14', packageId: 'snbt_3', category: 'LBI',
+        id: 'snbt_3_15', packageId: 'snbt_3', category: 'LBI',
         question: `Setelah membaca teks di atas, dapat diketahui bahwa alasan penulis menulis teks di atas adalah...`,
         options: [
           { id: 'A', text: 'Untuk menjelaskan alasan di balik goyangan tubuh kucing sebelum menerkam mangsa.', score: 5 },
@@ -3018,7 +3024,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },  
       { id: 'kimia_36', packageId: 'us_sma_kimia_1', category: 'KIMIA', 
-        question: "Perhatikan gambar percobaan korosi berikut! <br<br>Paku besi yang mengalami korosi paling cepat terjadi pada percobaan nomor ....", 
+        question: "Perhatikan gambar percobaan korosi berikut! <br><br>Paku besi yang mengalami korosi paling cepat terjadi pada percobaan nomor ....", 
          image: "https://i.ibb.co.com/wNMXPtx1/image.png",
         options: [
           { id: 'A', text: '(1)', score: 2.5 },
@@ -3029,7 +3035,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },  
       { id: 'kimia_37', packageId: 'us_sma_kimia_1', category: 'KIMIA', 
-        question: "Berikut ini adalah beberapa mineral yang terdapat di alam berikut unsur yang dikandungnya dan kegunaannya<br<br>Pasangan data yang tepat nomor ....", 
+        question: "Berikut ini adalah beberapa mineral yang terdapat di alam berikut unsur yang dikandungnya dan kegunaannya <br><br>Pasangan data yang tepat nomor ....", 
         image: "https://i.ibb.co.com/1BqFktB/image.png",
         options: [
           { id: 'A', text: '1 dan 2', score: 0 },
@@ -3162,7 +3168,7 @@ const TKA_SMA_SUBJECTS = [
         options: [
           { id: 'A', text: '4 x 10<sup>8</sup>', score: 0 },
           { id: 'B', text: '8 × 10<sup>5</sup>', score: 0 },
-          { id: 'C', text: '8 × 10<sup>6</sup>', score: 0 },
+          { id: 'C', text: '8 × 10<sup>6</sup>', score: 2.857 },
           { id: 'D', text: '16 × 10<sup>5</sup>', score: 0 },
           { id: 'E', text: '16 × 10<sup>4</sup>', score: 0 }
         ],
@@ -3342,7 +3348,7 @@ const TKA_SMA_SUBJECTS = [
         ],
         },  
         { id: 'kimia_2_27', packageId: 'us_sma_kimia_2', category: 'KIMIA', 
-        question: "Perhatikan reaksi berikut: <br><brRumus struktur dan senyawa hasil tersebut adalah.", 
+        question: "Perhatikan reaksi berikut: <br><br>Rumus struktur dan senyawa hasil tersebut adalah.", 
         image: "https://i.ibb.co.com/whN2rY7y/image.png",
         options: [
           { id: 'A', image: "https://i.ibb.co.com/NgxRL0x8/image.png", score: 2.857 },
@@ -6943,7 +6949,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
        { id: 'tka_sma_1_eko_27', packageId: 'tka_sma_1', category: 'EKO', 
-        question: "Berikut ini adalah pencatatan Debet dan Kredit atas transaksi Bengkel Sepeda "Romansa". Pencatatan mekanisme Debet dan Kredit yang benar dari pernyataan-pernyataan di bawah ini adalah...", 
+        question: `Berikut ini adalah pencatatan Debet dan Kredit atas transaksi Bengkel Sepeda "Romansa". Pencatatan mekanisme Debet dan Kredit yang benar dari pernyataan-pernyataan di bawah ini adalah...`, 
         options: [
           { id: 'A', text: 'dibeli perlengkapan bengkel seharga Rp150.000,00 dari Toko Biru; mengakibatkan Perlengkapan (+) di Debet dan Kas (-) di Kredit masing-masing Rp150.000,00.', score: 0 },
           { id: 'B', text: 'diselesaikan perbaikan sepeda milik Tuan Tanudibyo senilai Rp50.000,00; menimbulkan Kas (+) di Debet dan Beban Service (-) di Kredit masing-masing Rp50.000,00.', score: 0 },
@@ -8569,7 +8575,7 @@ const TKA_SMA_SUBJECTS = [
           ],
         },
         { id: 'tka_sma_2_mtkl_05', packageId: 'tka_sma_2', category: 'MTKL',
-          question: `Di bawah ini yang merupakan grafik fungsi <i>y</i> = sin(2x) − 1/2 adalah ....`,
+          question: `Di bawah ini yang merupakan grafik fungsi <i>y</i> = sin(2x) − \(\frac{1}{2}\)  adalah ....`,
           options: [
             { id: 'A', image: "https://i.ibb.co.com/qLfw1bXf/image.png", score: 0 },
             { id: 'B', image: "https://i.ibb.co.com/wFBrxh5G/image.png", score: 0 },
@@ -8640,15 +8646,14 @@ const TKA_SMA_SUBJECTS = [
           ],
         },
         { id: 'tka_sma_2_mtkl_12', packageId: 'tka_sma_2', category: 'MTKL',
-          question: `Seorang murid memperkirakan banyaknya penonton suatu video dalam ribuan yang dibuat oleh <i>content creator</i> A di media sosial mengikuti model <i>f</i>(t) = 3(2<sup>t</sup>) dengan t adalah banyaknya hari sejak video diunggah.
-          <br><br> Tentukan Benar atau Salah untuk setiap pernyataan berikut!`,
+          question: `Seorang murid memperkirakan banyaknya penonton suatu video dalam ribuan yang dibuat oleh <i>content creator</i> A di media sosial mengikuti model <i>f</i>(t) = 3(2<sup>t</sup>) dengan t adalah banyaknya hari sejak video diunggah. <br><br> Tentukan Benar atau Salah untuk setiap pernyataan berikut!`,
           image: "https://i.ibb.co.com/DgMswX9Z/image.png",
           options: [
             { id: 'A', text: 'Benar, Benar, Benar', score: 3.33 },
-            { id: 'A', text: 'Benar, Salah, Benar', score: 0 },
-            { id: 'A', text: 'Salah, Benar, Benar', score: 0 },
-            { id: 'A', text: 'Benar, Salah, Salah', score: 0 },
-            { id: 'A', text: 'Salah, Salah, Salah', score: 0 },
+            { id: 'B', text: 'Benar, Salah, Benar', score: 0 },
+            { id: 'C', text: 'Salah, Benar, Benar', score: 0 },
+            { id: 'D', text: 'Benar, Salah, Salah', score: 0 },
+            { id: 'E', text: 'Salah, Salah, Salah', score: 0 },
           ],
         },
         { id: 'tka_sma_2_mtkl_13', packageId: 'tka_sma_2', category: 'MTKL',
@@ -8676,10 +8681,10 @@ const TKA_SMA_SUBJECTS = [
           image: "https://i.ibb.co.com/R4Srkhnv/image.png",
           options: [
             { id: 'A', text: 'Benar, Benar, Benar', score: 0 },
-            { id: 'A', text: 'Benar, Salah, Benar', score: 3.33 },
-            { id: 'A', text: 'Salah, Benar, Benar', score: 0 },
-            { id: 'A', text: 'Benar, Salah, Salah', score: 0 },
-            { id: 'A', text: 'Salah, Salah, Salah', score: 0 },
+            { id: 'B', text: 'Benar, Salah, Benar', score: 3.33 },
+            { id: 'C', text: 'Salah, Benar, Benar', score: 0 },
+            { id: 'D', text: 'Benar, Salah, Salah', score: 0 },
+            { id: 'E', text: 'Salah, Salah, Salah', score: 0 },
           ],
         },
         { id: 'tka_sma_2_mtkl_16', packageId: 'tka_sma_2', category: 'MTKL',
@@ -10170,30 +10175,32 @@ const TKA_SMA_SUBJECTS = [
       question: `Perhatikan gambar berikut. <br><br>Persamaan kuadrat pada gambar tersebut adalah ....`,
       image: "https://i.ibb.co.com/yFswX6LK/image.png",
       options: [
-      { id: 'A', text: `y = 4/5 x<sup>2</sup> − 4x + 3`, score: 0 },
-      { id: 'B', text: `y = 5/4 x<sup>2</sup> − 5x + 3`, score: 3.33 },
-      { id: 'C', text: `y = 4/5 x<sup>2</sup> + 4x − 3`, score: 0 },
-      { id: 'D', text: `y = 5/4 x<sup>2</sup> − 5x − 3`, score: 0 },
-      { id: 'E', text: `y = 5/4 x<sup>2</sup> + 5x + 3`, score: 0 }
+      { id: 'A', text: `y = \(\frac{4}{5}\) x<sup>2</sup> − 4x + 3`, score: 0 },
+      { id: 'B', text: `y = \(\frac{5}{4}\) x<sup>2</sup> − 5x + 3`, score: 3.33 },
+      { id: 'C', text: `y = \(\frac{4}{5}\) x<sup>2</sup> + 4x − 3`, score: 0 },
+      { id: 'D', text: `y = \(\frac{5}{4}\) x<sup>2</sup> − 5x − 3`, score: 0 },
+      { id: 'E', text: `y = \(\frac{5}{4}\) x<sup>2</sup> + 5x + 3`, score: 0 }
         ],
       },
       { id: 'tka_sma_3_mtkw_12', packageId: 'tka_sma_3', category: 'MTKW',
       question: `Diketahui dua fungsi, yaitu f(x) = x<sup>2</sup> + 5x − 15 dan g(x) = x + 2. Beri tanda centang (√) pada kolom Benar atau Salah untuk setiap pernyataan berikut.`,
       image: "https://i.ibb.co.com/HpRCSTy9/image.png",
       options: [
-      { id: 'A', text: `Nilai dari (f ○ g)(0) sama dengan −1.`, score: 3.33 },
-      { id: 'B', text: `(f ○ g)(x) sama dengan x<sup>2</sup> + 9x + 1.`, score: 0 },
-      { id: 'C', text: `(g ○ f)(x) sama dengan x<sup>2</sup> + 5x − 17.`, score: 0 }
+      { id: 'A', text: `Benar, Benar, Benar`, score: 0 },
+      { id: 'B', text: `Benar, Benar, Salah`, score: 0 },
+      { id: 'C', text: `Salah, Benar, Salah`, score: 0 },
+      { id: 'D', text: `Benar, Salah, Salah`, score: 3.33 },
+      { id: 'E', text: `Salah, Benar, Benar`, score: 0 },
         ],
       },
       { id: 'tka_sma_3_mtkw_13', packageId: 'tka_sma_3', category: 'MTKW',
       question: `Diketahui fungsi \( f(x) = \frac{4x - 7}{3 - x}, x \neq 3 \). Jika invers dari f(x) adalah f<sup>−1</sup>(x), nilai dari f<sup>−1</sup>(0) adalah ....`,
       options: [
-      { id: 'A', text: `−7/4`, score: 0 },
-      { id: 'B', text: `−4/7`, score: 0 },
-      { id: 'C', text: `4/7`, score: 0 },
+      { id: 'A', text: ` \(-\frac{7}{4}\) `, score: 0 },
+      { id: 'B', text: ` \(-\frac{4}{7}\) `, score: 0 },
+      { id: 'C', text: ` \(\frac{4}{7}\) `, score: 0 },
       { id: 'D', text: `0`, score: 0 },
-      { id: 'E', text: `7/4`, score: 3.33 }
+      { id: 'E', text: ` \(\frac{7}{4}\) `, score: 3.33 }
         ],
       },
       { id: 'tka_sma_3_mtkw_14', packageId: 'tka_sma_3', category: 'MTKW',
@@ -10679,16 +10686,19 @@ const TKA_SMA_SUBJECTS = [
       regPackage: null,
       unlockedAccess: null,
       allowedPackages: [],
-      registeredUsers: JSON.parse(localStorage.getItem('neoprime_users')) || [],
+      registeredUsers: getLocalJSON('neoprime_users', []),
       isAdmin: false,
       timerInterval: null 
     };
 
 // === CORE LOGIC & SYNC ===
 // Fungsi bantu untuk memusatkan render dan sync
-async function refreshApp() {
-    await syncStateToCloud();
+function refreshApp() {
     render();
+
+    syncStateToCloud().catch(error => {
+        console.warn('Sinkronisasi cloud gagal:', error );
+    });
 }
 
 // [BARU] Simpan Database User Global ke Cloud (Untuk Admin)
@@ -10770,7 +10780,7 @@ async function syncStateToCloud() {
         if (!appState.isAdmin && appState.userName) {
 
             const users =
-                JSON.parse(localStorage.getItem('neoprime_users')) || [];
+                getLocalJSON('neoprime_users', []);
 
             const idx = users.findIndex(
                 u => u.name.toLowerCase() ===
@@ -10797,15 +10807,29 @@ async function syncStateToCloud() {
     }
 }  
 
+function withTimeout(promise, ms, message = 'Timeout') {
+    return Promise.race([
+        promise,
+        new Promise((_, reject) =>
+            setTimeout(() => reject(new Error(message)), ms)
+        )
+    ]);
+}
+
   // === REVISED RECOVERY LOGIC ===
-    async function recoverStateFromCloud() {
+async function recoverStateFromCloud() {
+        if (!window.fbProvider) {
+            console.warn('Firebase provider tidak tersedia.');
+            return;
+        }
+
         const { auth, db, appId, getDoc, doc, signInAnonymously } = window.fbProvider;
-        
+
         try {
             // Gunakan Promise untuk memastikan Auth sudah siap atau lakukan login anonim jika belum
             let user = auth.currentUser;
             if (!user) {
-                const cred = await signInAnonymously(auth);
+                const cred = await withTimeout( signInAnonymously(auth), 4000,'Firebase Auth timeout');
                 user = cred.user;
             }
 
@@ -10831,9 +10855,9 @@ async function syncStateToCloud() {
 
                 // --- TAMBAHAN BARU: Jaga agar riwayat tidak kosong saat refresh ---
                 if (appState.isAdmin) {
-                    appState.examHistory = JSON.parse(localStorage.getItem('neoprime_admin_history')) || appState.examHistory || [];
+                    appState.examHistory = getLocalJSON( 'neoprime_admin_history', appState.examHistory || [] );
                 } else if (appState.userName) {
-                    const localUsers = JSON.parse(localStorage.getItem('neoprime_users')) || [];
+                    const localUsers = getLocalJSON('neoprime_users', []);
                     const currentUser = localUsers.find(u => u.name === appState.userName);
                     if (currentUser && currentUser.history) {
                         appState.examHistory = currentUser.history;
@@ -10852,17 +10876,60 @@ async function syncStateToCloud() {
                       ...TKA_SMA_QUESTIONS
                   ];
                 if (appState.selectedExamType === 'TKA_SMA') {
-                    appState.currentQuestions = allQ.filter(q =>
-                        q.packageId === appState.selectedPackage &&
-                        q.category === appState.selectedTkaSubject
-                    );
+
+                    appState.currentQuestions = allQ.filter(q => {
+
+                        if (q.packageId !== appState.selectedPackage) {
+                            return false;
+                        }
+
+                        if (q.category !== appState.selectedTkaSubject) {
+                            return false;
+                        }
+
+                        const hasQuestion =
+                            typeof q.question === 'string' &&
+                            q.question.trim().length > 0;
+
+                        const hasQuestionImage =
+                            typeof q.image === 'string' &&
+                            q.image.trim().length > 0;
+
+                        const hasOptions =
+                            Array.isArray(q.options) &&
+                            q.options.some(opt =>
+                                (
+                                    typeof opt.text === 'string' &&
+                                    opt.text.trim().length > 0
+                                ) ||
+                                (
+                                    typeof opt.image === 'string' &&
+                                    opt.image.trim().length > 0
+                                )
+                            );
+
+                        return (hasQuestion || hasQuestionImage) && hasOptions;
+                    });
+
                 } else {
+
                     appState.currentQuestions = allQ.filter(
                         q => q.packageId === appState.selectedPackage
                     );
-}
-                  if(appState.currentQuestions.length === 0) appState.currentQuestions = allQ;
-                  // LOGIC BARU: Cek apakah ini ujian baru atau melanjutkan
+                }
+
+                  if (appState.currentQuestions.length === 0) {
+                      console.warn('Bank soal untuk sesi terakhir tidak tersedia.' );
+                      appState.screen = 'exam-select';
+                      appState.currentQuestionIndex = 0;
+                      appState.answers = [];
+                      appState.targetEndTime = null;
+                      appState.startTime = null;
+                      appState.timeRemaining = 0;
+                      render();
+                      return;
+                  }
+// LOGIC BARU: Cek apakah ini ujian baru atau melanjutkan
                   if (!appState.targetEndTime) {
                   // Hanya set waktu jika belum ada target waktu (Ujian Baru)
                   appState.currentQuestionIndex = 0;
@@ -10885,9 +10952,11 @@ async function syncStateToCloud() {
                 } else {
                     appState.answers = []; 
                 }
-                                  syncStateToCloud();
-                  render();  
-                  startTimerInterval();
+
+                syncStateToCloud();
+                render();
+                if (appState.screen === 'exam') {startTimerInterval();
+}
             }
         } catch (e) { 
             console.warn("Recovery skipped or failed:", e.message); 
@@ -10901,7 +10970,7 @@ async function syncStateToCloud() {
     }
 
 
-    // Fungsi Khusus Admin untuk Reset Data
+// Fungsi Khusus Admin untuk Reset Data
 async function adminResetUserSession() {
     if (!appState.isAdmin) return;
     
@@ -10929,33 +10998,77 @@ async function adminResetUserSession() {
         alert("Gagal reset sesi: " + e.message);
     }
 }
-    // === REVISED INITIALIZATION ===
-    window.addEventListener('load', () => {
-        let attempts = 0;
-        const maxAttempts = 50; // Max 5 detik
+// === INITIALIZATION ===
+window.addEventListener('load', () => {
 
-        const checkFB = setInterval(() => {
-            attempts++;
-            if (window.fbProvider) {
-                clearInterval(checkFB);
-                // 1. Load data state pribadi (timer, posisi soal)
-                recoverStateFromCloud();
-                // 2. [PENTING] Load data seluruh user (untuk login & admin)
-                loadGlobalUsersFromCloud();
-            } else if (attempts >= maxAttempts) {
-                // Jika Firebase gagal dimuat, tetap masuk ke aplikasi (offline/local mode)
-                clearInterval(checkFB);
-                document.getElementById('loading-screen').style.display = 'none';
-                render();
-            }
-        }, 100);
-        // Interval background untuk selalu cek data terbaru (Realtime Sync sederhana)
-        setInterval(() => {
-            if(appState.isAdmin && window.fbProvider) {
-                loadGlobalUsersFromCloud(); // Admin selalu tarik data terbaru
-            }
-        }, 10000); // Cek setiap 10 detik
-    });
+    const loader = document.getElementById('loading-screen');
+
+    // Jangan biarkan loading screen mengunci aplikasi
+    if (loader) {
+        loader.style.display = 'none';
+    }
+
+    // Tampilkan aplikasi SEGERA
+    render();
+
+    let recoveryStarted = false;
+
+    function startRecovery() {
+        if (recoveryStarted) return;
+        if (!window.fbProvider) return;
+
+        recoveryStarted = true;
+
+        // Jalankan Firebase di background
+        recoverStateFromCloud();
+
+        // Load user global di background
+        loadGlobalUsersFromCloud();
+    }
+
+    // Coba langsung
+    startRecovery();
+
+    // Jika Firebase module belum selesai loading,
+    // cek sebentar di background
+    const checkFB = setInterval(() => {
+
+        if (window.fbProvider) {
+            clearInterval(checkFB);
+            startRecovery();
+        }
+
+    }, 100);
+
+    // Maksimal menunggu Firebase hanya 3 detik,
+    // tetapi TIDAK menghalangi aplikasi
+    setTimeout(() => {
+
+        clearInterval(checkFB);
+
+        if (loader) {
+            loader.style.display = 'none';
+        }
+
+        if (!recoveryStarted) {
+            render();
+        }
+
+    }, 3000);
+
+    // Sinkronisasi admin setiap 10 detik
+    setInterval(() => {
+
+        if (
+            appState.isAdmin &&
+            window.fbProvider
+        ) {
+            loadGlobalUsersFromCloud();
+        }
+
+    }, 10000);
+
+});
 
     // === KEY LISTENER FOR ESCAPE ===
     document.addEventListener('keydown', function(event) {
@@ -11453,7 +11566,7 @@ function renderSubMenuModal() {
       const isSma = isAdmin || allowedPackages.some(pkg => pkg.startsWith('us_'));
     let adminMonitor = '';
         if(appState.isAdmin) {
-            const users = JSON.parse(localStorage.getItem('neoprime_users')) || [];
+            const users = getLocalJSON('neoprime_users', []);
             adminMonitor = `
                 <div class="mt-12 bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
                     <div class="bg-slate-900 p-4 flex justify-between items-center">
@@ -11598,6 +11711,22 @@ function getStatusBadge(isAdmin, isUnlocked, color) {
     `;
 }
 
+function getLocalJSON(key, fallback = null) {
+    try {
+        const value = localStorage.getItem(key);
+
+        if (!value) {
+            return fallback;
+        }
+
+        return JSON.parse(value);
+    } catch (error) {
+        console.warn(`LocalStorage '${key}' rusak:`, error);
+
+        return fallback;
+    }
+}
+
 function renderTkaSubjectSelect() {
 
     const packageData = (PACKAGES.TKA_SMA || [])
@@ -11717,10 +11846,18 @@ function renderPackageSelect() {
         const packageIds = PACKAGE_GROUPS[appState.selectedSubCategory];
 
         const allPackages = [
-            ...Object.values(PACKAGES).flat()
+            ...new Map(
+                Object.values(PACKAGES)
+                    .flat()
+                    .map(pkg => [pkg.id, pkg])
+            ).values()
         ];
 
-        packages = allPackages.filter(pkg => packageIds.includes(pkg.id));
+        packages = packageIds
+            .map(id =>
+                allPackages.find(pkg => pkg.id === id)
+            )
+            .filter(Boolean);
 
         if (appState.selectedSubCategory.startsWith('SNBT_SKD_SNBT')) {
             typeLabel = 'Program SNBT';
@@ -12319,7 +12456,7 @@ const pageTitle = appState.fromScreen === 'history' ? 'Detail Riwayat & Pembahas
 function renderHistory() {
     // Ambil data terbaru dari "Database" LocalStorage
     // Ini adalah sumber kebenaran mutlak (Single Source of Truth)
-    const allUsers = JSON.parse(localStorage.getItem('neoprime_users')) || [];
+    const allUsers = getLocalJSON('neoprime_users', []);
 
     // =========================================================================
     // BAGIAN 1: LOGIKA KHUSUS ADMIN
@@ -12626,7 +12763,7 @@ if (name === 'neoprimeadmin' && pass === 'irfrif28') {
     appState.isAdmin = true;
     
     // --- TAMBAHAN: Panggil riwayat admin dari local storage saat login ---
-    appState.examHistory = JSON.parse(localStorage.getItem('neoprime_admin_history')) || [];
+    appState.examHistory = getLocalJSON('neoprime_admin_history', []);
     // ----------------------------------------------------------------------
     
     appState.screen = 'exam-select';
@@ -12996,54 +13133,48 @@ function startExam() {
     // FILTER SOAL
     // ==========================================
 
-    if (appState.selectedExamType === 'TKA_SMA') {
+if (appState.selectedExamType === 'TKA_SMA') {
 
-        // TKA SMA menggunakan:
-        // 1. packageId
-        // 2. category / mata pelajaran
+    appState.currentQuestions = allQ.filter(q => {
 
-appState.currentQuestions = allQ.filter(q => {
-    if (q.packageId !== appState.selectedPackage) {
-        return false;
-    }
+        if (q.packageId !== appState.selectedPackage) {
+            return false;
+        }
 
-    if (q.category !== appState.selectedTkaSubject) {
-        return false;
-    }
+        if (q.category !== appState.selectedTkaSubject) {
+            return false;
+        }
 
-    // Jangan masukkan soal placeholder/kosong
-    const hasQuestion =
-        typeof q.question === 'string' &&
-        q.question.trim().length > 0;
+        const hasQuestion =
+            typeof q.question === 'string' &&
+            q.question.trim().length > 0;
 
-    const hasOptions =
-        Array.isArray(q.options) &&
-        q.options.some(
-            opt =>
-                typeof opt.text === 'string' &&
-                opt.text.trim().length > 0
-        );
+        const hasQuestionImage =
+            typeof q.image === 'string' &&
+            q.image.trim().length > 0;
 
-    // Soal dengan gambar tetapi tanpa teks tetap dianggap valid
-    const hasImage =
-        typeof q.image === 'string' &&
-        q.image.trim().length > 0;
+        const hasOptions =
+            Array.isArray(q.options) &&
+            q.options.some(opt =>
+                (
+                    typeof opt.text === 'string' &&
+                    opt.text.trim().length > 0
+                ) ||
+                (
+                    typeof opt.image === 'string' &&
+                    opt.image.trim().length > 0
+                )
+            );
 
-    return hasQuestion || hasImage
-        ? hasOptions
-        : false;
-});
+        return (hasQuestion || hasQuestionImage) && hasOptions;
+    });
 
-    } else {
+} else {
 
-        // Program lain tetap menggunakan
-        // filter packageId seperti sebelumnya
-
-        appState.currentQuestions = allQ.filter(
-            q => q.packageId === appState.selectedPackage
-        );
-    }
-
+    appState.currentQuestions = allQ.filter(
+        q => q.packageId === appState.selectedPackage
+    );
+}
     // ==========================================
     // VALIDASI
     // ==========================================
@@ -13399,11 +13530,7 @@ const result = {
     } else {
 
         allUsers =
-            JSON.parse(
-                localStorage.getItem(
-                    'neoprime_users'
-                )
-            ) || [];
+            getLocalJSON('neoprime_users', []);
 
         const userIdx =
             allUsers.findIndex(
@@ -13521,7 +13648,7 @@ function cancelFinishExam() {
         return `${h > 0 ? h + ':' : ''}${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`; 
     }
     if (localStorage.getItem('neoprime_users')) {
-        appState.registeredUsers = JSON.parse(localStorage.getItem('neoprime_users'));
+        appState.registeredUsers = getLocalJSON('neoprime_users', []);
     }
 
 // --- TAMBAHAN BARU ---
@@ -13592,9 +13719,7 @@ appState.currentQuestions =
 // Handler: Klik Riwayat User oleh Admin
 function viewAdminResultDetail(targetUserName, historyIndex) {
     const allUsers =
-        JSON.parse(
-            localStorage.getItem('neoprime_users')
-        ) || [];
+        getLocalJSON('neoprime_users', []);
 
     const targetUser =
         allUsers.find(
