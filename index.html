@@ -111,7 +111,27 @@ try {
 .question-image:hover {
     transform: scale(1.02);
 }
-    
+
+.question-content table,
+.question-text table {
+    border-collapse: collapse;
+    margin: 10px auto;
+    max-width: 100%;
+}
+
+.question-content td,
+.question-content th,
+.question-text td,
+.question-text th {
+    border: 1px solid #cbd5e1;
+    padding: 6px 10px;
+    text-align: center;
+}
+
+.question-content table {
+    overflow-x: auto;
+}
+
     /* Blob Animation */
     @keyframes blob {
       0% { transform: translate(0px, 0px) scale(1); }
@@ -506,7 +526,7 @@ const TKA_SMA_SUBJECTS = [
         question: `Sebuah truk menempuh perjalanan 30 km dengan 1,5 liter bensin ketika truk dipacu dengan kecepatan 60 km/jam. Jika truk tersebut berkecepatan 80 km/jam, maka jarak yang ditempuh hanya 80%nya. Berapakah bensin yang diperlukan untuk menempuh jarak 120 km dengan kecepatan 60 km/jam?`,
         options: [
           { id: 'A', text: '4,5 liter', score: 0 },
-          { id: 'B', text: '6,5 liter', score: 0 },
+          { id: 'B', text: '7,5 liter', score: 0 },
           { id: 'C', text: '5,5 liter', score: 0 },
           { id: 'D', text: '6 liter', score: 6.25 },
           { id: 'E', text: '6,5 liter', score: 0 }
@@ -1186,7 +1206,7 @@ const TKA_SMA_SUBJECTS = [
           { id: 'B', text: '-30', score: 0 },
           { id: 'C', text: '-22', score: 6.25 },
           { id: 'D', text: '-28', score: 0 }, 
-          { id: 'E', text: '-30', score: 0 }
+          { id: 'E', text: '-24', score: 0 }
         ],
       },
             {
@@ -3131,7 +3151,7 @@ const TKA_SMA_SUBJECTS = [
         options: [
           { id: 'A', text: '1 dan 2', score: 0 },
           { id: 'B', text: '2 dan 3', score: 0 },
-          { id: 'C', text: '2 dan 4', score: 0 },
+          { id: 'C', text: '1 dan 4', score: 0 },
           { id: 'D', text: '2 dan 4', score: 2.857 },
           { id: 'E', text: '4 dan 5', score: 0 }
         ],
@@ -3201,11 +3221,11 @@ const TKA_SMA_SUBJECTS = [
         question: "<b>Perhatikan data hasil titrasi antara larutan CH3COOH dan larutan NaOH 0,5 M berikut!</b> <br><br>Berdasarkan data tersebut, massa CH3COOH  yang bereaksi adalah …(Ar H=1 g/mol, C= 12 g/mol dan O = 16 g/mol)", 
         image: "https://i.ibb.co.com/4nzDbRqR/image.png",
         options: [
-          { id: 'A', text: '0,20 g', score: 0 },
-          { id: 'B', text: '0,30 g', score: 0 },
-          { id: 'C', text: '0,20 g', score: 0 },
-          { id: 'D', text: '0,50 g', score: 0 },
-          { id: 'E', text: '0,20 g', score: 2.857 }
+          { id: 'A', text: '0,10 g', score: 0 },
+          { id: 'B', text: '0,20 g', score: 2.857 },
+          { id: 'C', text: '0,30 g', score: 0 },
+          { id: 'D', text: '0,40 g', score: 0 },
+          { id: 'E', text: '0,50 g', score: 0 }
         ],
         },  
         { id: 'kimia_2_14', packageId: 'us_sma_kimia_2', category: 'KIMIA', 
@@ -3793,7 +3813,7 @@ const TKA_SMA_SUBJECTS = [
         options: [
           { id: 'A', text: 'Perlengkapan bertambah Rp. 6.000.000,00. Kas berkurang Rp 2.000.000,00', score: 0 },
           { id: 'B', text: 'Perlengkapan bertambah Rp. 6.000.000,00. Kas berkurang Rp 2.000.000,00 dan Utang berkurang Rp 4.000.000,00', score: 0 },
-          { id: 'C', text: 'Perlengkapan bertambah Rp. 6.000.000,00. Kas berkurang Rp 2.000.000,00 dan Utang bertambah Rp 4.000.000,00', score: 0 },
+          { id: 'C', text: 'Perlengkapan bertambah Rp. 6.000.000,00. Kas bertambah Rp 2.000.000,00 dan Utang berkurang Rp 4.000.000,00', score: 0 },
           { id: 'D', text: 'Perlengkapan bertambah Rp. 6.000.000,00. Kas berkurang Rp 2.000.000,00 dan Utang bertambah Rp 4.000.000,00', score: 2.5 },
           { id: 'E', text: 'Perlengkapan bertambah Rp. 6.000.000,00. Kas berkurang Rp 6.000.000,00', score: 0 }
         ],
@@ -4795,7 +4815,7 @@ const TKA_SMA_SUBJECTS = [
        question: "Salah satu persamaan garis singgung lingkaran x² + y² - 2x + 8y - 10 = 0 yang sejajar dengan garis 2x - y + 4 = 0 adalah ....", 
         options: [
           { id: 'A', text: '2x - y + 15 = 0', score: 0 },
-          { id: 'B', text: '2x - y + 5  = 0', score: 0 },
+          { id: 'B', text: '2x + y - 15  = 0', score: 0 },
           { id: 'C', text: '2x - y + 5  = 0', score: 0 },
           { id: 'D', text: '2x - y - 5  = 0', score: 2.5 },
           { id: 'E', text: '2x + y - 5  = 0', score: 0 }
@@ -5180,7 +5200,7 @@ const TKA_SMA_SUBJECTS = [
         ],
       },          
        { id: 'tka_sma_1_mtkw_07', packageId: 'tka_sma_1', category: 'MTKW', 
-        question: "Diketahui fungsi \\(f(x) = 2x + 1\\)  dan \\(g(x) = \\frac{x+1}{x}\\):, x ≠ 0. Invers (fog)(x) adalah (fog)<sup>-1</sup>(x) =", 
+        question: "Diketahui fungsi \\(f(x) = 2x + 1\\)  dan \\(g(x) = \\frac{x+1}{x}\\), x ≠ 0. Invers (fog)(x) adalah (fog)<sup>-1</sup>(x) =", 
         options: [
           { id: 'A', text: `$$\\frac{2x}{x-3}, x \\neq -3$$`, score: 0 },
           { id: 'B', text: `$$\\frac{2x}{x+3}, x \\neq -3$$`, score: 0 },
@@ -6483,7 +6503,7 @@ const TKA_SMA_SUBJECTS = [
         options: [
           { id: 'A', text: 'CH<sub>3</sub>(CH<sub>2</sub>)<sub>4</sub>CH<sub>2</sub>CH<sub>3</sub> dan CH<sub>3</sub>C(CH<sub>3</sub>)<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)CH<sub>3</sub>', score: 3.33 },
           { id: 'B', text: 'CH<sub>3</sub>(CH<sub>2</sub>)<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub> dan CH<sub>3</sub>C(CH<sub>3</sub>)<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)CH<sub>3</sub>', score: 0 },
-          { id: 'C', text: 'CH<sub>3</sub>(CH<sub>2</sub>)<sub>4</sub>CH<sub>2</sub>CH<sub>3</sub> dan CH<sub>3</sub>C(CH<sub>3</sub>)<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)CH<sub>3</sub>', score: 0 },
+          { id: 'C', text: 'CH<sub>3</sub>(CH<sub>2</sub>)<sub>4</sub>CH<sub>2</sub>CH<sub>3</sub> dan CH<sub>3</sub>C(CH<sub>3</sub>)CH<sub>2</sub>CH(CH<sub>3</sub>)CH<sub>3</sub>', score: 0 },
           { id: 'D', text: 'CH<sub>3</sub>(CH<sub>2</sub>)<sub>3</sub>CH<sub>2</sub>(CH<sub>3</sub>)<sub>2</sub> dan CH<sub>3</sub>C(CH<sub>3</sub>)<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)CH<sub>3</sub>', score: 0 },
           { id: 'E', text: 'CH<sub>3</sub>(CH<sub>2</sub>)<sub>4</sub>CH<sub>2</sub>CH<sub>3</sub> dan CH<sub>3</sub>C(CH<sub>3</sub>)<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>', score: 0 }
         ],
@@ -6681,7 +6701,7 @@ const TKA_SMA_SUBJECTS = [
         options: [
           { id: 'A', text: 'Tepat, Tepat, Tidak Tepat, TidakTepat, Tidak Tepat', score: 0 },
           { id: 'B', text: 'Tidak Tepat, Tepat, Tidak Tepat, Tidak Tepat, Tidak Tepat', score: 0 },
-          { id: 'C', text: 'Tidak Tepat, Tepat, Tidak Tepat, Tidak Tepat, Tidak Tepat', score: 0 },
+          { id: 'C', text: 'Tepat, Tepat, Tidak Tepat, Tidak Tepat, Tidak Tepat', score: 0 },
           { id: 'D', text: 'Tepat, Tepat, Tidak Tepat, Tepat, Tidak Tepat', score: 3.33 },
           { id: 'E', text: 'Tepat, Tepat, Tidak Tepat, Tidak Tepat, Tepat', score: 0 }
         ],
@@ -7029,7 +7049,7 @@ const TKA_SMA_SUBJECTS = [
           { id: 'A', text: '1b, 2a, 3a', score: 0 },
           { id: 'B', text: '1b, 2a, 3b', score: 0 },
           { id: 'C', text: '1b, 2b, 3a', score: 3.33 },
-          { id: 'D', text: '1b, 2b, 4b', score: 0 },
+          { id: 'D', text: '1b, 2a, 4b', score: 0 },
           { id: 'E', text: '1b, 2b, 4b', score: 0 }
         ],
       },
@@ -10983,9 +11003,7 @@ async function adminResetUserSession() {
             });
         }
 
-        // 2. Bersihkan LocalStorage yang mungkin korup
-        localStorage.removeItem('savedUsername');
-        
+        // 2. Bersihkan LocalStorage yang mungkin korup   
         alert("Sesi berhasil direset. Halaman akan dimuat ulang.");
         location.reload();
     } catch (e) {
@@ -11192,7 +11210,6 @@ function render() {
 
     // LOGIN MODAL
     function renderLoginModal() {
-      const savedName = localStorage.getItem('savedUsername') || '';
       return `
         <div class="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeModal()"></div>
@@ -11213,16 +11230,32 @@ function render() {
             <div class="space-y-4">
               <div>
                 <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Nama Lengkap</label>
-                <input type="text" id="loginName" value="${savedName}" onkeyup="if(event.key==='Enter') handleLogin()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition bg-slate-50" placeholder="Nama Anda">
+                <input type="text" id="loginName" onkeyup="if(event.key==='Enter') handleLogin()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition bg-slate-50" placeholder="Nama Anda">
               </div>
               <div>
                  <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Password</label>
-                 <input type="password" id="loginPass" onkeyup="if(event.key==='Enter') handleLogin()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition bg-slate-50" placeholder="Masukkan password">
+              <div class="relative">
+              <input type="password" id="loginPass"
+                    onkeyup="if(event.key==='Enter') handleLogin()"
+                    class="w-full px-4 py-3 pr-12 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition bg-slate-50"
+                    placeholder="Masukkan password">
+
+                  <button
+                      type="button"
+                      onclick="toggleLoginPassword()" class="absolute right-3 top-1/2 -translate-y-1/2"
+                      aria-label="Tampilkan sandi"> <i id="loginPassIcon" class="fa-solid fa-eye"></i>
+                  </button>
               </div>
               <div class="flex items-center">
-                 <input type="checkbox" id="rememberMe" ${savedName ? 'checked' : ''} class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
-                 <label for="rememberMe" class="ml-2 text-sm text-slate-500 select-none">Simpan Username</label>
-              </div>
+              <input type="checkbox"
+                    id="showPassword"
+                    onchange="toggleLoginPassword()"
+                    class="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500">
+                    <label for="showPassword"
+                          class="ml-2 text-sm text-slate-500 select-none cursor-pointer">
+                        Tampilkan Sandi
+                    </label>
+                    </div>
               <button onclick="handleLogin()" class="w-full bg-blue-600 text-white font-bold py-3.5 rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-600/30">
                 Masuk
               </button>
@@ -11233,6 +11266,21 @@ function render() {
           </div>
         </div>
       `;
+    }
+
+    function toggleLoginPassword() {
+        const passEl = document.getElementById('loginPass');
+        const checkbox = document.getElementById('showPassword');
+        const icon = document.getElementById('loginPassIcon');
+        if (!passEl) return;
+        const shouldShow = checkbox
+            ? checkbox.checked
+            : passEl.type === 'password';
+        passEl.type = shouldShow ? 'text' : 'password';
+        if (icon) {
+            icon.className = shouldShow
+                ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+        }
     }
 
     // REGISTER MODAL
@@ -11287,10 +11335,14 @@ function render() {
                       class="p-4 rounded-xl border border-slate-200 hover:border-violet-500 hover:bg-violet-50 transition flex items-center gap-4 group text-left">
                       <span class="text-2xl w-10 text-center">🧠</span>
                       <div>
-                          <div class="font-bold text-slate-800 group-hover:text-violet-700">Program TKA SMA</div>
-                        <div class="text-xs text-slate-500">
-                            3 Paket Lengkap: MTK, B. Indonesia, B. Inggris, Kimia, Ekonomi, Biologi, PPKN
-                        </div>
+                          <div class="font-bold text-slate-800 group-hover:text-violet-700">
+                              Program TKA SMA
+                          </div>
+                          <div class="text-xs text-slate-500">
+                              3 Paket Lengkap: MTK, B. Indonesia, B. Inggris, Kimia, Ekonomi, Biologi, PPKN
+                          </div>
+                      </div>
+                  </button>     
                   </button>
                   <button onclick="setRegProgram('US_SMA')"
                       class="w-full p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition flex items-center gap-4 text-left group">
@@ -12735,7 +12787,6 @@ function handleLogin() {
     const nameEl = document.getElementById('loginName');
     const passEl = document.getElementById('loginPass');
     const errorEl = document.getElementById('loginError');
-    const rememberMe = document.getElementById('rememberMe')?.checked;
 
     if (!nameEl || !passEl) return;
 
@@ -12782,12 +12833,6 @@ if (name === 'neoprimeadmin' && pass === 'irfrif28') {
         errorEl.classList.remove('hidden');
         errorEl.classList.add('shake');
         return;
-    }
-// Success Login
-    if (rememberMe) {
-        localStorage.setItem('savedUsername', name);
-    } else {
-        localStorage.removeItem('savedUsername');
     }
 
     appState.userName = user.name;
