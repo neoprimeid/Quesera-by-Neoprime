@@ -132,6 +132,15 @@ try {
     overflow-x: auto;
 }
 
+.math-display {
+    text-align: center;
+    margin: 14px 0 20px;
+    font-size: 1.08em;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px 4px;
+}
+
     /* Blob Animation */
     @keyframes blob {
       0% { transform: translate(0px, 0px) scale(1); }
@@ -6332,7 +6341,19 @@ const TKA_SMA_SUBJECTS = [
         ],
       },
       { id: 'tka_sma_1_mtkl_26', packageId: 'tka_sma_1', category: 'MTKL',
-        question: `<div style="text-align:center; margin: 10px 0 18px;"> \\[ f(x)=\\begin{cases}2x, & \\text{untuk } 0<x<1,\\\\[6pt]1, & \\text{untuk } x=1,\\\\[6pt]3-x, & \\text{untuk } 1<x\\leq3,\\\\[6pt] 1+(x-3)^2, & \\text{untuk } x>3. \\end{cases}\\] </div> Tentukan Benar atau Salah untuk setiap pernyataan berikut!`,
+        question: `
+        <div class="math-display">
+        \\[
+        f(x)=
+        \\begin{cases}
+        2x, & \\text{untuk } 0<x<1,\\\\[6pt]
+        1, & \\text{untuk } x=1,\\\\[6pt]
+        3-x, & \\text{untuk } 1<x\\leq3,\\\\[6pt]
+        1+(x-3)^2, & \\text{untuk } x>3.
+        \\end{cases}
+        \\]
+        </div>
+        Tentukan Benar atau Salah untuk setiap pernyataan berikut!`,
         image: "https://i.ibb.co.com/wZkmWgmq/image.png",
         options: [
           { id: 'A', text: 'Benar, Benar, Benar', score: 0 },
@@ -11093,14 +11114,30 @@ window.addEventListener('load', () => {
 
 function typesetMathJax() {
 
-    if (
-        window.MathJax &&
-        typeof window.MathJax.typesetPromise === 'function'
-    ) {
-        MathJax.typesetPromise().catch(err => {
-            console.warn("MathJax typeset gagal:", err);
-        });
-    }
+    const renderMath = () => {
+
+        if (
+            window.MathJax &&
+            typeof window.MathJax.typesetPromise === 'function'
+        ) {
+
+            const app = document.getElementById('app');
+
+            if (!app) return;
+
+            MathJax.typesetPromise([app]).catch(err => {
+                console.warn("MathJax typeset gagal:", err);
+            });
+
+        } else {
+
+            // Tunggu MathJax selesai dimuat
+            setTimeout(renderMath, 100);
+
+        }
+    };
+
+    renderMath();
 }
 
  // === RENDER ENGINE ===
