@@ -181,9 +181,39 @@ try {
     }  
 
   </style>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
- </head>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [
+            ['\\(', '\\)']
+        ],
+        displayMath: [
+            ['\\[', '\\]']
+        ]
+    },
+    options: {
+        skipHtmlTags: [
+            'script',
+            'noscript',
+            'style',
+            'textarea',
+            'pre',
+            'code'
+        ]
+    },
+    startup: {
+        typeset: false
+    }
+};
+</script>
+
+<script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+</head>
  <body class="h-full bg-slate-50 text-slate-800">
     <div id="loading-screen">
     <div class="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
@@ -6342,19 +6372,19 @@ const TKA_SMA_SUBJECTS = [
       },
       { id: 'tka_sma_1_mtkl_26', packageId: 'tka_sma_1', category: 'MTKL',
         question: `
-        <div class="math-display">
         \\[
         f(x)=
         \\begin{cases}
-        2x, & \\text{untuk } 0<x<1,\\\\[6pt]
-        1, & \\text{untuk } x=1,\\\\[6pt]
-        3-x, & \\text{untuk } 1<x\\leq3,\\\\[6pt]
+        2x, & \\text{untuk } 0<x<1,\\\\
+        1, & \\text{untuk } x=1,\\\\
+        3-x, & \\text{untuk } 1<x\\leq3,\\\\
         1+(x-3)^2, & \\text{untuk } x>3.
         \\end{cases}
         \\]
-        </div>
-        Tentukan Benar atau Salah untuk setiap pernyataan berikut!`,
-        image: "https://i.ibb.co.com/wZkmWgmq/image.png",
+
+        Tentukan Benar atau Salah untuk setiap pernyataan berikut!
+        `,
+      image: "https://i.ibb.co.com/wZkmWgmq/image.png",
         options: [
           { id: 'A', text: 'Benar, Benar, Benar', score: 0 },
           { id: 'B', text: 'Benar, Salah, Benar', score: 3.33 },
@@ -11114,30 +11144,42 @@ window.addEventListener('load', () => {
 
 function typesetMathJax() {
 
-    const renderMath = () => {
+    const renderMath = async () => {
 
         if (
-            window.MathJax &&
-            typeof window.MathJax.typesetPromise === 'function'
+            !window.MathJax ||
+            typeof window.MathJax.typesetPromise !== 'function'
         ) {
-
-            const app = document.getElementById('app');
-
-            if (!app) return;
-
-            MathJax.typesetPromise([app]).catch(err => {
-                console.warn("MathJax typeset gagal:", err);
-            });
-
-        } else {
-
-            // Tunggu MathJax selesai dimuat
             setTimeout(renderMath, 100);
+            return;
+        }
+
+        const app = document.getElementById('app');
+
+        if (!app) return;
+
+        try {
+
+            // Bersihkan hasil typeset sebelumnya
+            if (typeof window.MathJax.typesetClear === 'function') {
+                window.MathJax.typesetClear([app]);
+            }
+
+            // Render ulang seluruh matematika
+            await window.MathJax.typesetPromise([app]);
+
+        } catch (error) {
+
+            console.error(
+                'MathJax gagal merender soal:',
+                error
+            );
 
         }
     };
 
     renderMath();
+
 }
 
  // === RENDER ENGINE ===
